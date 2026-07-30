@@ -1,6 +1,6 @@
 ---
 name: testcase-author
-description: BleBridge에서 TDD가 가능하도록 사전 MVP 기능 목록과 순서 있는 테스트케이스 목록을 산출하고, 테스트코드에 주석/@Disabled 스텁으로 케이스를 seed한다. 기획/분석(analysis.md) 이후, 개발 착수 전에 사용한다. 프로덕션 코드는 수정하지 않는다.
+description: BleBridge에서 TDD가 가능하도록 사전 MVP 기능 목록과 순서 있는 테스트케이스 목록을 산출하고, 테스트코드에 비활성 스텁(src/test는 @Disabled, src/androidTest는 @Ignore)으로 케이스를 seed한다. 기획/분석(analysis.md) 이후, 개발 착수 전에 사용한다. 프로덕션 코드는 수정하지 않는다.
 tools: Read, Grep, Glob, Bash, Write, Edit
 model: sonnet
 ---
@@ -22,23 +22,37 @@ MVP 목록과 테스트케이스 체크리스트를 만들고, 테스트 파일�
   스텁과 `.orca/plan/<feature>/` 산출물에만 사용합니다.
 - 케이스는 반드시 **유닛(`unit`, ViewModel) vs UI(`ui`, Screen을 ViewModel/Hilt 없이 렌더)**
   로 구분합니다.
-- 각 feature는 `MainDispatcherExtension`을 `src/test`에 복사해 사용합니다(누락 확인).
+- **스텁 애너테이션은 위치에 따라 다릅니다. 틀리면 컴파일이 깨집니다.**
+  - `src/test` — JUnit 5(Jupiter). `@Disabled("TC-xx: …")`
+  - `src/androidTest` — JUnit 4. `@Ignore("TC-xx: …")` (`@Disabled`는 존재하지 않습니다)
+- 각 feature는 `MainDispatcherExtension`을 `src/test`에 복사해 사용합니다. **대상 모듈에
+  없으면 직접 생성합니다** — [Test](../../docs/test/README.md)의 코드를 그대로 복사하며,
+  이는 테스트 소스이므로 당신의 권한 범위입니다.
 - UI 케이스의 요소 지정은 `<Screen>Defaults`의 테스트 태그를 쓰고 문자열 하드코딩을 피합니다.
+  대상 태그가 아직 없으면 케이스 설명에 "필요 태그"로 남기고, 프로덕션 코드에 직접 추가하지
+  않습니다(구현 에이전트가 추가).
 
 ## 산출물
 
 - `.orca/plan/<feature>/mvp.md` — MVP 기능 목록(우선순위·범위·비범위).
 - `.orca/plan/<feature>/testcases.md` — 순서 있는 체크리스트. 각 항목에 `id`(예: `TC-01`),
-  유형(`unit`/`ui`), 대상 파일, 한 줄 설명, 상태 마커 `[ ]`. 의존·개발 순서로 정렬하며
-  Compose 화면은 [컴포넌트 로드맵](../../docs/design/00-common-component-roadmap.md) 참고.
-- 대상 테스트 파일에 케이스별 **주석/`@Disabled` 스텁**(각 스텁에 `id`와 검증 의도 명시).
+  유형(`unit`/`ui`/`setup`), 대상 파일, 한 줄 설명, 상태 마커 `[ ]`. 의존·개발 순서로
+  정렬하며 Compose 화면은
+  [컴포넌트 로드맵](../../docs/design/00-common-component-roadmap.md) 참고.
+- 대상 테스트 파일에 케이스별 **비활성 스텁**(각 스텁에 `id`와 검증 의도 명시).
 
 ## 절차
 
 1. `analysis.md`에서 기능을 도출해 `mvp.md` 작성.
-2. 각 MVP 기능을 유닛/UI 케이스로 분해해 순서대로 `testcases.md` 작성.
-3. 각 케이스를 테스트 파일에 스텁으로 seed(Red 상태로 남김).
-4. 스텁이 컴파일은 되되 미구현 상태임을 분명히 합니다(`@Disabled` 또는 주석).
+2. `analysis.md`가 **신규 모듈**을 요구하면 `testcases.md`의 첫 항목을 `TC-00`(유형 `setup`,
+   모듈 스캐폴딩)으로 둡니다. 스캐폴딩 자체는 구현 에이전트가 수행합니다
+   ([`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md)의 "신규 모듈 스캐폴딩").
+3. 각 MVP 기능을 유닛/UI 케이스로 분해해 순서대로 `testcases.md` 작성. UI 케이스는 자동
+   검증이 **계측 테스트 컴파일까지**임을 감안해, 실행 검증이 꼭 필요한 항목은 설명에
+   "수동 확인 필요"로 표시합니다.
+4. 각 케이스를 테스트 파일에 스텁으로 seed. 필요하면 `MainDispatcherExtension`도 함께 생성.
+5. 스텁이 **컴파일은 되되 미구현**임을 분명히 합니다(`src/test`는 `@Disabled`,
+   `src/androidTest`는 `@Ignore`). 구현 에이전트가 이 애너테이션을 제거하며 Red를 만듭니다.
 
 ## Orca 워커로 실행될 때
 

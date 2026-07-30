@@ -24,6 +24,15 @@ model: sonnet
 - **git 미초기화 시**: `git init` 후 진행하거나, 리뷰 대상 파일 경로·diff를 명시 프롬프트로
   전달하고 그 사실을 리뷰 문서에 기록.
 
+> `--uncommitted`는 **staged·unstaged·untracked 변경만** 봅니다. 파이프라인은 이를 전제로
+> dev가 커밋하기 전에 리뷰하도록 순서를 잡았습니다
+> ([`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md)의 "리뷰-커밋 순서").
+> 리뷰 대상 diff가 비어 있으면 **이미 커밋됐다는 신호**입니다. pass로 처리하지 말고
+> `codex review --base HEAD~1`로 재시도한 뒤 그 사실을 리뷰 문서와 보고에 남깁니다.
+
+UI(`ui`) 케이스는 계측 테스트가 기기 없이 실행되지 않습니다. 컴파일만 확인된 상태를
+"테스트 통과"로 판단하지 말고, 미실행 사실이 dev 보고에 남아 있는지 확인합니다.
+
 `<지침>`에는 다음 리뷰 관점을 주입합니다:
 
 - MVI 경계(Intent→Mutation, 일회성은 SideEffect, 4역할 병합 금지).
@@ -40,6 +49,12 @@ model: sonnet
 
 pass/이슈를 명확히 구분해 기록하고, 이슈는 파일·근거·권고를 남깁니다. 수정은 하지 않고
 개발 에이전트로 회신합니다.
+
+같은 케이스를 다시 리뷰할 때는 **이전 리뷰 문서에 시도 회차를 누적**합니다(`1차`, `2차`…).
+같은 케이스의 수정 재디스패치는 최대 2회(총 3회 시도)까지이며, 3회째에도 이슈가 남으면
+`.orca/plan/<feature>/review/<TC-id>.md`에 남은 이슈와 시도 이력을 정리하고 코디네이터에
+에스컬레이션을 보고합니다. 규약은
+[`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md)의 "재시도 제한과 에스컬레이션".
 
 ## Orca 워커로 실행될 때
 

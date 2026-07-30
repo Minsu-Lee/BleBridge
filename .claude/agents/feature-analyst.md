@@ -32,7 +32,8 @@ model: opus
 "analysis.md 필수 항목"을 모두 포함:
 
 - 대상 모듈 판단 + 신규 모듈 여부(신규면 등록·`blebridge.feature` 스캐폴딩 명세, 도메인
-  화면 모듈 vs 컨테이너 모듈).
+  화면 모듈 vs 컨테이너 모듈). 이 명세는 뒤에서 `TC-00`(유형 `setup`) 케이스로 변환돼
+  구현 에이전트가 수행하므로, **필요한 파일과 범위를 실행 가능한 수준으로** 적습니다.
 - MVI 4계약 초안(`<Screen>UiState/Intent/Mutation/SideEffect`).
 - `Route → Screen → 선택적 core:ui Content` 분해.
 - Navigation destination(`<Feature>Route`, `NavGraphBuilder` 확장, app NavHost 콜백).
