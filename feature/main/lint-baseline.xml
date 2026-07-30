@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 9.1.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.1.1)" variant="all" version="9.1.1">
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.typography`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            style = AppTheme.typography.titleLarge,"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/main/MainScreen.kt"
+            line="44"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.colors`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            color = AppTheme.colors.textPrimary,"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/main/MainScreen.kt"
+            line="45"
+            column="21"/>
+    </issue>
+
+</issues>

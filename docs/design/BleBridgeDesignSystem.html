@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BleBridge Design System Guide</title>
+  <style>
+    @font-face {
+      font-family: "Pretendard";
+      src: url("../core/designsystem/src/main/res/font/pretendard_variable.ttf") format("truetype");
+      font-weight: 100 900;
+    }
+
+    @font-face {
+      font-family: "JetBrains Mono";
+      src: url("../core/designsystem/src/main/res/font/jetbrains_mono_variable.ttf") format("truetype");
+      font-weight: 100 800;
+    }
+
+    :root {
+      color-scheme: light;
+      --page: #f3f5f8;
+      --background: #ffffff;
+      --surface: #f7f8fa;
+      --surface-variant: #edeff3;
+      --input: #f2f4f7;
+      --border: #e4e7ec;
+      --border-subtle: #eef0f4;
+      --text: #12141a;
+      --text-secondary: #5a616e;
+      --text-tertiary: #8a909c;
+      --placeholder: #969ca8;
+      --server: #2563eb;
+      --server-on: #ffffff;
+      --server-container: #eaf1ff;
+      --server-container-on: #1d4ed8;
+      --client: #0e9488;
+      --client-on: #0b0d12;
+      --client-container: #e2f6f3;
+      --client-container-on: #0b5f57;
+      --success: #16a34a;
+      --success-container: #eaf6ec;
+      --success-on: #15803d;
+      --warning: #d97706;
+      --error: #dc2626;
+      --error-container: #fdecec;
+      --error-on: #b91c1c;
+      --active: var(--server);
+      --on-active: var(--server-on);
+      --active-container: var(--server-container);
+      --on-active-container: var(--server-container-on);
+      --peer: var(--client);
+      --on-peer: var(--client-on);
+      --peer-container: var(--client-container);
+      --on-peer-container: var(--client-container-on);
+      --shadow: 0 18px 50px rgba(18, 20, 26, .12);
+    }
+
+    body[data-theme="dark"] {
+      color-scheme: dark;
+      --page: #090b10;
+      --background: #0d1017;
+      --surface: #141922;
+      --surface-variant: #1c222d;
+      --input: #1c222d;
+      --border: #232b37;
+      --border-subtle: #1c222d;
+      --text: #e6eaf2;
+      --text-secondary: #97a0ae;
+      --text-tertiary: #7f8794;
+      --placeholder: #667085;
+      --server: #4f8dff;
+      --server-on: #0b0d12;
+      --server-container: #16233a;
+      --server-container-on: #bbd3ff;
+      --client: #2dd4bf;
+      --client-on: #0b0d12;
+      --client-container: #10312e;
+      --client-container-on: #2dd4bf;
+      --success-container: #1c222d;
+      --success-on: #16a34a;
+      --error: #f87171;
+      --error-container: #1c222d;
+      --error-on: #f87171;
+      --shadow: 0 22px 60px rgba(0, 0, 0, .42);
+    }
+
+    body[data-role="client"] {
+      --active: var(--client);
+      --on-active: var(--client-on);
+      --active-container: var(--client-container);
+      --on-active-container: var(--client-container-on);
+      --peer: var(--server);
+      --on-peer: var(--server-on);
+      --peer-container: var(--server-container);
+      --on-peer-container: var(--server-container-on);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: "Pretendard", sans-serif;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    button, select { font: inherit; }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .eyebrow, code, pre, .mono { font-family: "JetBrains Mono", monospace; }
+    .eyebrow { color: var(--active); font-weight: 600; letter-spacing: .12em; }
+
+    h1 { margin: 10px 0 12px; font-size: clamp(32px, 5vw, 54px); line-height: 1.08; letter-spacing: -.04em; }
+    h2 { margin: 0 0 8px; font-size: 26px; letter-spacing: -.025em; }
+    h3 { margin: 0 0 8px; font-size: 17px; }
+    p { color: var(--text-secondary); line-height: 1.65; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+
+    .hero p { max-width: 720px; margin: 0; }
+    .legend { display: grid; gap: 9px; }
+    .legend-row { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); }
+    .legend-num { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--active-container); color: var(--on-active-container); font-family: "JetBrains Mono"; font-size: 12px; font-weight: 700; }
+
+    .section { margin-top: 62px; }
+    .section-head { display: flex; gap: 20px; align-items: end; justify-content: space-between; margin-bottom: 20px; }
+    .section-head p { margin: 0; max-width: 650px; }
+
+    .card {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .lab { padding: 18px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; padding-bottom: 18px; border-bottom: 1px solid var(--border-subtle); }
+    .control { display: grid; gap: 6px; }
+    .control label { color: var(--text-tertiary); font-family: "JetBrains Mono"; font-size: 11px; font-weight: 600; }
+    .segmented { display: flex; gap: 3px; padding: 3px; border-radius: 11px; background: var(--surface-variant); }
+    .segmented button {
+      border: 0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .segmented button[aria-pressed="true"] { background: var(--active); color: var(--on-active); font-weight: 700; }
+
+    .lab-body { display: grid; grid-template-columns: minmax(300px, 390px) minmax(0, 1fr); gap: 28px; padding-top: 24px; align-items: center; }
+    .phone-wrap { display: grid; place-items: center; }
+    .phone { width: 340px; max-width: 100%; padding: 9px; border-radius: 36px; background: #080a0e; box-shadow: 0 24px 60px rgba(0,0,0,.34); }
+    .phone-screen { overflow: hidden; height: 620px; border-radius: 28px; background: var(--background); display: flex; flex-direction: column; }
+    .status { height: 32px; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 700; }
+    .chat-header { min-height: 62px; padding: 10px 12px 10px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border-subtle); }
+    .role-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--active); flex: none; }
+    .header-copy { flex: 1; min-width: 0; }
+    .header-title { font-weight: 700; }
+    .header-meta { color: var(--text-tertiary); font-size: 12px; margin-top: 2px; }
+    .role-pill { padding: 5px 8px; border-radius: 7px; background: var(--active); color: var(--on-active); font: 700 10px "JetBrains Mono"; }
+    .connection { display: flex; align-items: center; gap: 7px; padding: 6px 16px; background: var(--success-container); color: var(--success-on); font: 500 11px "JetBrains Mono"; }
+    .connection::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--success); }
+    .messages { flex: 1; min-height: 0; padding: 16px 14px; display: flex; flex-direction: column; gap: 12px; background: var(--surface); }
+    .date { align-self: center; padding: 3px 10px; border-radius: 99px; background: var(--surface-variant); color: var(--text-tertiary); font-size: 11px; }
+    .bubble { max-width: 80%; padding: 9px 13px; border-radius: 16px; line-height: 1.45; }
+    .bubble.peer { align-self: flex-start; background: var(--peer-container); color: var(--on-peer-container); border-bottom-left-radius: 5px; }
+    .bubble.own { align-self: flex-end; background: var(--active); color: var(--on-active); border-bottom-right-radius: 5px; }
+    .bubble-meta { margin-top: 4px; opacity: .76; font: 500 10px "JetBrains Mono"; }
+    .own .bubble-meta { text-align: right; }
+    .file-card { align-self: flex-end; width: 84%; padding: 11px; border-radius: 14px; background: var(--background); border: 1px solid var(--border); }
+    .file-title { display: flex; justify-content: space-between; gap: 8px; font-weight: 700; }
+    .file-state { color: var(--success); font-family: "JetBrains Mono"; font-size: 11px; }
+    .file-meta { margin-top: 5px; color: var(--text-secondary); font: 500 10px "JetBrains Mono"; }
+    .composer { padding: 10px 12px 18px; display: flex; gap: 9px; align-items: center; border-top: 1px solid var(--border-subtle); background: var(--background); }
+    .action { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; flex: none; background: var(--active-container); color: var(--on-active-container); font-size: 22px; }
+    .action.send { background: var(--active); color: var(--on-active); font-size: 17px; }
+    .input { flex: 1; height: 40px; padding: 0 14px; border-radius: 20px; display: flex; align-items: center; background: var(--input); color: var(--placeholder); font-size: 13px; }
+
+    body[data-mode="classic"] .connection, body[data-mode="classic"] .role-pill, body[data-mode="classic"] .file-meta.technical { display: none; }
+    body[data-mode="classic"] .bubble.peer { background: var(--background); color: var(--text); border: 1px solid var(--border); }
+    body[data-mode="classic"] .messages { gap: 11px; background: var(--surface-variant); }
+    body[data-mode="classic"] .header-meta, body[data-mode="classic"] .date, body[data-mode="classic"] .input { font-family: "Pretendard"; }
+
+    body[data-mode="terminal"] .phone-screen { background: var(--background); }
+    body[data-mode="terminal"] .status { background: var(--background); }
+    body[data-mode="terminal"] .chat-header, body[data-mode="terminal"] .composer { background: #12141a; border-color: #232b37; color: #ffffff; }
+    body[data-mode="terminal"] .header-copy, body[data-mode="terminal"] .input, body[data-mode="terminal"] .messages { font-family: "JetBrains Mono"; }
+    body[data-mode="terminal"] .header-meta { color: #7f8794; }
+    body[data-mode="terminal"] .connection { display: none; }
+    body[data-mode="terminal"] .messages { gap: 3px; padding: 12px; background: #fbfbfc; }
+    body[data-theme="dark"][data-mode="terminal"] .messages { background: #0b0d12; }
+    body[data-mode="terminal"] .date { display: none; }
+    body[data-mode="terminal"] .bubble { max-width: 100%; align-self: stretch; padding: 3px 0; border: 0; border-radius: 0; background: transparent; color: var(--text); font: 400 12px/1.5 "JetBrains Mono"; }
+    body[data-mode="terminal"] .bubble::before { display: inline-block; width: 27px; margin-right: 8px; font-weight: 700; }
+    body[data-mode="terminal"] .bubble.peer::before { content: "[P]"; color: var(--peer); }
+    body[data-mode="terminal"] .bubble.own::before { content: "[A]"; color: var(--active); }
+    body[data-mode="terminal"] .bubble-meta { display: inline; margin: 0 0 0 8px; color: var(--text-tertiary); }
+    body[data-mode="terminal"] .file-card { align-self: stretch; width: auto; margin: 4px 0 4px 44px; border-radius: 10px; background: var(--surface); }
+    body[data-mode="terminal"] .action, body[data-mode="terminal"] .input { border-radius: 10px; background: #232b37; color: #7f8794; }
+    body[data-mode="terminal"] .action.send { background: var(--active); color: var(--on-active); }
+
+    .explain { display: grid; gap: 14px; }
+    .context-line { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--border-subtle); }
+    .context-line:last-child { border: 0; }
+    .context-label { color: var(--text-tertiary); font: 600 11px "JetBrains Mono"; }
+    .context-value { font-weight: 700; }
+    .context-note { color: var(--text-secondary); font-size: 13px; margin-top: 3px; }
+    .swatches { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 7px; }
+    .swatch { width: 26px; height: 26px; border-radius: 8px; border: 1px solid var(--border); }
+    .swatch.active { background: var(--active); }
+    .swatch.peer { background: var(--peer); }
+    .swatch.bg { background: var(--background); }
+    .swatch.surface { background: var(--surface); }
+
+    .flow { display: grid; grid-template-columns: repeat(4, 1fr); align-items: stretch; gap: 28px; }
+    .flow-node { position: relative; padding: 18px; min-height: 140px; border-radius: 16px; background: var(--background); border: 1px solid var(--border); }
+    .flow-node:not(:last-child)::after { content: "→"; position: absolute; right: -22px; top: 50%; color: var(--active); font: 700 20px "JetBrains Mono"; }
+    .flow-index { color: var(--active); font: 700 11px "JetBrains Mono"; }
+    .flow-node h3 { margin-top: 9px; }
+    .flow-node p { margin: 0; font-size: 13px; }
+
+    .foundation { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .token-group { padding: 18px; }
+    .palette { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+    .color-token { min-height: 68px; padding: 9px; border-radius: 11px; display: flex; flex-direction: column; justify-content: end; border: 1px solid rgba(127,135,148,.25); font: 600 10px "JetBrains Mono"; }
+    .color-token small { margin-top: 3px; font-weight: 400; opacity: .72; }
+    .c-bg { background: var(--background); color: var(--text); }
+    .c-surface { background: var(--surface); color: var(--text); }
+    .c-variant { background: var(--surface-variant); color: var(--text); }
+    .c-server { background: var(--server); color: var(--server-on); }
+    .c-client { background: var(--client); color: var(--client-on); }
+    .c-error { background: var(--error-container); color: var(--error-on); }
+
+    .type-sample { padding: 8px 0; border-bottom: 1px solid var(--border-subtle); }
+    .type-sample:last-child { border: 0; }
+    .type-label { color: var(--text-tertiary); font: 500 10px "JetBrains Mono"; }
+    .title-sample { font-size: 24px; font-weight: 700; }
+    .body-sample { font-size: 15px; }
+    .mono-sample { font: 500 12px "JetBrains Mono"; }
+
+    .scale { display: flex; align-items: end; gap: 7px; min-height: 62px; margin-top: 12px; }
+    .space { width: 18px; background: var(--active-container); border: 1px solid var(--active); border-radius: 3px 3px 0 0; }
+    .scale-labels { display: flex; gap: 7px; }
+    .scale-labels span { width: 18px; text-align: center; color: var(--text-tertiary); font: 500 9px "JetBrains Mono"; }
+    .radii { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .radius { width: 52px; height: 42px; display: grid; place-items: center; background: var(--active-container); color: var(--on-active-container); font: 600 10px "JetBrains Mono"; border: 1px solid var(--active); }
+
+    .usage { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .code-card { overflow: hidden; }
+    .code-title { padding: 12px 15px; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 13px; font-weight: 700; }
+    pre { margin: 0; padding: 17px; overflow: auto; background: var(--surface); color: var(--text); font-size: 12px; line-height: 1.7; }
+    .keyword { color: var(--active); }
+    .prop { color: var(--success); }
+
+    .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .rule { padding: 18px; }
+    .rule ul { margin: 12px 0 0; padding-left: 20px; color: var(--text-secondary); line-height: 1.8; }
+    .good h3 { color: var(--success); }
+    .bad h3 { color: var(--error); }
+
+    @media (max-width: 900px) {
+      .hero, .lab-body { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .flow-node::after { display: none; }
+      .foundation { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .page { width: min(100% - 20px, 1180px); padding-top: 28px; }
+      .hero { margin-bottom: 32px; }
+      .section { margin-top: 44px; }
+      .section-head { display: block; }
+      .flow, .foundation, .usage, .rules { grid-template-columns: 1fr; }
+      .controls { align-items: stretch; }
+      .control { width: 100%; }
+      .segmented { overflow-x: auto; }
+      .segmented button { flex: 1; white-space: nowrap; }
+      .context-line { grid-template-columns: 90px 1fr; }
+    }
+  </style>
+</head>
+<body data-theme="light" data-role="server" data-mode="hybrid">
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">BLEBRIDGE · DESIGN SYSTEM</div>
+        <h1>세 가지 축을 조합하는<br>Compose 디자인시스템</h1>
+        <p>하나의 거대한 테마를 모드별로 복제하지 않습니다. 앱 전체 Light/Dark foundation, 역할이 결정된 세션 범위, 채팅 화면의 표시 방식을 각 상태가 필요한 위치에 적용하고 공통 컴포넌트는 계산된 semantic token만 소비합니다.</p>
+      </div>
+      <div class="legend" aria-label="디자인시스템 구성 요약">
+        <div class="legend-row"><span class="legend-num">1</span>명암 환경: Light / Dark</div>
+        <div class="legend-row"><span class="legend-num">2</span>현재 역할: Server / Client</div>
+        <div class="legend-row"><span class="legend-num">3</span>표시 방식: Classic / Hybrid / Terminal</div>
+      </div>
+    </section>
+
+    <section class="card lab" aria-labelledby="lab-title">
+      <div class="controls">
+        <div class="control">
+          <label>01 · LIGHT / DARK</label>
+          <div class="segmented" data-control="theme">
+            <button type="button" data-value="light" aria-pressed="true">Light</button>
+            <button type="button" data-value="dark" aria-pressed="false">Dark</button>
+          </div>
+        </div>
+        <div class="control">
+          <label>02 · BLE ROLE</label>
+          <div class="segmented" data-control="role">
+            <button type="button" data-value="server" aria-pressed="true">Server</button>
+            <button type="button" data-value="client" aria-pressed="false">Client</button>
+          </div>
+        </div>
+        <div class="control">
+          <label>03 · CHAT MODE</label>
+          <div class="segmented" data-control="mode">
+            <button type="button" data-value="classic" aria-pressed="false">Classic</button>
+            <button type="button" data-value="hybrid" aria-pressed="true">Hybrid</button>
+            <button type="button" data-value="terminal" aria-pressed="false">Terminal</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-body">
+        <div class="phone-wrap">
+          <div class="phone" aria-label="선택한 디자인시스템 조합 미리보기">
+            <div class="phone-screen">
+              <div class="status"><span>9:41</span><span>● ● ▰</span></div>
+              <div class="chat-header">
+                <span class="role-dot"></span>
+                <div class="header-copy">
+                  <div class="header-title" id="preview-role-title">GATT Peripheral</div>
+                  <div class="header-meta" id="preview-role-meta">Galaxy-A1 · MTU 247</div>
+                </div>
+                <span class="role-pill" id="preview-role-pill">SERVER</span>
+              </div>
+              <div class="connection">연결됨 · Galaxy-A1 · MTU 247 · 2M PHY</div>
+              <div class="messages">
+                <div class="date">2026-07-22</div>
+                <div class="bubble peer">스펙 문서 요청합니다<div class="bubble-meta">09:40</div></div>
+                <div class="bubble own">네, 지금 전송할게요<div class="bubble-meta">09:41 ✓✓</div></div>
+                <div class="file-card">
+                  <div class="file-title"><span>design_spec.pdf</span><span class="file-state">DONE</span></div>
+                  <div class="file-meta technical">2.4 MB · 512/512 chunks · 6.1 KB/s</div>
+                  <div class="file-meta">MTU 247 · 09:41</div>
+                </div>
+                <div class="bubble peer">잘 받았습니다 👍<div class="bubble-meta">09:42</div></div>
+              </div>
+              <div class="composer">
+                <span class="action">＋</span>
+                <span class="input">메시지 입력</span>
+                <span class="action send">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div>
+            <div class="eyebrow" id="lab-title">현재 조합</div>
+            <h2 id="combination-title">Light · Server · Developer Hybrid</h2>
+            <p id="combination-summary">밝은 foundation 위에 Server blue를 active color로 사용하고, 메시지 버블과 기술 telemetry를 함께 표시합니다.</p>
+          </div>
+          <div class="context-line">
+            <div class="context-label">FOUNDATION</div>
+            <div><div class="context-value" id="foundation-value">LightAppColors</div><div class="context-note">배경·표면·텍스트·상태색을 결정합니다.</div></div>
+          </div>
+          <div class="context-line">
+            <div class="context-label">ROLE</div>
+            <div><div class="context-value" id="role-value">Server → primary</div><div class="context-note">Material primary와 own message 색상을 결정합니다.</div><div class="swatches"><span class="swatch active" aria-label="현재 역할 색상"></span><span class="swatch peer" aria-label="상대 역할 색상"></span></div></div>
+          </div>
+          <div class="context-line">
+            <div class="context-label">CHAT TOKEN</div>
+            <div><div class="context-value" id="mode-value">DeveloperHybrid</div><div class="context-note" id="mode-note">Pretendard 메시지 + JetBrains Mono telemetry · role tag 표시</div></div>
+          </div>
+          <div class="context-line">
+            <div class="context-label">CONSUMER</div>
+            <div><div class="context-value">공통 Compose 컴포넌트</div><div class="context-note">hex, FontFamily, 모드별 분기를 직접 소유하지 않습니다.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="architecture-title">
+      <div class="section-head">
+        <div><div class="eyebrow">ARCHITECTURE</div><h2 id="architecture-title">값이 컴포넌트까지 흐르는 순서</h2></div>
+        <p>각 provider는 상태 수명과 사용 범위에 맞춰 배치하며, 자신의 책임에 해당하는 semantic token만 추가합니다.</p>
+      </div>
+      <div class="flow">
+        <article class="flow-node"><div class="flow-index">01 · MAIN ACTIVITY</div><h3>AppTheme</h3><p>앱 전체에 Light/Dark palette, typography, spacing, radius, icon, motion을 제공합니다.</p></article>
+        <article class="flow-node"><div class="flow-index">02 · APP / SESSION</div><h3>ConnectionRoleProvider</h3><p>역할이 실제로 결정된 범위에서 active/peer 색상과 Material accent를 제공합니다.</p></article>
+        <article class="flow-node"><div class="flow-index">03 · CHAT ROUTE</div><h3>ChatModeProvider</h3><p>채팅 화면에만 Classic, Hybrid, Terminal의 밀도·글꼴·chrome·노출 정책을 제공합니다.</p></article>
+        <article class="flow-node"><div class="flow-index">04 · CHAT UI</div><h3>Common Component</h3><p>roleColors와 chatTokens를 읽어 동일한 API로 서로 다른 모습을 그립니다.</p></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="foundation-title">
+      <div class="section-head">
+        <div><div class="eyebrow">FOUNDATION TOKENS</div><h2 id="foundation-title">모든 화면이 공유하는 시각 언어</h2></div>
+        <p>상단의 Light/Dark와 Role을 바꾸면 아래 semantic token도 함께 바뀝니다.</p>
+      </div>
+      <div class="foundation">
+        <article class="card token-group">
+          <h3>Semantic color</h3>
+          <div class="palette">
+            <div class="color-token c-bg">background<small>screen</small></div>
+            <div class="color-token c-surface">surface<small>card</small></div>
+            <div class="color-token c-variant">variant<small>subtle</small></div>
+            <div class="color-token c-server">server<small>role</small></div>
+            <div class="color-token c-client">client<small>role</small></div>
+            <div class="color-token c-error">error<small>state</small></div>
+          </div>
+        </article>
+        <article class="card token-group">
+          <h3>Typography</h3>
+          <div class="type-sample"><div class="type-label">titleLarge · Pretendard 700</div><div class="title-sample">BLE Bridge</div></div>
+          <div class="type-sample"><div class="type-label">bodyLarge · Pretendard 400</div><div class="body-sample">메시지와 일반 UI 문장</div></div>
+          <div class="type-sample"><div class="type-label">monoMedium · JetBrains Mono 500</div><div class="mono-sample">MTU 247 · 512 chunks</div></div>
+        </article>
+        <article class="card token-group">
+          <h3>Spacing · radius</h3>
+          <div class="scale" aria-label="간격 크기 비교">
+            <span class="space" style="height:4px"></span><span class="space" style="height:8px"></span><span class="space" style="height:12px"></span><span class="space" style="height:16px"></span><span class="space" style="height:24px"></span><span class="space" style="height:32px"></span><span class="space" style="height:48px"></span>
+          </div>
+          <div class="scale-labels"><span>4</span><span>8</span><span>12</span><span>16</span><span>24</span><span>32</span><span>48</span></div>
+          <div class="radii"><span class="radius" style="border-radius:8px">8</span><span class="radius" style="border-radius:10px">10</span><span class="radius" style="border-radius:14px">14</span><span class="radius" style="border-radius:16px">16</span><span class="radius" style="border-radius:21px">full</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="usage-title">
+      <div class="section-head">
+        <div><div class="eyebrow">HOW TO USE</div><h2 id="usage-title">상태가 살아 있는 범위에 적용</h2></div>
+        <p>MainActivity에는 foundation만, 역할은 앱·세션 범위에, 채팅 표시 모드는 ChatRoute에 적용합니다.</p>
+      </div>
+      <div class="usage">
+        <article class="card code-card">
+          <div class="code-title">MainActivity · 앱 전체 Foundation</div>
+          <pre><code>setContent {
+    <span class="keyword">AppTheme</span> {
+        BleBridgeApp()
+    }
+}</code></pre>
+        </article>
+        <article class="card code-card">
+          <div class="code-title">App/Session → ChatRoute · 범위 분리</div>
+          <pre><code><span class="keyword">ConnectionRoleProvider</span>(currentRole) {
+    NavHost(/* connected graph */)
+}
+
+fun ChatRoute(displayMode: ChatMode) {
+    <span class="keyword">ChatModeProvider</span>(displayMode) {
+        val role = <span class="prop">AppTheme.roleColors</span>
+        val chat = <span class="prop">AppTheme.chatTokens</span>
+
+        MessageBubble(
+            color = role.active,
+            textStyle = chat.messageTextStyle,
+            radius = chat.bubbleRadius,
+        )
+    }
+}</code></pre>
+        </article>
+      </div>
+      <p><code>ChatContext(role, mode)</code>는 두 provider를 한 번에 준비하는 Preview·UI test·독립 채팅 화면용 편의 API입니다.</p>
+    </section>
+
+    <section class="section" aria-labelledby="rules-title">
+      <div class="section-head"><div><div class="eyebrow">BOUNDARY</div><h2 id="rules-title">Feature와 공통 컴포넌트의 책임</h2></div></div>
+      <div class="rules">
+        <article class="card rule good"><h3>✓ 이렇게 사용합니다</h3><ul><li>Foundation, 역할, 채팅 모드를 각 상태 범위에 배치</li><li>Feature 모델을 ConnectionRole과 ChatMode로 변환</li><li>색상과 크기는 semantic token으로 접근</li><li>공통 컴포넌트는 roleColors와 chatTokens 소비</li></ul></article>
+        <article class="card rule bad"><h3>× 이렇게 사용하지 않습니다</h3><ul><li>MainActivity에서 역할을 Server로 임의 고정</li><li>Chat mode를 앱 전체 theme처럼 적용</li><li>ClassicTheme, HybridTheme처럼 전체 테마 복제</li><li>Domain 모델이 core:designsystem에 의존</li></ul></article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const body = document.body;
+    const labels = {
+      theme: { light: "Light", dark: "Dark" },
+      role: { server: "Server", client: "Client" },
+      mode: { classic: "Classic", hybrid: "Developer Hybrid", terminal: "Terminal" }
+    };
+
+    const modeCopy = {
+      classic: {
+        summary: "친근한 메신저 표현을 사용하고 peer bubble은 중립 surface로 표시하며 기술 telemetry는 숨깁니다.",
+        value: "Classic",
+        note: "Pretendard 중심 · 16dp bubble · 최소 메타데이터"
+      },
+      hybrid: {
+        summary: "메시지 버블의 친근함을 유지하면서 role tag, MTU, chunk, 속도 같은 개발 telemetry를 함께 표시합니다.",
+        value: "DeveloperHybrid",
+        note: "Pretendard 메시지 + JetBrains Mono telemetry · role tag 표시"
+      },
+      terminal: {
+        summary: "고정 dark chrome과 조밀한 로그 레이아웃을 사용하며 역할 태그와 전송 통계를 가장 강하게 드러냅니다.",
+        value: "Terminal",
+        note: "JetBrains Mono 중심 · 10dp radius · 3dp message spacing"
+      }
+    };
+
+    function updateGuide() {
+      const theme = body.dataset.theme;
+      const role = body.dataset.role;
+      const mode = body.dataset.mode;
+      const isServer = role === "server";
+
+      document.getElementById("combination-title").textContent = `${labels.theme[theme]} · ${labels.role[role]} · ${labels.mode[mode]}`;
+      document.getElementById("combination-summary").textContent = `${theme === "light" ? "밝은" : "어두운"} foundation 위에 ${labels.role[role]} 역할색을 active color로 사용합니다. ${modeCopy[mode].summary}`;
+      document.getElementById("foundation-value").textContent = theme === "light" ? "LightAppColors" : "DarkAppColors";
+      document.getElementById("role-value").textContent = `${labels.role[role]} → Material primary`;
+      document.getElementById("mode-value").textContent = modeCopy[mode].value;
+      document.getElementById("mode-note").textContent = modeCopy[mode].note;
+      document.getElementById("preview-role-title").textContent = mode === "classic" ? `${isServer ? "서버" : "클라이언트"} 모드` : isServer ? "GATT Peripheral" : "GATT Central";
+      document.getElementById("preview-role-meta").textContent = isServer ? "Galaxy-A1 · MTU 247" : "BLE-Bridge-Srv · MTU 185";
+      document.getElementById("preview-role-pill").textContent = isServer ? "SERVER" : "CLIENT";
+    }
+
+    document.querySelectorAll("[data-control]").forEach(group => {
+      group.addEventListener("click", event => {
+        const button = event.target.closest("button[data-value]");
+        if (!button) return;
+        const key = group.dataset.control;
+        body.dataset[key] = button.dataset.value;
+        group.querySelectorAll("button").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+        updateGuide();
+      });
+    });
+
+    updateGuide();
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+*.iml
+.gradle
+/local.properties
+# IDE 설정은 기본 비커밋. 팀 공유가 필요한 설정만 예외로 추적한다.
+/.idea/*
+!/.idea/gradle.xml
+!/.idea/misc.xml
+!/.idea/kotlinc.xml
+!/.idea/inspectionProfiles/
+.DS_Store
+build/
+.kotlin/
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+# Orca 멀티 에이전트 TDD 파이프라인 작업 산출물 (비커밋)
+/.orca/

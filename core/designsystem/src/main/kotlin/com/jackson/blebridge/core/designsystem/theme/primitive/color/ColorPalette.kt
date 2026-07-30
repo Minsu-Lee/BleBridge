@@ -1,0 +1,75 @@
+package com.jackson.blebridge.core.designsystem.theme.primitive.color
+
+import androidx.compose.ui.graphics.Color
+
+internal object ColorPalette {
+    val white = Color(0xFFFFFFFF)
+    val black = Color(0xFF0B0D12)
+
+    val gray25 = Color(0xFFFBFBFC)
+    val gray50 = Color(0xFFF7F8FA)
+    val gray75 = Color(0xFFF3F5F8)
+    val gray100 = Color(0xFFF2F4F7)
+    val gray150 = Color(0xFFEDEFF3)
+    val gray200 = Color(0xFFE4E7EC)
+    val grayDivider = Color(0xFFEEF0F4)
+    val gray300 = Color(0xFFD3D8E0)
+    val gray400 = Color(0xFFB9BEC8)
+    val gray500 = Color(0xFF8A909C)
+    val grayPlaceholder = Color(0xFF969CA8)
+    val gray550 = Color(0xFF7F8794)
+    val gray600 = Color(0xFF667085)
+    val gray700 = Color(0xFF5A616E)
+    val gray900 = Color(0xFF12141A)
+
+    val darkBackground = Color(0xFF0D1017)
+    val darkSurface = Color(0xFF141922)
+    val darkBubble = Color(0xFF161B24)
+    val darkSurfaceVariant = Color(0xFF1C222D)
+    val darkOutline = Color(0xFF232B37)
+    val darkText = Color(0xFFE6EAF2)
+    val darkTextBody = Color(0xFFC7CDD8)
+    val darkTextSecondary = Color(0xFF97A0AE)
+    val darkTextMuted = Color(0xFF4A5361)
+    val darkChrome = Color(0xFF12141A)
+    val mediaChrome = Color(0xFF050607)
+    val mediaMuted = Color(0xFF9AA2B0)
+    val mediaTrack = Color(0xFF343943)
+
+    val server = Color(0xFF2563EB)
+    val serverStrong = Color(0xFF1D4ED8)
+    val serverDark = Color(0xFF4F8DFF)
+    val serverContainer = Color(0xFFEAF1FF)
+    val serverContainerDark = Color(0xFF16233A)
+    val onServerContainerDark = Color(0xFFBBD3FF)
+
+    val client = Color(0xFF0E9488)
+    val clientDark = Color(0xFF2DD4BF)
+    val clientContainer = Color(0xFFE2F6F3)
+    val clientContainerDark = Color(0xFF10312E)
+    val onClientContainer = Color(0xFF0B5F57)
+    val onClientContainerDark = Color(0xFF5EEAD4)
+
+    val success = Color(0xFF16A34A)
+    val successContainer = Color(0xFFEAF6EC)
+    val onSuccessContainer = Color(0xFF15803D)
+    val error = Color(0xFFDC2626)
+    val errorDark = Color(0xFFF87171)
+    val errorContainer = Color(0xFFFDECEC)
+    val onErrorContainer = Color(0xFFB91C1C)
+    val warning = Color(0xFFD97706)
+    val warningContainer = Color(0xFFFFF4E5)
+    val onWarningContainer = Color(0xFF92400E)
+
+    val disabled = Color(0xFFCBD3DD)
+    val disabledContent = Color(0xFFA3A9B3)
+
+    val advertising = Color(0xFF7C3AED)
+    val advertisingContainer = Color(0xFFF0EAFB)
+    val onAdvertisingContainer = Color(0xFF6D28D9)
+    val advertisingDark = Color(0xFFA78BFA)
+    val advertisingContainerDark = Color(0xFF2E1F47)
+    val onAdvertisingContainerDark = Color(0xFFD8CCFF)
+
+    val scrim = Color(0x99000000)
+}

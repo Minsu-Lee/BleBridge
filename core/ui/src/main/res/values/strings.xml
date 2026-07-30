@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cat_fact_length_description">문자 길이 %1$d</string>
+</resources>

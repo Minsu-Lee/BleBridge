@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 9.1.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.1.1)" variant="all" version="9.1.1">
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            .padding(AppTheme.spacing.xxl),"
+        errorLine2="                     ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsAppendError.kt"
+            line="26"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            .padding(AppTheme.spacing.xxl),"
+        errorLine2="                     ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsAppendLoading.kt"
+            line="18"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="        modifier = modifier.padding(AppTheme.spacing.screen),"
+        errorLine2="                                    ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsErrorContent.kt"
+            line="24"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="        verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.xxl),"
+        errorLine2="                                                   ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsErrorContent.kt"
+            line="26"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.typography`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            style = AppTheme.typography.bodyLarge,"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsErrorContent.kt"
+            line="30"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.colors`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            color = AppTheme.colors.textSecondary,"
+        errorLine2="                    ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsErrorContent.kt"
+            line="31"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="                horizontal = AppTheme.spacing.screen,"
+        errorLine2="                             ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="62"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="                vertical = AppTheme.spacing.xxl,"
+        errorLine2="                           ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="63"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.typography`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            style = AppTheme.typography.screenTitle,"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="65"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.colors`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            color = AppTheme.colors.textPrimary,"
+        errorLine2="                    ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="66"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.typography`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="                    style = AppTheme.typography.bodyLarge,"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="79"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.colors`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="                    color = AppTheme.colors.textSecondary,"
+        errorLine2="                            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="80"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.colors`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="                            HorizontalDivider(color = AppTheme.colors.borderSubtle)"
+        errorLine2="                                                      ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="95"
+            column="55"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="        verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.xxl),"
+        errorLine2="                                                   ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/component/state/SampleErrorContent.kt"
+            line="27"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.typography`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            style = AppTheme.typography.bodyLarge,"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/component/state/SampleErrorContent.kt"
+            line="31"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.colors`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            color = AppTheme.colors.textSecondary,"
+        errorLine2="                    ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/component/state/SampleErrorContent.kt"
+            line="32"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            .padding(AppTheme.spacing.screen)"
+        errorLine2="                     ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleScreen.kt"
+            line="67"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.spacing`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="        verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.xxl),"
+        errorLine2="                                                   ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleScreen.kt"
+            line="69"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.typography`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            style = AppTheme.typography.screenTitle,"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleScreen.kt"
+            line="73"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="FoundationTokenInFeature"
+        message="Feature에서는 `AppTheme.colors`를 직접 참조하지 말고 core:ui 컴포넌트 또는 해당 컴포넌트의 공개 토큰을 사용하세요."
+        errorLine1="            color = AppTheme.colors.textPrimary,"
+        errorLine2="                    ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleScreen.kt"
+            line="74"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="MaterialComponentInFeature"
+        message="Feature에서 Material3 `Button`를 직접 사용하지 말고 core:ui 컴포넌트를 사용하세요."
+        errorLine1="        Button("
+        errorLine2="        ^">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsAppendError.kt"
+            line="29"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MaterialComponentInFeature"
+        message="Feature에서 Material3 `CircularProgressIndicator`를 직접 사용하지 말고 core:ui 컴포넌트를 사용하세요."
+        errorLine1="        CircularProgressIndicator()"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsAppendLoading.kt"
+            line="21"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MaterialComponentInFeature"
+        message="Feature에서 Material3 `Button`를 직접 사용하지 말고 core:ui 컴포넌트를 사용하세요."
+        errorLine1="        Button("
+        errorLine2="        ^">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsErrorContent.kt"
+            line="33"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MaterialComponentInFeature"
+        message="Feature에서 Material3 `HorizontalDivider`를 직접 사용하지 말고 core:ui 컴포넌트를 사용하세요."
+        errorLine1="                            HorizontalDivider(color = AppTheme.colors.borderSubtle)"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt"
+            line="95"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="MaterialComponentInFeature"
+        message="Feature에서 Material3 `Button`를 직접 사용하지 말고 core:ui 컴포넌트를 사용하세요."
+        errorLine1="        Button("
+        errorLine2="        ^">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/component/state/SampleErrorContent.kt"
+            line="34"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MaterialComponentInFeature"
+        message="Feature에서 Material3 `Button`를 직접 사용하지 말고 core:ui 컴포넌트를 사용하세요."
+        errorLine1="        Button("
+        errorLine2="        ^">
+        <location
+            file="src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleScreen.kt"
+            line="94"
+            column="9"/>
+    </issue>
+
+</issues>
