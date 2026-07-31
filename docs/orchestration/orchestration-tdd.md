@@ -61,9 +61,10 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
   feature/release는 `origin/develop`, hotfix는 `origin/main`. remote가 없으면
   `--uncommitted`만으로 진행.
 - **타임아웃 기본**: 첫 디스패치·`TC-00` `1800000`(30분), 이후 `900000`(15분).
-- **커밋/푸시**: 케이스당 2커밋(컴포넌트 1커밋)을 `commit-message --auto` **1회 호출**로.
-  스킬이 커밋 전 gradle 검증 1회 → 목적별 분할 커밋 → 마지막에 작업 브랜치로 푸시한다.
-  보호 브랜치(`main`/`master`/`develop`) 위라면 스킬이 `--auto` 커밋을 거부한다.
+- **커밋/푸시**: 케이스당 2커밋(컴포넌트 1커밋)을 `commit-message --auto --no-push` **1회 호출**로.
+  스킬이 커밋 전 gradle 검증 1회 → 목적별 분할 커밋까지만 하고 **푸시는 생략**한다. 커밋은 작업
+  브랜치에 로컬로 쌓이고, **푸시는 파이프라인 맨 끝에서 코디네이터가 한 번만** 수행한다(아래
+  "최종 푸시"). 보호 브랜치(`main`/`master`/`develop`) 위라면 스킬이 `--auto` 커밋을 거부한다.
 
 즉 사용자는 **개발 요청 md만** 주면 되고, 나머지는 코디네이터가 이 기본값으로 채웁니다.
 
@@ -114,11 +115,13 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
   갈라져 나온 부모**입니다 — feature·release·컴포넌트 트랙은 `origin/develop`, hotfix는
   `origin/main`. `origin/main`으로 고정하면 `develop`이 앞선 만큼의 남의 커밋까지 diff에
   섞여 리뷰 범위가 부풀어 오릅니다.
-- 케이스별 커밋은 이 작업 브랜치 위에 쌓이고, `commit-message --auto`가 케이스마다 이 브랜치로
-  푸시합니다(첫 푸시는 `-u origin <브랜치>`). 보호 브랜치 위라면 스킬이 `--auto`에서 커밋을
-  거부하므로, 작업 브랜치 준비는 착수 전 precondition입니다.
-- 케이스가 모두 끝나 최종 리뷰까지 통과하면 작업 브랜치를 **`develop`으로 머지**합니다
-  (`main` 직행 금지). 릴리스 시 `develop` → `main`은 사용자가 판단합니다.
+- 케이스별 커밋은 `commit-message --auto --no-push`로 이 작업 브랜치에 **로컬로만 쌓입니다**
+  (케이스마다 푸시하지 않음). 보호 브랜치 위라면 스킬이 `--auto`에서 커밋을 거부하므로, 작업
+  브랜치 준비는 착수 전 precondition입니다.
+- **최종 푸시(파이프라인 끝 1회)**: 케이스가 모두 끝나 최종 리뷰까지 통과하면 코디네이터가
+  작업 브랜치를 **한 번** 푸시합니다(첫 푸시는 `-u origin <브랜치>`, `--force` 금지, 거부되면
+  재시도·rebase 없이 보고). 이후 작업 브랜치를 **`develop`으로 머지**합니다(`main` 직행 금지).
+  릴리스 시 `develop` → `main`은 사용자가 판단합니다.
 
 ## 산출물 규약 (비커밋: `/.orca/plan/<feature>/`)
 
@@ -163,11 +166,14 @@ pass 이후에 커밋을 별도 디스패치합니다(이유는 아래 "리뷰-�
    `worker_done`.
 3. 코디네이터가 `code-reviewer`에 케이스 N 리뷰 디스패치(`codex review --uncommitted`).
 4. 리뷰 결과 분기:
-   - **pass** → 코디네이터가 dev에 **커밋 디스패치**(케이스 N, 테스트/구현 2커밋) →
-     완료 보고를 받으면 코디네이터가 `testcases.md`의 케이스 N을 `[x]`로 갱신 → 케이스 N+1
-     디스패치.
+   - **pass** → 코디네이터가 dev에 **커밋 디스패치**(케이스 N, 테스트/구현 2커밋,
+     `--auto --no-push`로 **커밋만**) → 완료 보고를 받으면 코디네이터가 `testcases.md`의 케이스
+     N을 `[x]`로 갱신 → 케이스 N+1 디스패치.
    - **이슈** → dev에 수정 재디스패치. 수정 후 3번으로 돌아갑니다.
 5. 모든 케이스 완료 후 코디네이터가 `code-reviewer`에 **최종 전체 리뷰 1회** 디스패치.
+6. 최종 리뷰까지 pass면 코디네이터가 **최종 푸시 1회**(작업 브랜치를 `git push`, 첫 푸시는
+   `-u origin <브랜치>`). 케이스별로는 `--no-push`라 이때 처음 원격에 올라갑니다. 이후
+   `develop` 머지 판단으로 넘어갑니다("작업 브랜치 준비"의 머지 규약).
 
 ### 상태 마커 소유권
 
@@ -381,17 +387,20 @@ dev 구현 → green(커밋 안 함) → code-reviewer 리뷰 → pass → dev �
   Sonnet 워커 세션은 기본적으로 **Skill 도구**를 보유하므로 그대로 호출합니다. 역할 문서는
   로드형 서브에이전트가 아니라 frontmatter `tools`가 강제되지 않으니, 워커의 실제 도구 세트를
   따릅니다(순수 `codex` 네이티브 워커는 Skill 미보유 → 폴백).
-- **오케스트레이션 워커는 항상 `--auto` 인자를 붙입니다.** 워커는 대화형 사용자 확인을 기대할
-  수 없기 때문입니다. 사용자가 직접 실행할 때는 인자 없이 호출해 분할 계획을 확인하고 고릅니다.
+- **오케스트레이션 워커는 항상 `--auto --no-push`를 붙입니다.** `--auto`는 대화형 확인을 못 하는
+  워커용, `--no-push`는 케이스마다 푸시하지 않고 **커밋만 로컬로 쌓기** 위함입니다(푸시는 파이프라인
+  끝에서 코디네이터가 1회). 사용자가 직접 실행할 때는 인자 없이 호출해 분할 계획을 확인·푸시합니다.
 - **폴백**: 스킬이 노출되지 않는 실행 환경(예: Codex 네이티브 워커, Skill 도구 미보유 워커)
   에서는 raw `git commit`으로 위 형식을 그대로 지킵니다. 이때는 자동 분할·격리 검증이 없으므로
   **스테이징으로 test/구현을 직접 나눠** 2커밋을 만듭니다. 폴백을 썼다는 사실은 `worker_done`
   보고에 남깁니다. 단, **Sonnet wrapper가
   구현만 `codex` CLI에 위임한 경우는 폴백 대상이 아닙니다** — 커밋이 바깥 Sonnet 런타임에서
   일어나 스킬을 그대로 씁니다(세 모드 구분은 아래 "Codex GPT-5.5 워커 지침").
-- **푸시**: 스킬은 모든 커밋이 끝난 뒤 **마지막에 한 번** 푸시합니다. `--auto`에서는 묻지 않고
-  바로 진행합니다. `--force` 계열은 쓰지 않으며, 거부되면 재시도·`pull --rebase` 우회 없이
-  보고합니다. **폴백(raw `git commit`) 경로에서는 푸시하지 않습니다** — 사용자 지시 시에만.
+- **푸시**: 파이프라인에서는 케이스별 커밋에 `--no-push`를 줘 **푸시를 생략**하고, 코디네이터가
+  **최종 리뷰 pass 후 작업 브랜치를 1회 푸시**합니다("케이스 루프 게이팅" 6단계). `--force` 계열은
+  쓰지 않으며, 거부되면 재시도·`pull --rebase` 우회 없이 보고합니다. (`--no-push` 없이 사용자가
+  직접 스킬을 부르면 스킬이 그 호출 끝에 한 번 푸시합니다.) **폴백(raw `git commit`) 경로도
+  푸시하지 않습니다** — 최종 푸시는 코디네이터가 담당합니다.
 
 ## 오케스트레이션 멀티 에이전트 구성 구동 방법
 
@@ -419,7 +428,8 @@ orca terminal send --terminal <h> \
 ```
 
 - dev·reviewer는 무거운 구현·리뷰를 `codex` / `codex review`에 위임(완료 대기 후 이어서 처리).
-  커밋은 Sonnet 런타임에서 `commit-message --auto`로 수행합니다.
+  케이스 커밋은 Sonnet 런타임에서 `commit-message --auto --no-push`(커밋만)로 수행하고, 푸시는
+  코디네이터가 최종 1회만 합니다.
 
 ### 2) 코디네이터 구동 프롬프트
 
@@ -444,7 +454,8 @@ orca terminal send --terminal <h> \
 - 워커는 모두 Claude 세션으로 띄운다: analyst=Opus, 나머지=Sonnet.
   각 터미널에 역할 계약 docs/orchestration/<role>.md 경로를 주입한다.
 - dev·reviewer의 무거운 작업은 Sonnet 워커가 codex / codex review 에 위임하고
-  완료를 기다렸다가 이어서 처리한다. 커밋은 Sonnet에서 commit-message --auto 로 한다.
+  완료를 기다렸다가 이어서 처리한다. 케이스 커밋은 Sonnet에서 commit-message --auto --no-push 로
+  한다(커밋만, 푸시는 안 함).
 - 착수 전 작업 브랜치를 준비한다(보호 브랜치 main/master/develop 직접 커밋 금지).
 
 [진행]
@@ -452,9 +463,10 @@ orca terminal send --terminal <h> \
 feature-analyst → testcase-author →
 (tdd-implementer 구현 → code-reviewer --uncommitted 리뷰 → pass 시 dev 커밋 →
  코디네이터가 testcases.md 를 [x]로 갱신) 케이스 루프 →
-모든 케이스 완료 후 code-reviewer 최종 전체 리뷰 1회.
-산출물은 .orca/plan/<타깃-slug>/ 에 남긴다. 케이스별 커밋·푸시는 dev가 commit-message --auto로
-수행한다(스킬이 작업 브랜치로 푸시). 별도 push 단계는 두지 않는다.
+모든 케이스 완료 후 code-reviewer 최종 전체 리뷰 1회 →
+최종 리뷰 pass면 코디네이터가 작업 브랜치를 git push 1회(첫 푸시 -u origin <브랜치>).
+산출물은 .orca/plan/<타깃-slug>/ 에 남긴다. 케이스 커밋은 dev가 commit-message --auto --no-push로
+커밋만 하고(푸시 안 함), 푸시는 위 최종 1회뿐이다.
 ```
 
 ### 3) 루프 구동
