@@ -1,6 +1,6 @@
 ---
 name: commit-message
-description: 변경을 목적별로 나눠 Conventional Commits 형식으로 커밋하고 마지막에 한 번 푸시한다. "커밋해줘", "커밋 메시지 추천", "commit message", "how should I commit" 등에 반응. `--auto`면 확인 없이 커밋·푸시(에이전트용). `main`/`master`에서는 커밋하지 않는다.
+description: 변경을 목적별로 나눠 Conventional Commits 형식으로 커밋하고 마지막에 한 번 푸시한다. "커밋해줘", "커밋 메시지 추천", "commit message", "how should I commit" 등에 반응. `--auto`면 확인 없이 커밋·푸시(에이전트용). gitflow 보호 브랜치(`main`/`master`/`develop`)에서는 `--auto`가 커밋을 거부한다.
 argument-hint: "[--auto] [ENG]"
 ---
 
@@ -38,13 +38,30 @@ ls .git/hooks/pre-commit .husky lefthook.yml .pre-commit-config.yaml 2>/dev/null
 
 ### 브랜치 가드
 
-현재 브랜치가 `main`·`master`이거나 detached HEAD면 **커밋하지 않는다.**
+이 프로젝트는 **gitflow**를 쓴다. 작업은 `develop`에서 딴 `feature/<slug>` 위에서 한다.
+보호 대상 브랜치는 두 등급이다.
 
-- `--auto` — 되묻지 않고 즉시 중단한다. 자동 커밋이 `main`에 쌓이는 경로를 만들지 않는다.
-  > ⛔ 현재 `main` 브랜치입니다. 작업 브랜치에서 실행하세요. 커밋하지 않았습니다.
-- 대화형 — `AskUserQuestion`으로 묻는다: "작업 브랜치 생성" / "그래도 `main`에 커밋" / "중단".
-  브랜치 생성을 고르면 `git switch -c <이름>`으로 만든다(워킹트리 변경은 따라온다). 이름은
-  변경 파일 경로에서 뽑고(`feature/main/**` → `feature/main`), 애매하면 `work/<날짜>`.
+| 현재 브랜치 | `--auto` | 대화형 |
+|---|---|---|
+| `main`, `master`, detached HEAD | **즉시 중단** | 물어본다 |
+| `develop` | **즉시 중단** | 물어본다 |
+| 그 외 (`feature/*` 등) | 그대로 진행 | 그대로 진행 |
+
+- `--auto` — 되묻지 않고 즉시 중단한다. 자동 커밋이 보호 브랜치에 쌓이는 경로를 만들지 않는다.
+  > ⛔ 현재 `<브랜치>`는 보호 브랜치입니다. `develop`에서 딴 작업 브랜치에서 실행하세요.
+  > 커밋하지 않았습니다.
+- 대화형 — `AskUserQuestion`으로 묻는다: "작업 브랜치 생성" / "그래도 `<브랜치>`에 커밋" /
+  "중단". 브랜치 생성을 고르면 `git switch -c <이름>`으로 만든다(워킹트리 변경은 따라온다).
+  이름은 `feature/` 접두 + 변경 파일 경로에서 뽑은 slug(`feature/main/**` → `feature/main`,
+  `.claude/skills/**` → `feature/commit-message-skill`), 애매하면 `feature/work-<날짜>`.
+
+**대화형에서는 보호 브랜치면 반드시 묻는다.** `develop`이라고 조용히 넘어가지 않는다 —
+사용자가 브랜치를 파야 하는 상황임을 모른 채 `develop`에 쌓는 일을 막는 게 목적이다.
+질문은 **계획을 세우기 전에** 하고, 승인 없이는 커밋하지 않는다.
+
+> `develop`을 막는 건 gitflow 절차 유지가 목적이라 `main`보다 한 단계 약하다. 대화형에서
+> "그래도 커밋"을 고르면 그대로 진행한다 — 스킬·문서 같은 자잘한 작업까지 브랜치를 파게
+> 강요하지 않는다.
 
 ### 변경 수집
 
