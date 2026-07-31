@@ -1,15 +1,19 @@
 ---
 name: commit-message
-description: 변경을 목적별로 나눠 Conventional Commits 형식으로 커밋하고 마지막에 한 번 푸시한다. "커밋해줘", "커밋 메시지 추천", "commit message", "how should I commit" 등에 반응. `--auto`면 확인 없이 커밋·푸시(에이전트용). gitflow 보호 브랜치(`main`/`master`/`develop`)에서는 `--auto`가 커밋을 거부한다.
-argument-hint: "[--auto] [ENG]"
+description: 변경을 목적별로 나눠 Conventional Commits 형식으로 커밋하고 마지막에 한 번 푸시한다. "커밋해줘", "커밋 메시지 추천", "commit message", "how should I commit" 등에 반응. `--auto`면 확인 없이 커밋·푸시(에이전트용). `--no-push`면 커밋만 하고 푸시는 생략한다. gitflow 보호 브랜치(`main`/`master`/`develop`)에서는 `--auto`가 커밋을 거부한다.
+argument-hint: "[--auto] [--no-push] [ENG]"
 ---
 
-변경을 **목적별 최소 단위로 나눠 순차 커밋**하고, 모든 커밋이 끝나면 **마지막에 한 번 푸시**한다.
+변경을 **목적별 최소 단위로 나눠 순차 커밋**하고, 모든 커밋이 끝나면 **마지막에 한 번 푸시**한다
+(`--no-push`면 커밋까지만 하고 푸시는 생략).
 
 ## 인자
 
 - `--auto` — 사용자 확인 없이 1순위 계획으로 커밋하고 푸시까지 진행한다(멀티 에이전트 워커용).
   `AskUserQuestion`을 쓸 수 없는 호출자는 항상 이 모드를 쓴다.
+- `--no-push` — 커밋만 하고 **6번 푸시 단계를 건너뛴다.** 여러 번 커밋을 쌓다가 맨 마지막에만
+  한 번 푸시하려는 파이프라인(케이스별 `--auto --no-push`, 종료 시 1회 push)에서 쓴다.
+  `--auto`와 함께 써도 되고, 그러면 커밋은 자동·푸시는 생략이다.
 - `ENG` — subject/body를 영어로 쓴다. 기본은 한국어.
 
 `type`·`scope`·Conventional Commits 키워드는 언어와 무관하게 항상 영문이다.
@@ -317,7 +321,12 @@ git diff --staged -- <파일>           # 무엇이 들어갔는지 반드시 �
 
 ## 6. 푸시
 
-**커밋이 전부 성공했을 때만, 마지막에 한 번** 푸시한다. 중간에 중단됐으면 푸시하지 않는다.
+**먼저 `--no-push`부터 확인한다(최우선).** `--no-push`가 있으면 **이 단계 전체를 건너뛴다** —
+아래 푸시 로직·확인 여부를 하나도 실행하지 않고 커밋만으로 끝낸다(보고에 "푸시 생략(--no-push)").
+`--auto --no-push`도 마찬가지로 **푸시하지 않는다**(`--auto`가 `--no-push`를 덮어쓰지 않는다).
+
+`--no-push`가 **없을 때만** 아래를 수행한다: **커밋이 전부 성공했을 때만, 마지막에 한 번** 푸시하고,
+중간에 중단됐으면 푸시하지 않는다.
 
 ```bash
 git remote
@@ -329,7 +338,7 @@ git rev-parse --abbrev-ref --symbolic-full-name @{upstream}
   `<remote>`는 `origin`이 있으면 `origin`, 없으면 목록의 첫 항목. 후보가 여럿이고 `origin`이
   없으면 대화형은 묻고 `--auto`는 생략한다
 
-확인 여부:
+확인 여부 (**`--no-push`가 아닐 때만 이 절에 도달한다**):
 
 - **`--auto`** — 묻지 않고 바로 푸시한다
 - **대화형** — `AskUserQuestion`으로 묻는다. 작업 브랜치면 "푸시" / "푸시 안 함" 순서로,
@@ -351,7 +360,7 @@ git rev-parse --abbrev-ref --symbolic-full-name @{upstream}
 2. <sha> type(scope): subject
 
 검증: [gradle 명령 / 생략 사유]
-🚀 푸시: <remote>/<브랜치>   (또는 "푸시하지 않음")
+🚀 푸시: <remote>/<브랜치>   (또는 "푸시 생략(--no-push)" / "푸시하지 않음")
 되돌리기: git reset --soft <BASE_SHA>
 
 > ⚠️ [주제 혼재 / 남은 stash 등 — 해당 시에만]
