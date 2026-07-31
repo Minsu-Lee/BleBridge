@@ -28,7 +28,7 @@ Claude Code, Codex와 Orca가 생성한 작업 에이전트가 BleBridge의 동�
 | Domain·Data·Network | [`domain/README.md`](../../domain/README.md), [`data/README.md`](../../data/README.md), [`core/network/README.md`](../../core/network/README.md) 중 대상 범위 |
 | Gradle convention·모듈 생성 | [`build-logic/README.md`](../../build-logic/README.md), 대상 모듈 README |
 | 테스트 | [Test](../test/README.md), 대상 모듈 README |
-| TDD 오케스트레이션(멀티 에이전트) | [TDD 오케스트레이션](orchestration-tdd.md), [Test](../test/README.md) |
+| TDD 오케스트레이션(멀티 에이전트) | [TDD 오케스트레이션](../orchestration/orchestration-tdd.md), [Test](../test/README.md) |
 | 디자인시스템 경계 오류 | [`lint/README.md`](../../lint/README.md), [디자인시스템 상세 가이드](../design-system/README.md) |
 | 문서 변경 | 이 문서의 “문서 관리 규칙”, [`docs/README.md`](../README.md) |
 
@@ -129,4 +129,4 @@ Orca 글로벌 Skill은 이 문서를 복제하지 않고, 작업 유형에 맞�
 Code와 Codex는 각각 루트 `CLAUDE.md`, `AGENTS.md`를 통해 동일한 규칙으로 진입합니다.
 
 TDD 기반 멀티 에이전트 파이프라인(기획/분석·테스트케이스·개발/구현·코드리뷰)의 역할
-분담·산출물·루프 게이팅 규약은 [TDD 오케스트레이션](orchestration-tdd.md)에 정의합니다.
+분담·산출물·루프 게이팅 규약은 [TDD 오케스트레이션](../orchestration/orchestration-tdd.md)에 정의합니다.

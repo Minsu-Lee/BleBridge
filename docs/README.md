@@ -13,7 +13,7 @@ README는 빠른 진입과 현재 모듈의 책임을 설명하고, 길어지는
 | [Design system](design-system/README.md) | Primitive/Semantic/Contextual/Component token 상세 규칙 |
 | [Custom lint](../lint/README.md) | Feature 디자인시스템 경계의 자동 검사 |
 | [에이전트 개발 가이드](agent/README.md) | Claude Code, Codex와 Orca 작업자의 문서 라우팅·작업 원칙·완료 조건 |
-| [TDD 오케스트레이션](agent/orchestration-tdd.md) | 멀티 에이전트 TDD 파이프라인 계약(역할·산출물·루프 게이팅) |
+| [TDD 오케스트레이션](orchestration/orchestration-tdd.md) | 멀티 에이전트 TDD 파이프라인 계약(역할·산출물·루프 게이팅, 역할 계약 문서) |
 
 ## 디자인 구현 자료
 

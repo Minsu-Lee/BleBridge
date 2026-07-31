@@ -77,7 +77,7 @@ class SplashViewModelTest {
 
 ## TDD 산출물 규약
 
-멀티 에이전트 TDD 파이프라인([TDD 오케스트레이션](../agent/orchestration-tdd.md))에서
+멀티 에이전트 TDD 파이프라인([TDD 오케스트레이션](../orchestration/orchestration-tdd.md))에서
 테스트를 먼저 설계할 때 쓰는 산출물 규약입니다. 사람이 직접 TDD를 진행할 때도 동일하게
 활용할 수 있습니다.
 
