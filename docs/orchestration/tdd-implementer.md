@@ -82,7 +82,11 @@ UI·MVI 없이 순수 로직만 구현합니다. 상세는
 [`orchestration-tdd.md`](orchestration-tdd.md)의 "도메인/데이터 트랙 규약".
 
 - 케이스는 `unit`만. 테스트는 `<mod>/src/test`(JUnit5)에서 Red(실패 관측)→Green.
-- 자동 게이트는 `:<mod>:testDebugUnitTest`(+ 필요 시 `:lintDebug`). `androidTest` 없음.
+- 자동 게이트는 **모듈 타입에 따라 다릅니다**. `build.gradle.kts`의 `plugins`를 먼저 확인하세요.
+  - `blebridge.android.*` → `:<mod>:testDebugUnitTest` (예: `:data`)
+  - `blebridge.kotlin.jvm` → `:<mod>:test` (예: `:domain`). **AGP가 없어
+    `testDebugUnitTest`·`compileDebugKotlin`이 존재하지 않습니다** — 쓰면 `task not found`.
+  - 필요 시 `:lintDebug`(Android 모듈만). `androidTest` 없음.
 - 의존 방향 준수: `data`→`domain`, `domain`은 안드로이드/프레임워크 비의존. 마무리는 NavHost가
   아니라 DI 바인딩(`data` 구현 → `domain` interface) 확인/추가.
 - 커밋은 feature 트랙과 동일한 `test(<mod>): TC-xx …` / `feat(<mod>): TC-xx …` 2커밋.
@@ -90,9 +94,11 @@ UI·MVI 없이 순수 로직만 구현합니다. 상세는
 ## 커밋 디스패치를 받았을 때
 
 git 저장소일 때만 적용합니다(`git rev-parse --is-inside-work-tree`로 확인). 커밋 전
-`git branch --show-current`로 **작업 브랜치가 `main`/`master`가 아닌지 확인**합니다. 작업
+`git branch --show-current`로 **보호 브랜치(`main`/`master`/`develop`)가 아닌지 확인**합니다.
+이 프로젝트는 gitflow라 작업은 `develop`에서 딴 `feature/<slug>` 위에서 이뤄집니다. 작업
 브랜치는 코디네이터가 착수 전에 준비합니다([`orchestration-tdd.md`](orchestration-tdd.md)의
-"작업 브랜치 준비") — dev는 브랜치를 새로 만들지 않고, main 위라면 커밋하지 말고 보고합니다.
+"작업 브랜치 준비") — dev는 브랜치를 새로 만들지 않고, 보호 브랜치 위라면 커밋하지 말고
+보고합니다(`commit-message --auto`도 같은 조건에서 거부합니다).
 
 케이스 하나를 **테스트 커밋과 구현 커밋 2개로 분리**합니다. 분리는 `commit-message` 스킬이
 담당합니다 — 스킬이 워킹트리를 목적별로 나누고 `src/test`와 `src/main`을 항상 다른 커밋으로
@@ -116,7 +122,7 @@ git 저장소일 때만 적용합니다(`git rev-parse --is-inside-work-tree`로
   스킬을 그대로 씁니다(폴백 아님).
 - `TC-00`은 `chore(<feature>): TC-00 <요약>` 1커밋입니다.
 - **푸시**: `--auto`는 모든 커밋이 끝난 뒤 작업 브랜치로 **마지막에 한 번** 푸시합니다.
-  브랜치가 `main`/`master`면 스킬이 커밋 자체를 거부하므로, 작업 브랜치에 있는지 먼저
+  브랜치가 보호 브랜치(`main`/`master`/`develop`)면 스킬이 커밋 자체를 거부하므로, 먼저
   확인합니다. 푸시 실패는 재시도하지 말고 `worker_done`에 그대로 보고합니다.
   폴백(raw `git commit`) 경로에서는 푸시하지 않습니다.
 

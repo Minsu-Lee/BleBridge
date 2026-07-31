@@ -54,13 +54,16 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 - **트랙 자동 판별**: 요청 대상으로 정합니다 — `docs/design/common|ui` 프롬프트/`core:*` →
   컴포넌트, `domain`/`data` 로직만 → 도메인·데이터, feature 화면 → feature. 혼합이면
   ①도메인 → ②컴포넌트 → ③feature 순서([적용 트랙](#적용-트랙)).
-- **작업 브랜치 기본**: `feature/<타깃-slug>`. 현재 `main`이면 신규 생성, Orca worktree 전용
-  브랜치가 있으면 재사용([작업 브랜치 준비](#작업-브랜치-준비-착수-전-precondition)).
-- **리뷰 base 기본**: `origin/main`(remote 있을 때). 없으면 `--uncommitted`만으로 진행.
+- **작업 브랜치 기본**: **`develop`에서 딴** `feature/<타깃-slug>`(gitflow). 현재 보호
+  브랜치(`main`/`master`/`develop`)면 신규 생성, Orca worktree 전용 브랜치가 있으면 재사용
+  ([작업 브랜치 준비](#작업-브랜치-준비-착수-전-precondition)).
+- **리뷰 base 기본**: 고정값이 아니라 **작업 브랜치가 갈라져 나온 부모**를 쓴다 —
+  feature/release는 `origin/develop`, hotfix는 `origin/main`. remote가 없으면
+  `--uncommitted`만으로 진행.
 - **타임아웃 기본**: 첫 디스패치·`TC-00` `1800000`(30분), 이후 `900000`(15분).
 - **커밋/푸시**: 케이스당 2커밋(컴포넌트 1커밋)을 `commit-message --auto` **1회 호출**로.
   스킬이 커밋 전 gradle 검증 1회 → 목적별 분할 커밋 → 마지막에 작업 브랜치로 푸시한다.
-  `main`/`master` 위라면 스킬이 커밋을 거부한다.
+  보호 브랜치(`main`/`master`/`develop`) 위라면 스킬이 `--auto` 커밋을 거부한다.
 
 즉 사용자는 **개발 요청 md만** 주면 되고, 나머지는 코디네이터가 이 기본값으로 채웁니다.
 
@@ -92,19 +95,30 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 
 ## 작업 브랜치 준비 (착수 전 precondition)
 
-git 저장소에서 개발 케이스를 디스패치하기 전에 **코디네이터가 작업 브랜치를 확정**합니다.
-`main`/`master`에 직접 커밋하지 않습니다.
+이 프로젝트는 **gitflow**를 씁니다. 개발 케이스를 디스패치하기 전에 **코디네이터가 작업
+브랜치를 확정**합니다. 보호 브랜치(`main`/`master`/`develop`)에 직접 커밋하지 않습니다.
 
 - 확인: `git rev-parse --is-inside-work-tree`, `git branch --show-current`.
+- **분기 기준은 `develop`입니다.** 최신 상태에서 딴 뒤 착수합니다.
+
+  ```bash
+  git fetch origin
+  git switch -c feature/<slug> origin/develop
+  ```
+
 - feature 트랙: `feature/<feature>` 브랜치를 생성/확인. **Orca worktree로 이미 전용 브랜치가
   있으면 그것을 재사용**하고 중복 생성하지 않습니다.
 - 컴포넌트 트랙: 각 컴포넌트 프롬프트가 지정한 브랜치를 씁니다
-  (`feature/designsystem/<x>`, `feature/ui/<x>`).
-- **기준 브랜치 확정**: 최종 리뷰 `codex review --base <기준브랜치>`가 비교할 base(예:
-  `origin/main`)를 착수 시 정해 둡니다.
+  (`feature/designsystem/<x>`, `feature/ui/<x>`). 역시 `develop`에서 땁니다.
+- **기준 브랜치 확정**: 최종 리뷰 `codex review --base <기준브랜치>`의 base는 **작업 브랜치가
+  갈라져 나온 부모**입니다 — feature·release·컴포넌트 트랙은 `origin/develop`, hotfix는
+  `origin/main`. `origin/main`으로 고정하면 `develop`이 앞선 만큼의 남의 커밋까지 diff에
+  섞여 리뷰 범위가 부풀어 오릅니다.
 - 케이스별 커밋은 이 작업 브랜치 위에 쌓이고, `commit-message --auto`가 케이스마다 이 브랜치로
-  푸시합니다(첫 푸시는 `-u origin <브랜치>`). `main`/`master` 위라면 스킬이 커밋을 거부하므로,
-  작업 브랜치 준비는 착수 전 precondition입니다.
+  푸시합니다(첫 푸시는 `-u origin <브랜치>`). 보호 브랜치 위라면 스킬이 `--auto`에서 커밋을
+  거부하므로, 작업 브랜치 준비는 착수 전 precondition입니다.
+- 케이스가 모두 끝나 최종 리뷰까지 통과하면 작업 브랜치를 **`develop`으로 머지**합니다
+  (`main` 직행 금지). 릴리스 시 `develop` → `main`은 사용자가 판단합니다.
 
 ## 산출물 규약 (비커밋: `/.orca/plan/<feature>/`)
 
@@ -425,13 +439,13 @@ orca terminal send --terminal <h> \
 
 [운용 규칙]
 - 별도 입력을 나에게 되묻지 말고 계약 문서의 "호출 방식과 기본값"에 따라
-  트랙·작업 브랜치(feature/<slug>)·리뷰 base(origin/main)·타임아웃을 자동으로 정한다.
-  정말 모호할 때만 한 번 확인한다.
+  트랙·작업 브랜치(origin/develop에서 딴 feature/<slug>)·리뷰 base(분기 부모 =
+  feature면 origin/develop)·타임아웃을 자동으로 정한다. 정말 모호할 때만 한 번 확인한다.
 - 워커는 모두 Claude 세션으로 띄운다: analyst=Opus, 나머지=Sonnet.
   각 터미널에 역할 계약 docs/orchestration/<role>.md 경로를 주입한다.
 - dev·reviewer의 무거운 작업은 Sonnet 워커가 codex / codex review 에 위임하고
   완료를 기다렸다가 이어서 처리한다. 커밋은 Sonnet에서 commit-message --auto 로 한다.
-- 착수 전 작업 브랜치를 준비한다(main 직접 커밋 금지).
+- 착수 전 작업 브랜치를 준비한다(보호 브랜치 main/master/develop 직접 커밋 금지).
 
 [진행]
 계약 문서의 "케이스 루프 게이팅"대로:
@@ -439,7 +453,8 @@ feature-analyst → testcase-author →
 (tdd-implementer 구현 → code-reviewer --uncommitted 리뷰 → pass 시 dev 커밋 →
  코디네이터가 testcases.md 를 [x]로 갱신) 케이스 루프 →
 모든 케이스 완료 후 code-reviewer 최종 전체 리뷰 1회.
-산출물은 .orca/plan/<타깃-slug>/ 에 남기고, 푸시는 하지 않는다.
+산출물은 .orca/plan/<타깃-slug>/ 에 남긴다. 케이스별 커밋·푸시는 dev가 commit-message --auto로
+수행한다(스킬이 작업 브랜치로 푸시). 별도 push 단계는 두지 않는다.
 ```
 
 ### 3) 루프 구동
