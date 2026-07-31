@@ -59,8 +59,8 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 - **리뷰 base 기본**: `origin/main`(remote 있을 때). 없으면 `--uncommitted`만으로 진행.
 - **타임아웃 기본**: 첫 디스패치·`TC-00` `1800000`(30분), 이후 `900000`(15분).
 - **커밋/푸시**: 케이스당 2커밋(컴포넌트 1커밋)을 `commit-message --auto` **1회 호출**로.
-  스킬이 목적별로 분할하고 커밋마다 격리 gradle 검증을 돌린 뒤 작업 브랜치로 푸시한다.
-  푸시를 막으려면 `--no-push`를 붙인다.
+  스킬이 커밋 전 gradle 검증 1회 → 목적별 분할 커밋 → 마지막에 작업 브랜치로 푸시한다.
+  `main`/`master` 위라면 스킬이 커밋을 거부한다.
 
 즉 사용자는 **개발 요청 md만** 주면 되고, 나머지는 코디네이터가 이 기본값으로 채웁니다.
 
@@ -352,16 +352,11 @@ dev 구현 → green(커밋 안 함) → code-reviewer 리뷰 → pass → dev �
 <commit-message 스킬 --auto>   # test(...) → feat(...) 순서로 자동 분할 커밋
 ```
 
-- 각 커밋은 `git stash push --keep-index -u`로 격리한 뒤 gradle 검증을 통과해야 확정됩니다.
-  테스트 전용 커밋(Red)은 실패가 정상이므로 `compileDebugUnitTestKotlin`까지만 검증하고,
-  구현 커밋(Green)에서 `testDebugUnitTest`를 돌립니다.
-- 스테이징으로 범위를 직접 통제하고 싶으면 `--no-split`을 붙여 종전처럼 호출합니다.
-
-```bash
-git add <테스트 파일들> && <commit-message 스킬 --auto --no-split>   # 1) test(...) 커밋
-git add <구현 파일들>   && <commit-message 스킬 --auto --no-split>   # 2) feat(...) 커밋
-```
-
+- 스킬은 **커밋을 시작하기 전에 gradle 검증을 1회** 돌립니다(변경된 모듈만). Red 상태에서는
+  테스트 실행 대신 컴파일 태스크를 씁니다 — 실패가 정상이라 테스트를 돌리면 막힙니다.
+- 각 커밋은 `git stash push --keep-index -u`로 파일 단위 격리해 만듭니다. 다른 그룹의 파일이
+  섞이지 않게 하는 장치이며, **한 파일 안의 주제를 나누지는 못합니다.**
+- 스킬의 인자는 `--auto` 하나뿐입니다(그리고 영어 출력용 `ENG`). 워커는 항상 `--auto`를 씁니다.
 - 검증 실패·커밋 훅 실패·stash 충돌은 스킬이 재시도 없이 중단하고 롤백 명령
   (`git reset --soft <BASE_SHA>`)과 함께 보고합니다. 이 경우 케이스를 완료로 표시하지 말고
   `worker_done`에 실패 내용을 그대로 담습니다.
@@ -380,9 +375,9 @@ git add <구현 파일들>   && <commit-message 스킬 --auto --no-split>   # 2)
   보고에 남깁니다. 단, **Sonnet wrapper가
   구현만 `codex` CLI에 위임한 경우는 폴백 대상이 아닙니다** — 커밋이 바깥 Sonnet 런타임에서
   일어나 스킬을 그대로 씁니다(세 모드 구분은 아래 "Codex GPT-5.5 워커 지침").
-- **푸시**: 스킬은 `--auto`에서 커밋 후 작업 브랜치로 바로 푸시합니다. 막으려면 `--no-push`.
-  `--force` 계열은 쓰지 않으며, 푸시 실패 시 재시도 없이 보고합니다. **폴백(raw `git commit`)
-  경로에서는 푸시하지 않습니다** — 사용자가 지시할 때만 수행합니다.
+- **푸시**: 스킬은 모든 커밋이 끝난 뒤 **마지막에 한 번** 푸시합니다. `--auto`에서는 묻지 않고
+  바로 진행합니다. `--force` 계열은 쓰지 않으며, 거부되면 재시도·`pull --rebase` 우회 없이
+  보고합니다. **폴백(raw `git commit`) 경로에서는 푸시하지 않습니다** — 사용자 지시 시에만.
 
 ## 오케스트레이션 멀티 에이전트 구성 구동 방법
 
