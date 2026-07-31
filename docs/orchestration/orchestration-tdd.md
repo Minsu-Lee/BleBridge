@@ -59,7 +59,8 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 - **리뷰 base 기본**: `origin/main`(remote 있을 때). 없으면 `--uncommitted`만으로 진행.
 - **타임아웃 기본**: 첫 디스패치·`TC-00` `1800000`(30분), 이후 `900000`(15분).
 - **커밋/푸시**: 케이스당 2커밋(컴포넌트 1커밋)을 `commit-message --auto` **1회 호출**로.
-  스킬이 목적별로 분할하고 커밋마다 격리 gradle 검증을 돌린다. 푸시는 사용자 지시 시에만.
+  스킬이 목적별로 분할하고 커밋마다 격리 gradle 검증을 돌린 뒤 작업 브랜치로 푸시한다.
+  푸시를 막으려면 `--no-push`를 붙인다.
 
 즉 사용자는 **개발 요청 md만** 주면 되고, 나머지는 코디네이터가 이 기본값으로 채웁니다.
 
@@ -101,7 +102,9 @@ git 저장소에서 개발 케이스를 디스패치하기 전에 **코디네이
   (`feature/designsystem/<x>`, `feature/ui/<x>`).
 - **기준 브랜치 확정**: 최종 리뷰 `codex review --base <기준브랜치>`가 비교할 base(예:
   `origin/main`)를 착수 시 정해 둡니다.
-- 케이스별 커밋은 이 작업 브랜치 위에 쌓입니다. 푸시는 사용자가 지시할 때만 합니다.
+- 케이스별 커밋은 이 작업 브랜치 위에 쌓이고, `commit-message --auto`가 케이스마다 이 브랜치로
+  푸시합니다(첫 푸시는 `-u origin <브랜치>`). `main`/`master` 위라면 스킬이 커밋을 거부하므로,
+  작업 브랜치 준비는 착수 전 precondition입니다.
 
 ## 산출물 규약 (비커밋: `/.orca/plan/<feature>/`)
 
@@ -210,8 +213,9 @@ orca orchestration check --wait --types worker_done,escalation,decision_gate --t
 - **같은 worktree에서 Gradle 데몬 warm 유지** — 모든 케이스를 한 worktree에서 돌려 데몬·
   configuration-cache·build-cache를 재사용하면 콜드 빌드 반복을 피합니다
   (`org.gradle.caching=true`, configuration cache).
-- **첫 빌드 pre-warm** — 첫 디스패치 전에 `./gradlew :<모듈>:compileDebugKotlin`을 한 번 돌려
-  KSP/Hilt를 데워 둡니다.
+- **첫 빌드 pre-warm** — 첫 디스패치 전에 대상 모듈 컴파일을 한 번 돌려 KSP/Hilt를 데워
+  둡니다. Android 모듈은 `./gradlew :<모듈>:compileDebugKotlin`, 순수 JVM 모듈은
+  `./gradlew :<모듈>:compileKotlin`입니다(아래 모듈 타입 주의 참조).
 - **태스크 스코프 최소화(이미 규약)** — `:feature:<x>:testDebugUnitTest`처럼 모듈·태스크 한정.
   전체 빌드 금지.
 - **codex 위임 선택적** — 단순 케이스는 Sonnet이 직접 처리해 모델 홉 1개를 줄이고, `codex`는
@@ -280,11 +284,19 @@ precondition, 케이스당 2커밋)는 동일합니다. `<mod>`는 `domain` 또�
 | analysis | MVI 4계약·Route→Screen·Navigation | **MVI/Route/Navigation 없음.** repository interface(`domain`)·구현(`data`)·유스케이스·모델 계약, 의존 방향(`data`→`domain`), 목표디자인/현재구현 차이만 |
 | 케이스 유형 | `unit`(ViewModel), `ui`(Screen) | `unit` **만**(순수 로직). UI/`androidTest` 케이스 없음 |
 | 테스트 위치 | `src/test` + `src/androidTest` | `<mod>/src/test`(JUnit5, `@Disabled` 스텁)만 |
-| 자동 게이트 | `:feature:<x>:testDebugUnitTest`(+UI 컴파일) | `:<mod>:testDebugUnitTest`(+ 필요 시 `:lintDebug`). `androidTest`·`assembleDebugAndroidTest` 없음 |
+| 자동 게이트 | `:feature:<x>:testDebugUnitTest`(+UI 컴파일) | **모듈 타입에 따라 다름**(아래 주의). `:data`는 Android → `:data:testDebugUnitTest`, `:domain`은 순수 JVM → `:domain:test`. `androidTest`·`assembleDebugAndroidTest` 없음 |
 | Red 관측 | 유닛/계측 | 유닛 테스트 **실패 관측 가능**(기기 불필요) |
 | 배선 마무리 | app NavHost + Hilt | **NavHost 없음.** DI 바인딩(`data` 구현 → `domain` interface)만 확인/추가 |
 | 커밋 | `test(...)`+`feat(...)` 2커밋 | 동일. `test(<mod>): TC-xx …` / `feat(<mod>): TC-xx …` |
 | 브랜치 | `feature/<feature>` | 작업 브랜치(예: `feature/<name>`) |
+
+> ⚠️ **gradle 태스크는 모듈 타입에 따라 이름이 다릅니다.** `build.gradle.kts`의 `plugins`가
+> `blebridge.kotlin.jvm`이면 **순수 JVM 모듈이라 AGP 태스크가 존재하지 않습니다** —
+> `testDebugUnitTest`·`compileDebugKotlin`·`compileDebugUnitTestKotlin`을 쓰면 `task not found`로
+> 실패합니다. 대응 태스크는 `test`·`compileKotlin`·`compileTestKotlin`입니다.
+> 현재 JVM 모듈: `:domain`, `:core:common`, `:core:network`, `:lint:designsystem`.
+> 나머지(`:data`, `:core:mvi`, `:core:designsystem`, `:core:ui`, `:feature:*`, `:app`)는 Android입니다.
+> 게이트 명령을 쓰기 전에 대상 모듈의 `plugins` 블록을 확인하세요.
 
 리뷰(`codex review`) 관점 — 도메인/데이터 트랙: MVI 경계·`Route→Screen`·디자인시스템 lint는
 **해당 없음**입니다. 대신 **의존 방향(`data`→`domain`, `domain`은 안드로이드/프레임워크 비의존)**,
@@ -368,7 +380,9 @@ git add <구현 파일들>   && <commit-message 스킬 --auto --no-split>   # 2)
   보고에 남깁니다. 단, **Sonnet wrapper가
   구현만 `codex` CLI에 위임한 경우는 폴백 대상이 아닙니다** — 커밋이 바깥 Sonnet 런타임에서
   일어나 스킬을 그대로 씁니다(세 모드 구분은 아래 "Codex GPT-5.5 워커 지침").
-- 스킬도 폴백도 **푸시하지 않습니다.** 푸시는 사용자가 별도로 지시할 때만 수행합니다.
+- **푸시**: 스킬은 `--auto`에서 커밋 후 작업 브랜치로 바로 푸시합니다. 막으려면 `--no-push`.
+  `--force` 계열은 쓰지 않으며, 푸시 실패 시 재시도 없이 보고합니다. **폴백(raw `git commit`)
+  경로에서는 푸시하지 않습니다** — 사용자가 지시할 때만 수행합니다.
 
 ## 오케스트레이션 멀티 에이전트 구성 구동 방법
 
