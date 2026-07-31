@@ -13,7 +13,7 @@ MVP 목록과 테스트케이스 체크리스트를 만들고, 테스트 파일�
 1. `.orca/plan/<feature>/analysis.md`(기획/분석 산출).
 2. [`docs/test/README.md`](../../docs/test/README.md) 전체 — 특히 "TDD 산출물 규약"과
    ViewModel(MVI) 테스트, `MainDispatcherExtension` 규약.
-3. [`docs/agent/orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md) 산출물 규약.
+3. [`orchestration-tdd.md`](orchestration-tdd.md) 산출물 규약.
 4. 대상 모듈 README와 기존 테스트(예: `feature/*/src/test`, `src/androidTest`)로 패턴 확인.
 
 ## 경계 (엄수)
@@ -31,6 +31,15 @@ MVP 목록과 테스트케이스 체크리스트를 만들고, 테스트 파일�
 - UI 케이스의 요소 지정은 `<Screen>Defaults`의 테스트 태그를 쓰고 문자열 하드코딩을 피합니다.
   대상 태그가 아직 없으면 케이스 설명에 "필요 태그"로 남기고, 프로덕션 코드에 직접 추가하지
   않습니다(구현 에이전트가 추가).
+- **컴포넌트 트랙**(`core:designsystem`/`core:ui`)이면 케이스 유형은 `component` 하나이며,
+  위치는 `core/<mod>/src/androidTest/.../<Component>Test.kt`(JUnit4, `@Ignore` 스텁)뿐입니다.
+  ViewModel이 없어 `unit`(`src/test`) 케이스는 두지 않습니다(순수 로직 헬퍼가 있을 때만 예외).
+  케이스는 컴포넌트 프롬프트의 "테스트" 절과 상태 목록에서 도출합니다. 상세는
+  [`orchestration-tdd.md`](orchestration-tdd.md)의 "컴포넌트 트랙 규약".
+- **도메인/데이터 트랙**(`domain`/`data`)이면 케이스 유형은 `unit` 하나이며, 위치는
+  `<mod>/src/test`(JUnit5, `@Disabled` 스텁)뿐입니다. UI·`androidTest` 케이스는 두지 않습니다.
+  케이스는 repository·유스케이스 계약과 에러/경계 조건에서 도출합니다. 상세는
+  [`orchestration-tdd.md`](orchestration-tdd.md)의 "도메인/데이터 트랙 규약".
 
 ## 산출물
 
@@ -46,7 +55,7 @@ MVP 목록과 테스트케이스 체크리스트를 만들고, 테스트 파일�
 1. `analysis.md`에서 기능을 도출해 `mvp.md` 작성.
 2. `analysis.md`가 **신규 모듈**을 요구하면 `testcases.md`의 첫 항목을 `TC-00`(유형 `setup`,
    모듈 스캐폴딩)으로 둡니다. 스캐폴딩 자체는 구현 에이전트가 수행합니다
-   ([`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md)의 "신규 모듈 스캐폴딩").
+   ([`orchestration-tdd.md`](orchestration-tdd.md)의 "신규 모듈 스캐폴딩").
 3. 각 MVP 기능을 유닛/UI 케이스로 분해해 순서대로 `testcases.md` 작성. UI 케이스는 자동
    검증이 **계측 테스트 컴파일까지**임을 감안해, 실행 검증이 꼭 필요한 항목은 설명에
    "수동 확인 필요"로 표시합니다.
@@ -58,4 +67,4 @@ MVP 목록과 테스트케이스 체크리스트를 만들고, 테스트 파일�
 
 디스패치 프리앰블이 있으면 완료 후 `worker_done`을 1회 보고합니다(`reportPath`에
 `testcases.md`, `filesModified`에 seed한 테스트 파일). 규약은
-[`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md).
+[`orchestration-tdd.md`](orchestration-tdd.md).

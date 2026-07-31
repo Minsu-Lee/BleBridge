@@ -11,7 +11,7 @@ Red-Green으로 구현합니다.
 ## 진입 시 읽을 문서
 
 1. `.orca/plan/<feature>/analysis.md`, `testcases.md`(현재 대상 케이스 확인).
-2. [`docs/agent/README.md`](../../docs/agent/README.md)의 문서 라우팅 표에서 작업 유형에
+2. [`docs/agent/README.md`](../agent/README.md)의 문서 라우팅 표에서 작업 유형에
    맞는 문서: MVI는 [`core/mvi/README.md`](../../core/mvi/README.md), Feature UI는
    [Feature UI 구성](../../docs/feature/README.md), Navigation은
    [Navigation](../../docs/navigation/README.md), 테스트는
@@ -47,7 +47,7 @@ Red-Green으로 구현합니다.
 `settings.gradle.kts` 등록·모듈 `build.gradle.kts`·최소 패키지 골격을 만들고
 `./gradlew :feature:<x>:compileDebugKotlin` 성공을 게이트로 삼습니다. 범위는 `analysis.md`에
 명세된 만큼만입니다. 상세는
-[`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md)의 "신규 모듈 스캐폴딩".
+[`orchestration-tdd.md`](orchestration-tdd.md)의 "신규 모듈 스캐폴딩".
 
 ## 경계 (엄수)
 
@@ -63,25 +63,57 @@ Red-Green으로 구현합니다.
 - **구현 완료만으로 커밋하지 않습니다.** 커밋은 코드리뷰 pass 후 코디네이터의 별도
   디스패치로만 수행합니다(이유: `codex review --uncommitted`가 커밋된 변경을 보지 못함).
 
+### 컴포넌트 트랙일 때 (core:designsystem / core:ui)
+
+feature 규약과 달라지는 부분만 적용합니다. 상세는
+[`orchestration-tdd.md`](orchestration-tdd.md)의 "컴포넌트 트랙 규약".
+
+- **lint 경계가 반전됩니다.** core 모듈에서는 `AppTheme` Semantic/Contextual 토큰 조합과
+  `Defaults`의 `.dp` 정의가 정상·필수입니다(그 lint는 feature에만 배선). 단 primitive는
+  `internal`, public API에 raw `Color`/`TextStyle`/magic dp를 불필요하게 노출하지 않습니다.
+- 테스트는 `core/<mod>/src/androidTest`(JUnit4)만. 자동 게이트는
+  `:core:<mod>:compileDebugKotlin`, `:lintDebug`, `:assembleDebugAndroidTest`(**컴파일까지**).
+- 커밋은 `feat(designsystem|ui): <component> <요약>` 단위(테스트 선커밋 강제 안 함).
+- 브랜치는 프롬프트가 지정한 `feature/designsystem|ui/<x>`.
+
+### 도메인/데이터 트랙일 때 (domain / data)
+
+UI·MVI 없이 순수 로직만 구현합니다. 상세는
+[`orchestration-tdd.md`](orchestration-tdd.md)의 "도메인/데이터 트랙 규약".
+
+- 케이스는 `unit`만. 테스트는 `<mod>/src/test`(JUnit5)에서 Red(실패 관측)→Green.
+- 자동 게이트는 `:<mod>:testDebugUnitTest`(+ 필요 시 `:lintDebug`). `androidTest` 없음.
+- 의존 방향 준수: `data`→`domain`, `domain`은 안드로이드/프레임워크 비의존. 마무리는 NavHost가
+  아니라 DI 바인딩(`data` 구현 → `domain` interface) 확인/추가.
+- 커밋은 feature 트랙과 동일한 `test(<mod>): TC-xx …` / `feat(<mod>): TC-xx …` 2커밋.
+
 ## 커밋 디스패치를 받았을 때
 
-git 저장소일 때만 적용합니다(`git rev-parse --is-inside-work-tree`로 확인).
+git 저장소일 때만 적용합니다(`git rev-parse --is-inside-work-tree`로 확인). 커밋 전
+`git branch --show-current`로 **작업 브랜치가 `main`/`master`가 아닌지 확인**합니다. 작업
+브랜치는 코디네이터가 착수 전에 준비합니다([`orchestration-tdd.md`](orchestration-tdd.md)의
+"작업 브랜치 준비") — dev는 브랜치를 새로 만들지 않고, main 위라면 커밋하지 말고 보고합니다.
 
-케이스 하나를 **테스트 커밋과 구현 커밋 2개로 분리**합니다. 분리는 스테이징에서 보장합니다 —
-한꺼번에 stage하면 커밋이 1개로 합쳐집니다.
+케이스 하나를 **테스트 커밋과 구현 커밋 2개로 분리**합니다. 분리는 `commit-message` 스킬이
+담당합니다 — 스킬이 워킹트리를 목적별로 나누고 `src/test`와 `src/main`을 항상 다른 커밋으로
+만듭니다. **스테이징 없이 한 번만 호출합니다.**
 
 ```bash
-git add <케이스 테스트 파일>      # 1) 테스트만
-# → commit-message 스킬을 --auto 로 호출  →  test(<feature>): <TC-id> <요약>
-git add <케이스 구현 파일>        # 2) 구현만
-# → commit-message 스킬을 --auto 로 호출  →  feat(<feature>): <TC-id> <요약>
+# → commit-message 스킬을 --auto 로 1회 호출
+#    test(<feature>): <TC-id> <요약>  →  feat(<feature>): <TC-id> <요약> 순서로 자동 분할
 ```
 
 - 스킬 호출은 **Skill 도구**로 `commit-message`를 지정하고 인자에 `--auto`를 넘깁니다.
-  `--auto`는 1순위 후보로 확인 없이 커밋합니다(서브에이전트는 사용자 확인 불가).
-- 두 호출 사이에 `git status --short`로 의도한 파일만 staged인지 확인합니다.
-- **폴백**: 실행 환경에 `commit-message` 스킬이 노출되지 않으면 raw `git commit`으로 위 형식을
-  그대로 지키고, 폴백을 썼다는 사실을 보고에 남깁니다.
+  `--auto`는 확인 없이 분할 계획대로 커밋합니다(오케스트레이션 워커는 대화형 확인 불가).
+- 스킬이 각 커밋을 `git stash`로 격리해 gradle 검증을 돌립니다. 테스트 전용 커밋(Red)은
+  컴파일까지만, 구현 커밋(Green)은 `testDebugUnitTest`까지 검증합니다.
+- 스킬이 검증 실패·stash 충돌로 중단하면 **커밋을 손으로 재시도하지 말고** 그 출력과 롤백
+  명령을 `worker_done`에 그대로 담아 보고합니다.
+- 스테이징으로 범위를 직접 통제해야 하면 `--auto --no-split`으로 종전처럼 2회 호출합니다.
+- **폴백**: 실행 환경에 `commit-message` 스킬이 노출되지 않으면(예: Codex 네이티브 워커) raw
+  `git commit`으로 위 형식을 그대로 지키고, 폴백을 썼다는 사실을 보고에 남깁니다. Sonnet
+  wrapper로 동작하며 구현만 `codex` CLI에 위임한 경우엔 커밋이 이 Sonnet 런타임에서 일어나므로
+  스킬을 그대로 씁니다(폴백 아님).
 - `TC-00`은 `chore(<feature>): TC-00 <요약>` 1커밋입니다.
 - **푸시하지 않습니다.**
 
@@ -96,4 +128,4 @@ git add <케이스 구현 파일>        # 2) 구현만
 1회 보고합니다(`filesModified`, 갱신된 `testcases.md` 상태, 검증 로그 요약, UI 케이스는
 계측 테스트 미실행 사유). 이후 idle 상태로 대기하고 코디네이터의 다음 디스패치를 기다립니다.
 `[x]` 마커와 다음 케이스 진행은 코디네이터 소관입니다. 규약은
-[`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md).
+[`orchestration-tdd.md`](orchestration-tdd.md).

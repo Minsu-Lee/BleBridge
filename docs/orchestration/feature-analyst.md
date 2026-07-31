@@ -13,9 +13,9 @@ model: opus
 프로젝트 규칙을 추측하지 말고 항상 문서로 진입합니다.
 
 1. 루트 [`README.md`](../../README.md)와 대상 모듈 `README.md`.
-2. [`docs/agent/README.md`](../../docs/agent/README.md)의 시작 절차·문서 라우팅 표에서
+2. [`docs/agent/README.md`](../agent/README.md)의 시작 절차·문서 라우팅 표에서
    작업에 필요한 문서만 추가로 읽기(MVI·Feature UI·Navigation·디자인시스템 등).
-3. [`docs/agent/orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md)의
+3. [`orchestration-tdd.md`](orchestration-tdd.md)의
    "analysis.md 필수 항목"과 산출물 규약.
 
 ## 경계 (엄수)
@@ -28,7 +28,7 @@ model: opus
 
 ## 산출물
 
-`.orca/plan/<feature>/analysis.md`를 작성합니다. `docs/agent/orchestration-tdd.md`의
+`.orca/plan/<feature>/analysis.md`를 작성합니다. `orchestration-tdd.md`의
 "analysis.md 필수 항목"을 모두 포함:
 
 - 대상 모듈 판단 + 신규 모듈 여부(신규면 등록·`blebridge.feature` 스캐폴딩 명세, 도메인
@@ -39,6 +39,21 @@ model: opus
 - Navigation destination(`<Feature>Route`, `NavGraphBuilder` 확장, app NavHost 콜백).
 - 필요한 디자인시스템/`core:ui` 컴포넌트와 디자인 프롬프트 매핑.
 - Domain·Data 계약 영향.
+
+### 컴포넌트 트랙일 때 (core:designsystem / core:ui)
+
+대상이 [`docs/design/common|ui`](../../docs/design)의 컴포넌트 프롬프트면 위 항목 대신
+컴포넌트 계약을 요약합니다: 공개 API(시그니처·Variant/Size/State), 사용할 `AppTheme` 토큰,
+`Defaults` 태그·상수, 선행 의존 컴포넌트([로드맵](../../docs/design/00-common-component-roadmap.md)),
+완료 조건. MVI·Route·Navigation 항목은 두지 않습니다. 상세 델타는
+[`orchestration-tdd.md`](orchestration-tdd.md)의 "컴포넌트 트랙 규약".
+
+### 도메인/데이터 트랙일 때 (domain / data)
+
+UI 없이 `domain`·`data` 로직만 개발하면 위 항목 대신 계약만 요약합니다: repository interface
+(`domain`)·구현(`data`)·유스케이스·모델, 의존 방향(`data`→`domain`, `domain`은 프레임워크
+비의존). MVI·Route·Navigation 항목은 두지 않습니다. 상세 델타는
+[`orchestration-tdd.md`](orchestration-tdd.md)의 "도메인/데이터 트랙 규약".
 
 ## 절차
 
@@ -51,4 +66,4 @@ model: opus
 디스패치 프리앰블(live `taskId`+`dispatchId`)이 있으면 분석 완료 후 자기 터미널에서
 `worker_done`을 1회 보고합니다(`reportPath`에 `analysis.md` 경로). 프리앰블이 없으면
 일반 작업으로 처리하고 라이프사이클 메시지를 보내지 않습니다. 상세 규약은
-[`orchestration-tdd.md`](../../docs/agent/orchestration-tdd.md)의 worker_done 절.
+[`orchestration-tdd.md`](orchestration-tdd.md)의 worker_done 절.
