@@ -16,3 +16,6 @@ build/
 local.properties
 # Orca 멀티 에이전트 TDD 파이프라인 작업 산출물 (비커밋)
 /.orca/
+# Serena는 project.yml만 공유하고 로컬 산출물은 비커밋
+/.serena/cache/
+/.serena/memories/
