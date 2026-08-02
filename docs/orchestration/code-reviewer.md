@@ -19,6 +19,9 @@ model: sonnet
 
 먼저 git 저장소 여부 확인: `git rev-parse --is-inside-work-tree`.
 
+리뷰는 **비대화형 `codex review` 서브커맨드**로 실행합니다(한 번 돌고 반환됨). 무인자 `codex`는
+대화형 TUI라 Bash 호출이 반환되지 않으니(hang) 쓰지 않습니다.
+
 - **증분(케이스별)**: `codex review --uncommitted "<지침>"`.
 - **최종(전체 1회)**: `codex review --base <기준브랜치> "<지침>"`.
 - **git 미초기화 시**: `git init` 후 진행하거나, 리뷰 대상 파일 경로·diff를 명시 프롬프트로
