@@ -15,10 +15,17 @@ Orca `orchestration` 스킬로 멀티 에이전트 환경을 구성해 **TDD 기
 
 | 역할 | 에이전트 | 모델(프로젝트 기본) | 주 산출물 |
 |---|---|---|---|
-| 기획/분석 | `feature-analyst` | Claude Opus wrapper | `.orca/plan/<feature>/analysis.md` |
-| 테스트케이스 | `testcase-author` | Claude Sonnet wrapper | `.orca/plan/<feature>/mvp.md`, `testcases.md` + 테스트 스텁 |
-| 개발/구현 | `tdd-implementer` | Claude Sonnet wrapper (+`codex exec` 위임) | 프로덕션·테스트 코드, `testcases.md` 상태 갱신 |
-| 코드리뷰 | `code-reviewer` | Claude Sonnet wrapper (+`codex review` 위임) | `.orca/plan/<feature>/review/*.md` |
+| (코디네이터) | — | **Claude Sonnet** | 오케스트레이션 구동(dispatch/check/게이팅) |
+| 기획/분석 | `feature-analyst` | **Claude Sonnet** | `.orca/plan/<feature>/analysis.md` |
+| 테스트케이스 | `testcase-author` | **Codex 네이티브** | `.orca/plan/<feature>/mvp.md`, `testcases.md` + 테스트 스텁 |
+| 개발/구현 | `tdd-implementer` | Claude Sonnet (+`codex exec` 위임) | 프로덕션·테스트 코드, `testcases.md` 상태 갱신 |
+| 코드리뷰 | `code-reviewer` | **Codex 네이티브** | `.orca/plan/<feature>/review/*.md` |
+
+> **모델 배치 근거(2026-08-03, Claude 토큰 편중 완화)**: `commit-message` 스킬(커밋)은 Claude
+> 런타임이 필요하므로 **`tdd-implementer`만 Claude Sonnet**으로 남기고 구현은 `codex exec`에
+> 위임한다. `testcase-author`(문서+스텁)·`code-reviewer`(`codex review`+리뷰문서)는 **스킬을
+> 쓰지 않아** Codex 네이티브로 돌려도 잃는 게 없다(포팅 불필요) → Claude 부하 대폭 절감.
+> `feature-analyst`·코디네이터는 품질/추론 부담이 낮아 Opus 대신 Sonnet으로 충분하다.
 
 모델은 **권장값**입니다. 각 역할 문서(`docs/orchestration/<role>.md`)의 frontmatter는 권장
 `model`·`tools`를 기록해 두지만, 이 문서들은 로드형 서브에이전트가 아니므로 frontmatter가
@@ -47,12 +54,13 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 아래 값은 요청에서 자동 판별하거나 기본값을 쓰고, **정말 모호할 때만** 사용자에게 확인합니다.
 요청 md가 어떤 값을 명시하면 그것을 우선합니다. 진행 로그에 어떤 기본값을 썼는지 남깁니다.
 
-- **워커 런타임(프로젝트 기본) = 전부 Claude(Sonnet) 세션.** 그래서 `commit-message` 등 Claude
-  스킬을 항상 씁니다. codex가 필요한 역할(리뷰 등)은 Sonnet 워커가 codex를 **비대화형
-  서브커맨드**로 호출→**완료 대기**→결과를 받아 스킬로 마무리하는 **(a′) 위임 wrapper**로 돕니다.
-  구현 위임은 `codex exec "..."`, 리뷰 위임은 `codex review …`입니다 — **무인자 `codex`는 대화형
-  TUI라 Bash 위임에서 반환되지 않으니(hang) 쓰지 않습니다.** 네이티브 codex 워커(b)는 스킬을 못
-  쓰므로 기본이 아닙니다. `feature-analyst`만 품질용으로 Opus 세션을 권장합니다.
+- **워커 런타임(프로젝트 기본, 2026-08-03 조정)**: **Claude Sonnet은 코디네이터·
+  `feature-analyst`·`tdd-implementer` 3개뿐**이고, `testcase-author`·`code-reviewer`는
+  **Codex 네이티브**로 돕니다. 기준은 "그 역할이 Claude 스킬을 쓰는가"입니다 —
+  `tdd-implementer`만 커밋에 `commit-message` 스킬이 필요해 Claude로 남기고, 구현은 `codex exec`에
+  위임합니다(구현 위임 `codex exec "..."`, 무인자 `codex`는 대화형 TUI라 Bash 위임에서 hang → 금지).
+  `testcase-author`(문서+스텁)·`code-reviewer`(`codex review`+리뷰문서)는 스킬을 안 써 네이티브
+  Codex로 충분합니다. (세 모드 상세는 아래 "Codex … 워커 지침".)
 - **트랙 자동 판별**: 요청 대상으로 정합니다 — `docs/design/common|ui` 프롬프트/`core:*` →
   컴포넌트, `domain`/`data` 로직만 → 도메인·데이터, feature 화면 → feature. 혼합이면
   ①도메인 → ②컴포넌트 → ③feature 순서([적용 트랙](#적용-트랙)).
@@ -162,6 +170,19 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 
 ## 케이스 루프 게이팅 (Orca 코디네이터 책임)
 
+> **"케이스(case)" 단위는 트랙마다 다릅니다 — 코디네이터가 이 단위로 디스패치합니다.**
+> - **feature 트랙**: 케이스 = ViewModel 동작 1개(Intent→state/sideEffect). 각각 독립 Red→Green이
+>   자연스러우므로 **케이스 하나씩 디스패치**(구현→리뷰→커밋→다음).
+> - **도메인/데이터 트랙**: 케이스 = 유닛(유스케이스/함수) 1개. 마찬가지로 하나씩.
+> - **컴포넌트 트랙**: 케이스 = **컴포넌트 1개**. 단일 Composable은 클릭·색상 등 개별 테스트만
+>   따로 구현할 수 없고(버튼 전체가 있어야 모든 테스트가 걸림), 계측 테스트는 기기 없이 케이스별
+>   Red 관측도 불가하므로, **한 컴포넌트를 한 번에 구현**하고 그 안의 `testcases.md` 항목들은
+>   sub-assertion 체크리스트로 둡니다. 요청에 컴포넌트가 여러 개면 **컴포넌트마다 한 케이스**로
+>   순차(로드맵 순서). ⚠️ 컴포넌트를 테스트 assertion마다 쪼개 per-case로 돌리지 않습니다 —
+>   빌드가 배로 늘고 계측 Red 관측 이점도 없습니다.
+>
+> 즉 아래 게이팅 절차의 "케이스 N"은 위 단위를 뜻합니다.
+
 케이스별 진행은 **개별 에이전트가 서로를 직접 호출하지 않고 Orca 코디네이터가 게이팅**합니다.
 
 **리뷰는 커밋 전 작업물을 대상으로 합니다.** dev는 스스로 커밋하지 않고, 코디네이터가 리뷰
@@ -212,13 +233,31 @@ pass 이후에 커밋을 별도 디스패치합니다(이유는 아래 "리뷰-�
 - 이후 일반 케이스는 `--timeout-ms 900000`(15분)로 충분합니다.
 - 타임아웃이 나면 자동 재디스패치하지 않고 워커 터미널 상태를 먼저 확인합니다.
 
+### 대기 규칙 (헛대기 방지 — 반드시 지킬 것)
+
+`check --wait`는 **이미 소비된 메시지가 아니라 "새로" 도착하는 매칭 메시지**를 기다립니다.
+worker가 끝나면 런타임이 dispatch/task를 자동으로 `completed`로 마킹하고 그 `worker_done`은
+소비됩니다. 완료된 뒤에 `check --wait`를 다시 걸면 **오지 않을 메시지를 타임아웃까지 기다리는
+헛대기**가 됩니다(실측된 실패, 2026-08-03).
+
+- **대기 전 항상 `orca orchestration task-list --json`으로 해당 task 상태를 확인**합니다.
+  `completed`/`failed`면 대기하지 말고 즉시 다음 단계로 갑니다. **task 상태가 진실의 원천**이며
+  메시지 스트림이 아닙니다.
+- **`check --wait`를 겹쳐 걸지 않습니다** — 한 시점에 하나만, 그리고 **백그라운드**로만
+  돌립니다(포그라운드 블로킹 금지). 두 대기가 같은 `worker_done`을 두고 경합하면 꼬입니다.
+- 하네스가 orchestration 메시지(heartbeat·worker_done)를 자동 surface 하므로, 그 알림 +
+  `task-list` 상태만으로도 대부분 판단이 됩니다.
+
 수동 루프 예:
 
 ```bash
 orca orchestration task-create --spec "TC-01: <설명>" --json
 orca orchestration dispatch --task <dev_task> --to <dev_handle> --inject --json
-orca orchestration check --wait --types worker_done,escalation,decision_gate --timeout-ms 1800000 --json
+# 대기 전 상태 확인: 이미 completed면 건너뛴다
+orca orchestration task-list --json    # <dev_task> 상태 확인
+orca orchestration check --wait --types worker_done,escalation,decision_gate --timeout-ms 1800000 --json  # 백그라운드로, 겹치지 않게
 orca orchestration dispatch --task <review_task> --to <review_handle> --inject --json
+orca orchestration task-list --json    # <review_task> 상태 확인 후에만 대기
 orca orchestration check --wait --types worker_done,escalation,decision_gate --timeout-ms 900000 --json
 # 리뷰 pass → dev에 커밋 디스패치 → 완료 확인 후 코디네이터가 testcases.md를 [x]로 갱신
 ```
@@ -249,6 +288,14 @@ orca orchestration check --wait --types worker_done,escalation,decision_gate --t
 - **독립 케이스 병렬화** — 서로 의존 없는 **트랙/피처**는 워커를 나눠 병렬 진행합니다(같은 피처
   내 케이스는 순차 유지). 혼합 요청의 ①도메인·②컴포넌트가 독립이면 병렬 가능.
 - **유닛 테스트 병렬 실행** — JUnit5 parallel execution으로 모듈 내 테스트 시간을 줄입니다.
+- **디스패치 spec은 짧게** — 역할 계약은 워커에 이미 주입돼 있으니 task spec은 "이 케이스만
+  하라 + 트랙별 특이점"만 담습니다. 계약 전문을 재서술하면 워커가 매번 긴 지문을 읽어 느려집니다.
+- **스텁을 처음부터 "관찰형"으로 seed** — `testcase-author`가 계측 단정을 실제 렌더 관찰
+  (예: `captureToImage()` 픽셀 비교)로 seed하면, 순수 함수 재호출 같은 tautology 스텁이 리뷰에서
+  반려돼 재작업하는 왕복(action-button에서 3회전 발생)을 예방합니다.
+- **케이스 과분할 금지** — 컴포넌트를 assertion마다 쪼개지 않습니다(위 "케이스 단위"). 한 컴포넌트
+  = 한 케이스 = 한 번의 빌드/리뷰 세트.
+- **모델 지연 최소화** — 코디네이터·analyst를 Opus 대신 Sonnet으로(위 역할 표). Sonnet이 빠릅니다.
 - **타임아웃은 상한**일 뿐 대기시간이 아닙니다 — 정상 완료 시 `worker_done` 즉시 다음으로 진행.
 
 ## 신규 모듈 스캐폴딩 (TC-00)
@@ -419,21 +466,30 @@ dev 구현 → green(커밋 안 함) → code-reviewer 리뷰 → pass → dev �
 ### 전제 확인
 
 - git 저장소 + (권장) `origin` 리모트, `.gitignore`에 `/.orca/`.
-- `orca`, `codex` CLI 사용 가능. 워커는 모두 Claude 세션(analyst=Opus, 나머지=Sonnet).
+- `orca`, `codex` CLI 사용 가능. 워커 모델: **analyst=Claude Sonnet, testcase-author=Codex,
+  tdd-implementer=Claude Sonnet, code-reviewer=Codex**(위 역할 표 근거).
 - **코디네이터 부트스트랩**: 코디네이터 세션은 시작 시 `orca skills get orchestration`으로
   orchestration 스킬 가이드를 로드한 뒤 이 문서를 읽습니다. 그래야 `orca orchestration`
   명령(dispatch/check/gate) 의미를 정확히 씁니다.
 
-### 1) 워커 터미널 기동 (모두 Claude 세션)
+### 1) 워커 터미널 기동 (패널 레이아웃 + 역할별 모델)
+
+코디네이터 터미널을 최상단에 두고, **그 아래로 수직 분할해 워커 행을 만든 뒤 수평으로 나눠**
+하위 에이전트 4개를 한눈에 배치합니다. 각 패널 제목은 에이전트명으로 지정합니다.
+`<coord>`는 코디네이터(이 세션) 핸들, 분할 응답의 `handle`을 다음 분할 대상으로 씁니다.
 
 ```bash
-# active worktree(또는 신규) 위에서 역할별 터미널 4개
-orca terminal create --worktree active --title feature-analyst --command 'claude --model opus'   --json
-orca terminal create --worktree active --title testcase-author --command 'claude --model sonnet' --json
-orca terminal create --worktree active --title tdd-implementer --command 'claude --model sonnet' --json
-orca terminal create --worktree active --title code-reviewer   --command 'claude --model sonnet' --json
+# 코디네이터 아래로 수직 분할 → analyst (워커 행의 첫 패널)
+orca terminal split --terminal <coord>   --direction vertical   --command 'claude --model sonnet' --json  # feature-analyst
+# 그 패널을 수평으로 나눠 나머지 워커 (직전 분할 handle을 대상으로 연쇄)
+orca terminal split --terminal <analyst> --direction horizontal --command 'codex'                --json  # testcase-author (Codex)
+orca terminal split --terminal <tc>      --direction horizontal --command 'claude --model sonnet' --json  # tdd-implementer
+orca terminal split --terminal <impl>    --direction horizontal --command 'codex'                --json  # code-reviewer (Codex)
 
-# 각 터미널이 tui-idle 되면 역할 계약을 주입해 대기시킴 (<role>·<h>를 역할별로 대입)
+# 각 패널 제목을 에이전트명으로
+orca terminal rename --terminal <h> --title feature-analyst   # tc/impl/review도 각각
+
+# 각 터미널이 tui-idle 되면 역할 계약을 주입 (<role>·<h>를 역할별로 대입)
 orca terminal wait --terminal <h> --for tui-idle --timeout-ms 60000 --json
 orca terminal send --terminal <h> \
   --text 'docs/orchestration/<role>.md의 본문을 네 역할 계약으로 삼아라. 디스패치가 오면 그 케이스만 수행하고 worker_done을 보고한 뒤 대기하라.' --enter --json
@@ -441,11 +497,11 @@ orca terminal send --terminal <h> \
 orca terminal wait --terminal <h> --for tui-idle --timeout-ms 60000 --json
 ```
 
-- dev·reviewer는 무거운 구현·리뷰를 codex에 위임하되 **비대화형 서브커맨드**로 부릅니다 —
-  구현 위임은 `codex exec "..."`, 리뷰 위임은 `codex review …`(완료 대기 후 이어서 처리).
-  **무인자 `codex`는 대화형 TUI라 Bash 위임에서 hang** 하므로 (a′) 위임에서는 쓰지 않습니다
-  (대화형 `codex`는 네이티브 워커(b) 전용). 케이스 커밋은 Sonnet 런타임에서
-  `commit-message --auto --no-push`(커밋만)로 수행하고, 푸시는 코디네이터가 최종 1회만 합니다.
+- **dev(Sonnet)**는 무거운 구현을 `codex exec "..."`(비대화형)에 위임하고, 커밋은 이 Sonnet
+  런타임에서 `commit-message --auto --no-push`(커밋만)로 수행합니다. **reviewer·testcase-author는
+  Codex 네이티브**라 위임 wrapper 없이 자기 런타임에서 `codex review`/문서 작성을 직접 합니다.
+  무인자 `codex`는 대화형 TUI이며(네이티브 워커 기동용), Bash 위임에는 `codex exec`/`codex review`만
+  씁니다. 푸시는 코디네이터가 최종 1회만 합니다.
 
 ### 2) 코디네이터 구동 프롬프트
 
@@ -456,8 +512,8 @@ orca terminal wait --terminal <h> --for tui-idle --timeout-ms 60000 --json
 프롬프트가 코디네이터에게 시키는 핵심:
 
 - 시작 시 `orca skills get orchestration`으로 스킬 가이드를 로드하고 이 문서를 읽는다.
-- 워커는 모두 Claude 세션(analyst=Opus, 나머지=Sonnet)으로 띄우고 역할 계약 경로를 주입한 뒤
-  `terminal wait --for tui-idle`로 로드를 확인하고 첫 디스패치를 보낸다.
+- 워커를 역할별 모델로 띄운다(analyst·dev=Claude Sonnet, testcase-author·reviewer=Codex 네이티브)
+  — 역할 계약 경로를 주입한 뒤 `terminal wait --for tui-idle`로 로드를 확인하고 첫 디스패치를 보낸다.
 - codex 위임은 비대화형(`codex exec`/`codex review`), 케이스 커밋은
   `commit-message --auto --no-push`(커밋만), 작업 브랜치는 착수 전(첫 커밋 이전) 준비, 푸시는
   최종 리뷰 pass 후 코디네이터가 1회.
@@ -493,17 +549,18 @@ orca terminal wait --terminal <h> --for tui-idle --timeout-ms 60000 --json
 (`tools`, `model`)는 권장값일 뿐이고 본문을 그대로 따릅니다. 따라서 어느 역할을 Codex로 바꿔도 규칙이
 갈라지지 않습니다.
 
-**프로젝트 운용 기본 = 모든 역할을 Claude(Sonnet) 세션으로 띄웁니다**(analyst만 Opus). codex가
-필요한 역할은 그 Sonnet 워커가 비대화형 서브커맨드(`codex exec`/`codex review`)로 위임
-호출((a′))합니다. 네이티브 codex 워커(b)는 스킬을 못 써 기본이 아니며 아래 표의 "가능" 열은
-대안 선택지입니다.
+**프로젝트 운용 기본(2026-08-03) = 스킬을 쓰는 역할만 Claude, 나머지는 Codex 네이티브.**
+`tdd-implementer`만 커밋 `commit-message` 스킬 때문에 Claude Sonnet으로 남기고 구현을 `codex exec`에
+위임((a′))합니다. `feature-analyst`·코디네이터는 Sonnet(Opus 아님), `testcase-author`·`code-reviewer`는
+스킬을 안 써 **Codex 네이티브(b)**입니다.
 
-| 역할 | 프로젝트 기본 | 대안 | 비고 |
-|---|---|---|---|
-| `feature-analyst` | Claude(Opus) wrapper | Codex 네이티브 가능 | 문서 산출만 — 스킬 불필요 |
-| `testcase-author` | Sonnet wrapper | Codex 위임/네이티브 | 산출물이 문서+테스트 스텁 |
-| `tdd-implementer` | Sonnet wrapper (+`codex exec` 위임) | Codex 네이티브(스킬 불가) | 커밋을 Sonnet에서 `commit-message`로 수행. 위임은 비대화형 `codex exec` |
-| `code-reviewer` | Sonnet wrapper (+`codex review` 위임) | Codex 네이티브 | 리뷰 실행은 항상 비대화형 `codex review` |
+| 역할 | 프로젝트 기본 | 근거 |
+|---|---|---|
+| 코디네이터 | Claude Sonnet | 오케스트레이션 구동 — 깊은 추론 불필요, 스킬 없음 |
+| `feature-analyst` | Claude Sonnet | 문서 산출만 — 스킬 불필요, Opus는 과함 |
+| `testcase-author` | **Codex 네이티브** | 문서+테스트 스텁만 — 스킬 안 씀 → Claude 불필요 |
+| `tdd-implementer` | Claude Sonnet (+`codex exec` 위임) | 커밋 `commit-message`가 Claude 런타임 필요. 구현은 `codex exec` |
+| `code-reviewer` | **Codex 네이티브** | `codex review`+리뷰문서만 — 스킬 안 씀 → Claude 불필요 |
 
 유의점:
 
@@ -520,9 +577,9 @@ orca terminal create --worktree id:<wt> \
   --command 'codex --model gpt-5.5 -c model_reasoning_effort="high"' --json
 orca terminal wait --terminal <h> --for tui-idle --timeout-ms 60000 --json
 
-# 리뷰 역할
+# 리뷰 역할 (0.146.0: 커스텀 지침은 --uncommitted 없이)
 orca terminal send --terminal <h> \
-  --text 'codex review --uncommitted "<프로젝트 리뷰 지침>"' --enter --json
+  --text 'codex review "<프로젝트 리뷰 지침>"' --enter --json
 
 # 그 외 역할(분석·테스트케이스·구현)
 orca terminal send --terminal <h> \
@@ -547,8 +604,16 @@ Codex 워커는 루트 [`AGENTS.md`](../../AGENTS.md) → [`docs/agent/README.md
 
 ### 리뷰 실행
 
-- 증분(케이스별): `codex review --uncommitted "<지침>"`.
-- 최종(전체 1회): `codex review --base <기준브랜치> "<지침>"`.
+> ⚠️ **codex-cli 0.146.0 플래그 주의(2026-08-03 실측)**: `codex review --uncommitted "<PROMPT>"`는
+> `error: the argument '--uncommitted' cannot be used with '[PROMPT]'`로 **거부**됩니다
+> (`--uncommitted`와 커스텀 프롬프트를 동시에 못 씀). 커스텀 지침을 줄 때는 **플래그 없이
+> `codex review "<지침>"`**로 부르면, CLI가 자체적으로 `git status`/`git diff`를 실행해 현재
+> uncommitted 변경을 리뷰 대상으로 식별합니다(= `--uncommitted`와 동일 스코프).
+
+- 증분(케이스별): `codex review "<지침>"` (커스텀 지침 → 플래그 없이. 지침이 없으면
+  `codex review --uncommitted`도 가능).
+- 최종(전체 1회): `codex review --base <기준브랜치>` (base 지정 시에도 커스텀 프롬프트를 함께
+  주려면 CLI가 허용하는지 확인 — 안 되면 지침을 base 리뷰 실행 후 별도로 반영).
 
 ### git 미초기화 시 대안
 
