@@ -64,6 +64,7 @@ flowchart LR
 
 - [문서 인덱스](docs/README.md)
 - [에이전트 개발 가이드](docs/agent/README.md)
+- [Graphify 운영 가이드](docs/graphify/README.md)
 - [App](app/README.md)
 - [Domain](domain/README.md)
 - [Data](data/README.md)
