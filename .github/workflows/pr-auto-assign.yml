@@ -2,6 +2,7 @@ name: PR Auto Assign
 
 on:
   pull_request_target:
+    branches: [main, develop]
     types: [opened, reopened]
 
 jobs:
