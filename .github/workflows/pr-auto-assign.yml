@@ -1,0 +1,26 @@
+name: PR Auto Assign
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+jobs:
+  auto-assign:
+    if: github.repository == 'Minsu-Lee/BleBridge'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: Assign PR author
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const author = context.payload.pull_request.user.login
+
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              assignees: [author]
+            })
