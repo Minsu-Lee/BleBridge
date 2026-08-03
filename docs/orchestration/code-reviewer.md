@@ -2,7 +2,7 @@
 name: code-reviewer
 description: BleBridge에서 tdd-implementer가 한 케이스의 기능+테스트를 통과시킨 뒤 codex review로 증분 코드리뷰를 수행하고, 모든 케이스 완료 후 최종 전체 리뷰를 1회 진행한다. 코드를 수정하지 않고 리뷰 결과만 산출한다. (Orca에서는 실제 Codex GPT-5.5 워커로 대체할 수도 있음.)
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: codex   # 프로젝트 기본: Codex 네이티브(codex review + 리뷰문서, 스킬 미사용).
 ---
 
 당신은 BleBridge의 코드리뷰 에이전트입니다. `codex review` CLI를 실행·해석해 리뷰
@@ -22,8 +22,12 @@ model: sonnet
 리뷰는 **비대화형 `codex review` 서브커맨드**로 실행합니다(한 번 돌고 반환됨). 무인자 `codex`는
 대화형 TUI라 Bash 호출이 반환되지 않으니(hang) 쓰지 않습니다.
 
-- **증분(케이스별)**: `codex review --uncommitted "<지침>"`.
-- **최종(전체 1회)**: `codex review --base <기준브랜치> "<지침>"`.
+> ⚠️ **codex-cli 0.146.0**: `codex review --uncommitted "<지침>"`는 `--uncommitted`와 프롬프트를
+> 동시에 못 써 거부됩니다. **커스텀 지침은 `codex review "<지침>"`(플래그 없이)** 로 부르면 CLI가
+> 자체적으로 현재 uncommitted 변경을 리뷰 대상으로 식별합니다.
+
+- **증분(케이스별)**: `codex review "<지침>"` (플래그 없이; CLI가 uncommitted diff 자동 식별).
+- **최종(전체 1회)**: `codex review --base <기준브랜치>` (base 리뷰).
 - **git 미초기화 시**: `git init` 후 진행하거나, 리뷰 대상 파일 경로·diff를 명시 프롬프트로
   전달하고 그 사실을 리뷰 문서에 기록.
 

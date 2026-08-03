@@ -31,17 +31,24 @@ docs/orchestration/orchestration-tdd.md 를 읽어 그 규약을 그대로 따�
 - 별도 입력을 나에게 되묻지 말고 계약 문서의 "호출 방식과 기본값"에 따라
   트랙·작업 브랜치(origin/develop에서 딴 feature/<slug>)·리뷰 base(분기 부모 =
   feature면 origin/develop)·타임아웃을 자동으로 정한다. 정말 모호할 때만 한 번 확인한다.
-- 워커는 모두 Claude 세션으로 띄운다: analyst=Opus, 나머지=Sonnet.
-  각 터미널에 역할 계약 docs/orchestration/<role>.md 경로를 주입한 뒤,
-  terminal wait --for tui-idle 로 계약 로드를 확인하고 나서 첫 디스패치를 보낸다.
-- dev·reviewer의 무거운 작업은 Sonnet 워커가 codex 에 위임하되,
-  반드시 비대화형 서브커맨드로 부른다: 구현 위임은 `codex exec "..."`,
-  리뷰 위임은 `codex review ...`. 무인자 `codex`는 대화형 TUI라 Bash 위임에서 hang 하므로 쓰지 않는다.
-  위임 결과가 반환되면 커밋 등 나머지는 바깥 Sonnet 런타임에서 이어서 처리한다.
-- 케이스 커밋은 Sonnet에서 commit-message --auto --no-push 로 한다(커밋만, 푸시는 안 함).
+- 워커를 역할별 모델로 띄운다: feature-analyst=Claude Sonnet, tdd-implementer=Claude Sonnet,
+  testcase-author=Codex 네이티브, code-reviewer=Codex 네이티브(코디네이터 자신도 Sonnet).
+  기준은 "commit-message 스킬을 쓰는가" — dev만 커밋에 스킬이 필요해 Claude로 남긴다.
+  레이아웃은 코디네이터 아래로 수직 분할 후 수평 분할해 4개 워커를 배치하고 패널 제목을
+  에이전트명으로 지정한다(계약 "1) 워커 터미널 기동"의 split 시퀀스). 각 터미널에 역할 계약
+  docs/orchestration/<role>.md 경로를 주입한 뒤 terminal wait --for tui-idle 로 로드를 확인하고
+  첫 디스패치를 보낸다.
+- tdd-implementer(Sonnet)는 무거운 구현을 `codex exec "..."`(비대화형)에 위임하고, 커밋은
+  이 Sonnet 런타임에서 처리한다. code-reviewer·testcase-author는 Codex 네이티브라 위임 wrapper
+  없이 자기 런타임에서 `codex review`/문서 작성을 직접 한다. 무인자 `codex`는 대화형 TUI라
+  Bash 위임(`codex exec`/`codex review`)에는 쓰지 않는다.
+- 케이스 커밋은 dev(Sonnet)에서 commit-message --auto --no-push 로 한다(커밋만, 푸시는 안 함).
 - 워커를 띄우기 전(또는 최소한 첫 커밋 전)에 작업 브랜치를 origin/develop에서 딴
-  feature/<slug>로 전환한다. 워커 4개가 worktree를 공유하므로 브랜치 전환은 전 터미널에
+  feature/<slug>로 전환한다. 워커들이 worktree를 공유하므로 브랜치 전환은 전 터미널에
   반영된다. 보호 브랜치(main/master/develop) 직접 커밋은 금지다.
+- "케이스" 단위는 트랙마다 다르다(계약 "케이스 루프 게이팅" 참조): feature=동작 1개,
+  도메인/데이터=유닛 1개, 컴포넌트=컴포넌트 1개(테스트는 그 안 체크리스트). 컴포넌트를
+  테스트마다 쪼개 per-case로 돌리지 않는다.
 
 [진행]
 계약 문서의 "케이스 루프 게이팅"대로:
