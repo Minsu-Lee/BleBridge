@@ -137,11 +137,20 @@ diff를 아래 **크리티컬 기준**으로 검토한다.
 | `feature/designsystem/action-button` | `feat(designsystem): action-button 컴포넌트 추가` |
 | `버그 수정` | `fix(main): 재연결 시 GATT 콜백이 중복 등록되던 문제 수정` |
 
-#### 라벨 (선택)
+#### 라벨
 
-이 저장소에는 기본 GitHub 라벨만 있고 릴리즈 노트 자동화가 없다. **라벨 없이 생성하는 것이 기본**이다.
-`gh label list`로 확인해 명확히 맞는 라벨(`bug`, `enhancement`, `documentation`)이 있을 때만 제안하고,
-없는 라벨을 새로 만들지 않는다.
+PR 제목의 Conventional Commit `type`을 기준으로 라벨을 자동 결정한다.
+
+| PR type | 라벨 |
+|---|---|
+| `fix` | `bug` |
+| `feat` | `enhancement` |
+| `docs` | `documentation` |
+| 그 외 | 없음 |
+
+`gh label list`로 결정한 라벨이 저장소에 존재하는지 확인한다. 존재하면 Step 7 확인 화면에 표시하고
+Step 8의 `gh pr create`에 반드시 `--label`로 전달한다. 존재하지 않으면 새로 만들지 않고, 라벨을
+추가하지 못한 이유를 Step 7 확인 화면에 명시한다.
 
 ---
 
@@ -219,7 +228,7 @@ PR 생성을 중단합니다. 아래 문제를 수정한 뒤 다시 시도해주
 
 **제목**: `<type>(<scope>): 요약`
 **Base**: `develop` ← **Head**: `현재 브랜치명`
-**라벨**: `없음` 또는 `[제안 라벨]`
+**라벨**: `[자동 결정 라벨]` 또는 `없음([매핑 없음/저장소에 라벨 없음])`
 **푸시 필요 여부**: [origin에 브랜치 없음 → push 필요 / 최신 상태]
 
 **본문 미리보기**:
@@ -246,9 +255,10 @@ cat > "$BODY" << 'EOF'
 EOF
 
 gh pr create --base develop --head "$(git branch --show-current)" \
-  --title "<제목>" --body-file "$BODY"
+  --title "<제목>" --body-file "$BODY" --label "<자동 결정 라벨>"
 ```
 
 - `--draft` 인자를 받았으면 `--draft`를 추가한다.
-- 라벨을 확정했으면 `--label "<라벨>"`을 추가한다. 저장소에 없는 라벨을 지정하면 `gh`가 실패한다.
+- Step 5에서 라벨이 `없음`으로 결정된 경우에만 `--label` 인자를 생략한다.
+- 확인 화면에 표시한 라벨과 `gh pr create`에 전달하는 라벨은 반드시 같아야 한다.
 - 생성 후 PR URL을 출력한다.
