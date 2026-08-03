@@ -1,15 +1,18 @@
 package com.jackson.blebridge.core.designsystem.component.button
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTouchHeightIsEqualTo
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.Density
@@ -81,24 +84,52 @@ class ActionButtonTest {
 
     @Test
     fun `RolePrimary style은 Server·Client 역할별 content color를 roleColors onActive와 일치시킨다`() {
-        ConnectionRole.entries.forEach { role ->
-            var expected: Color = Color.Unspecified
-            var actual: Color = Color.Unspecified
+        val expectedByRole = mutableMapOf<ConnectionRole, Color>()
+        val actualByRole = mutableMapOf<ConnectionRole, Color>()
 
-            composeRule.setContent {
-                AppTheme {
+        composeRule.setContent {
+            AppTheme {
+                ConnectionRole.entries.forEach { role ->
                     ConnectionRoleProvider(role = role) {
-                        expected = AppTheme.roleColors.onActive
-                        actual = ActionButtonDefaults.colors(
+                        expectedByRole[role] = AppTheme.roleColors.onActive
+                        actualByRole[role] = ActionButtonDefaults.colors(
                             style = ActionButtonStyle.RolePrimary,
                             enabled = true,
                         ).content
                     }
                 }
             }
+        }
 
-            composeRule.runOnIdle {
-                assertEquals("role=$role", expected, actual)
+        composeRule.runOnIdle {
+            ConnectionRole.entries.forEach { role ->
+                assertEquals("role=$role", expectedByRole[role], actualByRole[role])
+            }
+        }
+    }
+
+    @Test
+    fun `Text style은 Server·Client 역할별 content color를 roleColors active와 일치시킨다`() {
+        val expectedByRole = mutableMapOf<ConnectionRole, Color>()
+        val actualByRole = mutableMapOf<ConnectionRole, Color>()
+
+        composeRule.setContent {
+            AppTheme {
+                ConnectionRole.entries.forEach { role ->
+                    ConnectionRoleProvider(role = role) {
+                        expectedByRole[role] = AppTheme.roleColors.active
+                        actualByRole[role] = ActionButtonDefaults.colors(
+                            style = ActionButtonStyle.Text,
+                            enabled = true,
+                        ).content
+                    }
+                }
+            }
+        }
+
+        composeRule.runOnIdle {
+            ConnectionRole.entries.forEach { role ->
+                assertEquals("role=$role", expectedByRole[role], actualByRole[role])
             }
         }
     }
@@ -155,16 +186,22 @@ class ActionButtonTest {
 
     @Test
     fun `Compact 크기를 포함한 모든 size에서 최소 48dp 터치 영역을 보장한다`() {
-        ActionButtonSize.entries.forEach { size ->
-            composeRule.setContent {
-                AppTheme {
+        composeRule.setContent {
+            AppTheme {
+                Column {
                     ConnectionRoleProvider(role = ConnectionRole.Server) {
-                        ActionButton(text = "버튼", size = size, onClick = {})
+                        ActionButtonSize.entries.forEach { size ->
+                            ActionButton(text = "버튼", size = size, onClick = {})
+                        }
                     }
                 }
             }
+        }
 
-            composeRule.onNodeWithTag(ActionButtonDefaults.BUTTON_TAG)
+        val buttons = composeRule.onAllNodesWithTag(ActionButtonDefaults.BUTTON_TAG)
+            .assertCountEquals(ActionButtonSize.entries.size)
+        ActionButtonSize.entries.indices.forEach { index ->
+            buttons[index]
                 .assertTouchHeightIsEqualTo(48.dp)
         }
     }
