@@ -29,6 +29,7 @@ Claude Code, Codex와 Orca가 생성한 작업 에이전트가 BleBridge의 동�
 | Gradle convention·모듈 생성 | [`build-logic/README.md`](../../build-logic/README.md), 대상 모듈 README |
 | 테스트 | [Test](../test/README.md), 대상 모듈 README |
 | TDD 오케스트레이션(멀티 에이전트) | [TDD 오케스트레이션](../orchestration/orchestration-tdd.md), [Test](../test/README.md) |
+| Graphify 설정·그래프 갱신 | [Graphify 운영 가이드](../graphify/README.md) |
 | 디자인시스템 경계 오류 | [`lint/README.md`](../../lint/README.md), [디자인시스템 상세 가이드](../design-system/README.md) |
 | 문서 변경 | 이 문서의 “문서 관리 규칙”, [`docs/README.md`](../README.md) |
 

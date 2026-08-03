@@ -19,3 +19,8 @@ local.properties
 # Serena는 project.yml만 공유하고 로컬 산출물은 비커밋
 /.serena/cache/
 /.serena/memories/
+
+# Graphify는 공유 그래프와 보고서만 추적하고 로컬 캐시·실행 상태는 제외한다.
+/graphify-out/*
+!/graphify-out/graph.json
+!/graphify-out/GRAPH_REPORT.md
