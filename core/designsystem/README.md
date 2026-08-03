@@ -10,7 +10,9 @@ Compose 디자인 foundation과 역할·동작 상태·채팅 모드에 따른 �
 - `primitive`: raw 색상·폰트 리소스. 모듈 내부 `internal`
 - `semantic`: 색상, 타이포그래피, spacing, radius, size, motion, gradient
 - `contextual`: Connection role, BLE activity, Chat mode 매핑
-- `component`: 디자인시스템 소유 컴포넌트군의 전용 토큰
+- `component`: 디자인시스템 소유 컴포넌트군의 전용 토큰과 구현. 첫 컴포넌트는
+  `component/button/ActionButton`(공개 API)과 `ActionButtonDefaults`(internal test
+  tag·치수·토큰 매핑)
 - `icon`: 색상을 내장하지 않은 `AppIcons`
 
 ```mermaid
