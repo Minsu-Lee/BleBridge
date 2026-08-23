@@ -4,21 +4,10 @@ Graphify는 프로젝트의 코드와 문서 관계를 `graphify-out/graph.json`
 Codex가 코드베이스 질문의 탐색 범위를 빠르게 좁히도록 돕습니다. 전체 소스를 대신하는
 정답 저장소가 아니므로, 그래프에서 찾은 관계는 실제 Gradle 설정과 구현으로 확인합니다.
 
-## 신규 환경 설정
+## 로컬 사용 원칙
 
-저장소를 clone한 뒤 Graphify CLI를 사용할 수 있는 환경에서 다음 명령을 한 번 실행합니다.
-
-```bash
-graphify hook install
-graphify hook status
-```
-
-설치 명령은 로컬 저장소에 다음 항목을 설정합니다.
-
-- `post-commit`: 커밋에서 변경된 코드의 그래프를 백그라운드에서 갱신
-- `post-checkout`: 브랜치 전환 후 코드 그래프를 백그라운드에서 갱신
-
-Git hook과 로컬 Git config는 clone으로 전달되지 않으므로 담당자마다 설치해야 합니다.
+`graphify-out/` 전체가 커밋 대상에서 제외되므로 Graphify Git hook은 설치하지 않습니다.
+그래프가 필요한 담당자만 Graphify CLI를 설치하고 수동으로 생성하거나 갱신합니다.
 
 ## 평상시 사용
 
@@ -50,15 +39,8 @@ graphify update .
 워킹트리에만 존재하며 팀원 간 공유되지 않습니다 — 필요하면 `graphify update .`로 로컬에서
 언제든 다시 만들 수 있습니다.
 
-설치된 hook은 커밋과 브랜치 전환을 막지 않도록 백그라운드에서 동작하며 코드 파일만
-구조적으로 갱신합니다. 문서, PDF, 이미지의 의미 분석은 hook 대상이 아니므로 필요한 경우
-`graphify update .`를 별도로 실행합니다.
-
-hook 실행 기록은 다음 위치에서 확인합니다.
-
-```text
-~/.cache/graphify-rebuild.log
-```
+커밋이나 브랜치 전환 시 자동 갱신하지 않습니다. 로컬 그래프가 필요한 시점에만
+`graphify update .`를 실행합니다.
 
 ## 주의사항
 
@@ -66,13 +48,9 @@ hook 실행 기록은 다음 위치에서 확인합니다.
   검증합니다.
 - 전체 그래프를 생성하기 전에 로컬 설정과 비밀 정보가 스캔 대상에 포함되지 않았는지
   확인합니다(비커밋이라 원격에 올라가지는 않지만, 로컬 산출물에도 민감 정보를 남기지 않습니다).
-- rebase, merge, cherry-pick 중에는 hook이 자동 갱신을 건너뜁니다. 작업 완료 후 필요하면
-  `graphify update .`를 실행합니다.
-- 일시적으로 hook을 건너뛸 때는 해당 Git 명령에 `GRAPHIFY_SKIP_HOOK=1`을 지정합니다.
-
-설정 상태 확인과 제거는 다음 명령을 사용합니다.
+- 기존 환경에 hook이 남아 있다면 다음 명령으로 제거합니다.
 
 ```bash
-graphify hook status
 graphify hook uninstall
+graphify hook status
 ```
