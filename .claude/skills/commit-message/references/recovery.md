@@ -53,9 +53,21 @@ git stash list
 
 `git stash drop`을 대신 실행하지 않는다 — 사용자가 내용을 확인한 뒤 판단할 일이다.
 
-> `graphify-out/`이 `.gitignore` 대상이 된 뒤(2026-08-23)로는 이 스킬이 그 디렉터리를 stage·
-> stash하지 않으므로, 비동기 graphify 훅과 `stash pop`이 경합하는 상황 자체가 더 이상 발생하지
-> 않는다.
+> `graphify-out/`이 `.gitignore` 대상이 된 뒤(2026-08-23)로는 이 스킬이 그 디렉터리를 **새로
+> stage·stash하지 않으므로**, 비동기 graphify 훅과 `stash pop`이 경합하는 상황은 그 이후에
+> 만들어진 stash에는 더 이상 발생하지 않는다. 다만 **2026-08-23 이전에 만들어진 기존
+> stash**에는 `graphify-out/`이 추적 대상이던 시절 내용이 그대로 남아 있을 수 있다 —
+> `.gitignore` 전환 이후에도 `git stash pop`은 저장 당시 내용을 그대로 복원하므로, 그런
+> 오래된 stash를 pop하면 지금은 무시 대상인 경로가 다시 워킹트리에 나타나 충돌할 수 있다.
+> pop 전에 다음으로 먼저 확인한다(`--include-untracked` 필수 — 기본 `git stash show`는
+> untracked 항목을 보여주지 않는다):
+>
+> ```bash
+> git stash show --include-untracked --name-only stash@{0} | grep '^graphify-out/'
+> ```
+>
+> 결과가 있으면 그 stash는 예전 경로를 담고 있는 것이니, pop 후 `graphify-out/`에 남은
+> 변경은 커밋하지 말고 그냥 버려도 된다(로컬 재생성으로 대체됨).
 
 ## stash sha 불일치 (5번 ④)
 
