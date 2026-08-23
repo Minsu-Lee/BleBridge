@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: ko-KR
+tone_instructions: >-
+  동료에게 피드백하듯 차분하고 존중하는 톤으로 작성합니다.
+  단정적 지시 대신 제안형 표현을 사용하며, 비판보다는 개선 중심으로 설명합니다.
+  코드 작성자가 학습할 수 있도록 원인과 개선 방법을 근거와 함께 정확히 설명합니다.
+
+reviews:
+  profile: assertive
+  high_level_summary_in_walkthrough: true
+  auto_title_instructions: |
+    Conventional Commits 형식(`<type>(<scope>): <한국어 요약>`)을 사용합니다.
+    type은 feat, fix, refactor, test, docs, chore, build, ci, design, perf 중 변경 목적에 맞게 선택합니다.
+    scope는 변경된 Gradle 모듈이나 저장소 영역을 사용하고 제목은 50자 이내로 간결하게 작성합니다.
+  fail_commit_status: true
+  sequence_diagrams: false
+  suggested_reviewers: false
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - develop
+  path_instructions:
+    - path: "**/*.kt"
+      instructions: |
+        당신은 10년차 시니어 안드로이드 개발자입니다. 아키텍처, 유지보수성, 확장성과 협업을 고려해 리뷰합니다.
+        1. 문제를 지적할 때 원인과 개선 방법을 근거와 함께 설명합니다.
+        2. 반드시 수정해야 할 로직, 성능, 보안, 크래시 가능성은 상세히 리뷰합니다.
+        3. 사소한 컨벤션이나 스타일 개선은 간결하게 제안합니다.
+        4. 변수명과 함수명이 의도를 드러내는지 확인합니다.
+        5. 하드코딩된 비밀번호, API 키, 토큰과 local.properties 값이 포함되지 않았는지 확인합니다.
+        6. `!!`, 미검증 캐스팅과 nullable 경로에서 NPE 또는 크래시 가능성을 확인합니다.
+
+        [Android 리소스 및 생명주기]
+        - ViewModel에서 Activity/Fragment Context를 직접 참조하지 않는지 확인합니다.
+        - GlobalScope 대신 viewModelScope 또는 lifecycleScope를 사용하는지 확인합니다.
+        - Flow 수집이 생명주기를 존중하는지 확인합니다.
+        - BLE scan/GATT/Bluetooth 콜백과 리스너를 등록한 뒤 적절히 해제하는지 확인합니다.
+        - BLE API 호출 전에 권한과 플랫폼 버전을 올바르게 분기하는지 확인합니다.
+
+    - path: "**/feature/**/*.kt"
+      instructions: |
+        [Feature 및 MVI 경계]
+        - feature 모듈이 다른 feature, data 또는 app 모듈을 직접 참조하지 않는지 확인합니다.
+        - Route가 ViewModel과 SideEffect를 연결하고 Screen은 UiState와 콜백만 받는 stateless 구조인지 확인합니다.
+        - 상태 변경은 Intent → Mutation 경로를 따르고 일회성 동작은 SideEffect로 처리하는지 확인합니다.
+        - Composable에서 Repository를 직접 호출하지 않는지 확인합니다.
+        - Feature가 AppTheme foundation token, raw Color, 임의 dp/sp 또는 정책 대상 Material3 API를 직접 사용하지 않고 완성된 디자인시스템 컴포넌트를 사용하는지 확인합니다.
+
+    - path: "**/core/designsystem/**/*.kt"
+      instructions: |
+        [Design System 경계]
+        - Primitive는 internal로 제한하고 공개 API에 raw Color, TextStyle 또는 magic dp를 불필요하게 노출하지 않는지 확인합니다.
+        - Defaults/Tokens가 AppTheme의 공개 Semantic/Contextual 토큰을 조합하는 것은 정상으로 판단합니다.
+        - 컴포넌트가 최소 48dp 터치 영역과 접근성 semantics를 보장하는지 확인합니다.
+        - Server/Client 역할과 Idle/Connecting/Advertising/Scanning 동작 상태를 혼용하지 않는지 확인합니다.
+
+    - path: "**/data/**/*.kt"
+      instructions: |
+        [Data 레이어]
+        - Repository 구현체가 domain 레이어 계약을 구현하고 Android 프레임워크 의존성을 최소화하는지 확인합니다.
+        - DataSource가 네트워크 또는 로컬 저장소 중 하나의 책임에 집중하는지 확인합니다.
+        - 예외 처리 시 CancellationException을 반드시 다시 던지는지 확인합니다.
+        - 외부 응답 모델과 domain 모델 사이의 mapper가 명확히 분리되어 있는지 확인합니다.
+
+    - path: "**/domain/**/*.kt"
+      instructions: |
+        [Domain 레이어]
+        - Android 프레임워크와 data 구현에 의존하지 않는지 확인합니다.
+        - UseCase가 단일 책임을 가지며 Repository 인터페이스가 구현 세부사항을 노출하지 않는지 확인합니다.
+
+    - path: "**/src/test/**/*.kt"
+      instructions: |
+        [JVM 유닛 테스트]
+        - JUnit 5(Jupiter), MockK, kotlinx-coroutines-test와 Turbine 사용이 프로젝트 규칙과 일치하는지 확인합니다.
+        - ViewModel 테스트가 MainDispatcherExtension을 사용하고 runTest에 동일한 dispatcher를 전달하는지 확인합니다.
+        - StateFlow state는 value로, 일회성 SideEffect는 Turbine으로 검증하는지 확인합니다.
+        - 성공, 실패, 취소와 예외 케이스가 균형 있게 포함되는지 확인합니다.
+
+    - path: "**/src/androidTest/**/*.kt"
+      instructions: |
+        [Android 계측 및 Compose UI 테스트]
+        - JUnit 4(org.junit.Test, @get:Rule)를 사용하고 JUnit 5 애너테이션을 혼용하지 않는지 확인합니다.
+        - Screen을 ViewModel이나 Hilt 없이 UiState와 콜백으로 직접 렌더하는지 확인합니다.
+        - 문자열 하드코딩 대신 컴포넌트 Defaults의 test tag를 사용하는지 확인합니다.
+        - 자동 검증에서는 assembleDebugAndroidTest가 컴파일 게이트이며 connectedDebugAndroidTest는 기기가 필요한 수동 검증임을 고려합니다.
+
+knowledge_base:
+  web_search:
+    enabled: true
+
+code_generation:
+  docstrings:
+    language: ko-KR
+  unit_tests:
+    path_instructions:
+      - path: "**/src/test/**/*.kt"
+        instructions: >-
+          JUnit 5(Jupiter), MockK, kotlinx-coroutines-test와 Turbine을 사용합니다.
+          ViewModel 테스트는 MainDispatcherExtension으로 Dispatchers.Main을 설치합니다.
+      - path: "**/src/androidTest/**/*.kt"
+        instructions: >-
+          Android 계측 및 Compose UI 테스트는 JUnit 4와 AndroidJUnitRunner를 사용합니다.
+          JUnit 5 애너테이션을 사용하지 않습니다.
+
+issue_enrichment:
+  auto_enrich:
+    enabled: true

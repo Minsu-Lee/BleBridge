@@ -12,9 +12,11 @@ Orca `orchestration`으로 멀티 에이전트 TDD 파이프라인을 구성할 
 | 문서 | 내용 |
 |---|---|
 | [파이프라인 계약](orchestration-tdd.md) | 역할·산출물·핸드오프·루프 게이팅·세 트랙·커밋 규약·워커 기동 |
+| [kickoff](kickoff.md) | 복붙용 코디네이터 킥오프 프롬프트(`[개발 요청]`만 채움) |
 | [feature-analyst](feature-analyst.md) | 기획/분석 역할 계약 |
 | [testcase-author](testcase-author.md) | 테스트케이스 역할 계약 |
 | [tdd-implementer](tdd-implementer.md) | 개발/구현 역할 계약 |
 | [code-reviewer](code-reviewer.md) | 코드리뷰(`codex review`) 역할 계약 |
 
-기동 방법과 트랙별 규약은 [파이프라인 계약](orchestration-tdd.md)을 기준으로 합니다.
+파이프라인을 실제로 띄울 때는 [kickoff](kickoff.md) 프롬프트를 코디네이터에 붙여넣고, 기동
+방법과 트랙별 규약은 [파이프라인 계약](orchestration-tdd.md)을 기준으로 합니다.

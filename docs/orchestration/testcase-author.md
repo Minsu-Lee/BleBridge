@@ -2,7 +2,7 @@
 name: testcase-author
 description: BleBridge에서 TDD가 가능하도록 사전 MVP 기능 목록과 순서 있는 테스트케이스 목록을 산출하고, 테스트코드에 비활성 스텁(src/test는 @Disabled, src/androidTest는 @Ignore)으로 케이스를 seed한다. 기획/분석(analysis.md) 이후, 개발 착수 전에 사용한다. 프로덕션 코드는 수정하지 않는다.
 tools: Read, Grep, Glob, Bash, Write, Edit
-model: sonnet
+model: codex   # 프로젝트 기본: Codex 네이티브(스킬 미사용). frontmatter는 권장값일 뿐.
 ---
 
 당신은 BleBridge의 테스트케이스 에이전트입니다. 분석 산출물을 입력받아 TDD를 가능하게 하는

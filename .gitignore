@@ -16,3 +16,10 @@ build/
 local.properties
 # Orca 멀티 에이전트 TDD 파이프라인 작업 산출물 (비커밋)
 /.orca/
+# Serena는 project.yml만 공유하고 로컬 산출물은 비커밋
+/.serena/cache/
+/.serena/memories/
+
+# Graphify 산출물은 커밋마다 재생성되는 로컬 전용 결과라 통째로 제외한다
+# (PR마다 graph.json/GRAPH_REPORT.md가 충돌하는 문제를 예방, 2026-08-23).
+/graphify-out/

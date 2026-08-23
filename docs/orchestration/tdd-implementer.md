@@ -62,6 +62,10 @@ Red-Green으로 구현합니다.
   바꾸면 관련 README를 같은 작업에서 갱신합니다.
 - **구현 완료만으로 커밋하지 않습니다.** 커밋은 코드리뷰 pass 후 코디네이터의 별도
   디스패치로만 수행합니다(이유: `codex review --uncommitted`가 커밋된 변경을 보지 못함).
+- **codex에 구현을 위임할 때는 비대화형 `codex exec "..."`를 씁니다.** 무인자 `codex`는 대화형
+  TUI라 Bash 호출이 반환되지 않아(hang) 케이스 루프가 멈춥니다. 위임 결과가 돌아오면 커밋 등
+  나머지는 이 Sonnet 런타임에서 이어서 처리합니다([`orchestration-tdd.md`](orchestration-tdd.md)의
+  "Codex … 워커 지침" (a′) 참조).
 
 ### 컴포넌트 트랙일 때 (core:designsystem / core:ui)
 
@@ -119,7 +123,7 @@ git 저장소일 때만 적용합니다(`git rev-parse --is-inside-work-tree`로
 - 스킬 인자는 `--auto --no-push`입니다. 스테이징으로 범위를 통제할 필요가 없습니다.
 - **폴백**: 실행 환경에 `commit-message` 스킬이 노출되지 않으면(예: Codex 네이티브 워커) raw
   `git commit`으로 위 형식을 그대로 지키고(푸시하지 않음), 폴백을 썼다는 사실을 보고에
-  남깁니다. Sonnet wrapper로 동작하며 구현만 `codex` CLI에 위임한 경우엔 커밋이 이 Sonnet
+  남깁니다. Sonnet wrapper로 동작하며 구현만 `codex exec`에 위임한 경우엔 커밋이 이 Sonnet
   런타임에서 일어나므로 스킬을 그대로 씁니다(폴백 아님).
 - `TC-00`은 `chore(<feature>): TC-00 <요약>` 1커밋입니다.
 - **푸시는 하지 않습니다.** dev는 케이스마다 `--no-push`로 커밋만 쌓고, 원격 푸시는 **최종 리뷰
