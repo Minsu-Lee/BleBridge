@@ -107,7 +107,13 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 ## 작업 브랜치 준비 (착수 전 precondition)
 
 이 프로젝트는 **gitflow**를 씁니다. 개발 케이스를 디스패치하기 전에 **코디네이터가 작업
-브랜치를 확정**합니다. 보호 브랜치(`main`/`master`/`develop`)에 직접 커밋하지 않습니다.
+브랜치를 확정**합니다(단, 컴포넌트 트랙은 `feature-analyst`가 직접 생성 — 아래 델타 참조).
+보호 브랜치(`main`/`master`/`develop`)에 직접 커밋하지 않습니다.
+
+- **선행 정리**: 새 작업 브랜치를 만들기 전 워킹트리에 이번 작업과 무관한 uncommitted 변경이
+  있으면(다른 진행 중 작업 등) `git stash push -u -m "<사유>"`로 빼둡니다. 스택에 넣었다는 사실을
+  진행 로그에 남기고, **자동으로 `stash pop`하지 않습니다** — 원래 그 변경을 만든 작업자가
+  직접 복원합니다(2026-08-23 확정).
 
 - **브랜치 전환 시점**: 워커 4개는 같은 worktree를 공유하므로 브랜치 전환은 전 터미널에
   동시 반영됩니다. 따라서 **작업 브랜치 전환은 워커 기동 전(또는 최소한 첫 커밋 전)**에
@@ -124,7 +130,10 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 - feature 트랙: `feature/<feature>` 브랜치를 생성/확인. **Orca worktree로 이미 전용 브랜치가
   있으면 그것을 재사용**하고 중복 생성하지 않습니다.
 - 컴포넌트 트랙: 각 컴포넌트 프롬프트가 지정한 브랜치를 씁니다
-  (`feature/designsystem/<x>`, `feature/ui/<x>`). 역시 `develop`에서 땁니다.
+  (`feature/designsystem/<x>`, `feature/ui/<x>`). 역시 `develop`에서 땁니다. 브랜치 생성은
+  다른 트랙과 동일하게 **코디네이터가 워커 기동 전에** 확정합니다(`feature-analyst`
+  디스패치 시점에는 이미 대상 브랜치 위에 있어야 함, 2026-08-23 재확인 — 코디네이터 주체
+  유지로 확정).
 - **기준 브랜치 확정**: 최종 리뷰 `codex review --base <기준브랜치>`의 base는 **작업 브랜치가
   갈라져 나온 부모**입니다 — feature·release·컴포넌트 트랙은 `origin/develop`, hotfix는
   `origin/main`. `origin/main`으로 고정하면 `develop`이 앞선 만큼의 남의 커밋까지 diff에
@@ -134,8 +143,14 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
   브랜치 준비는 착수 전 precondition입니다.
 - **최종 푸시(파이프라인 끝 1회)**: 케이스가 모두 끝나 최종 리뷰까지 통과하면 코디네이터가
   작업 브랜치를 **한 번** 푸시합니다(첫 푸시는 `-u origin <브랜치>`, `--force` 금지, 거부되면
-  재시도·rebase 없이 보고). 이후 작업 브랜치를 **`develop`으로 머지**합니다(`main` 직행 금지).
-  릴리스 시 `develop` → `main`은 사용자가 판단합니다.
+  재시도·rebase 없이 보고). **케이스가 1개뿐인 컴포넌트 트랙도 이 단계를 생략하지 않습니다**
+  — 케이스별 리뷰가 이미 pass했더라도 "모든 케이스 완료" 시점의 최종 전체 리뷰(아래 "케이스
+  루프 게이팅" 5단계)와 푸시는 별개로 반드시 수행합니다(2026-08-23 확정 — action-button 1차
+  실행에서 로컬 커밋 직후 자동화가 멈추고 push/PR/머지를 사용자가 수동으로 했던 것을 갭으로
+  식별해 반영). 푸시 직후 코디네이터가 `gh pr create --base develop`로 PR을 엽니다(제목은
+  커밋 메시지 요약, 본문에 analysis/testcases 요약과 최종 리뷰 결과 경로를 담음). **PR 생성까지가
+  자동화 범위이며, `develop`으로의 머지는 자동 수행하지 않고 사용자가 GitHub에서 직접
+  합니다.** 릴리스 시 `develop` → `main`도 마찬가지로 사용자가 판단합니다.
 
 ## 산출물 규약 (비커밋: `/.orca/plan/<feature>/`)
 
@@ -197,10 +212,14 @@ pass 이후에 커밋을 별도 디스패치합니다(이유는 아래 "리뷰-�
      `--auto --no-push`로 **커밋만**) → 완료 보고를 받으면 코디네이터가 `testcases.md`의 케이스
      N을 `[x]`로 갱신 → 케이스 N+1 디스패치.
    - **이슈** → dev에 수정 재디스패치. 수정 후 3번으로 돌아갑니다.
-5. 모든 케이스 완료 후 코디네이터가 `code-reviewer`에 **최종 전체 리뷰 1회** 디스패치.
+5. 모든 케이스 완료 후 코디네이터가 `code-reviewer`에 **최종 전체 리뷰 1회** 디스패치
+   (`codex review --base <기준브랜치>`). **컴포넌트 트랙처럼 케이스가 1개뿐이어도 이 단계를
+   건너뛰지 않습니다** — 케이스 리뷰(`--uncommitted`)는 개별 diff만 보고, 이 최종 리뷰는 커밋
+   후 기준 브랜치 대비 전체 diff를 봅니다.
 6. 최종 리뷰까지 pass면 코디네이터가 **최종 푸시 1회**(작업 브랜치를 `git push`, 첫 푸시는
-   `-u origin <브랜치>`). 케이스별로는 `--no-push`라 이때 처음 원격에 올라갑니다. 이후
-   `develop` 머지 판단으로 넘어갑니다("작업 브랜치 준비"의 머지 규약).
+   `-u origin <브랜치>`). 케이스별로는 `--no-push`라 이때 처음 원격에 올라갑니다. 곧이어
+   `gh pr create --base develop`로 PR을 엽니다 — **PR 생성까지가 자동화 범위**이고, `develop`
+   머지는 사용자가 직접 판단·수행합니다("작업 브랜치 준비"의 머지 규약).
 
 ### 상태 마커 소유권
 
