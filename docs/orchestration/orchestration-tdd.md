@@ -107,7 +107,7 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
 ## 작업 브랜치 준비 (착수 전 precondition)
 
 이 프로젝트는 **gitflow**를 씁니다. 개발 케이스를 디스패치하기 전에 **코디네이터가 작업
-브랜치를 확정**합니다(단, 컴포넌트 트랙은 `feature-analyst`가 직접 생성 — 아래 델타 참조).
+브랜치를 확정**합니다. 컴포넌트 트랙도 코디네이터가 워커 기동 전에 생성·확정합니다.
 보호 브랜치(`main`/`master`/`develop`)에 직접 커밋하지 않습니다.
 
 - **선행 정리**: 새 작업 브랜치를 만들기 전 워킹트리에 이번 작업과 무관한 uncommitted 변경이
