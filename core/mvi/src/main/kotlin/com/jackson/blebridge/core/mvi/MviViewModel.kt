@@ -13,6 +13,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,14 +37,16 @@ abstract class MviViewModel<
     private val _sideEffect = Channel<SIDE_EFFECT>(Channel.BUFFERED)
     val sideEffect: Flow<SIDE_EFFECT> = _sideEffect.receiveAsFlow()
 
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Timber.e(throwable)
+    }
+
     abstract fun handleIntent(intent: INTENT)
 
     protected abstract fun reduce(state: STATE, mutation: MUTATION): STATE
 
-    protected fun intent(block: suspend MviActionScope.() -> Unit) {
-        viewModelScope.launch(
-            CoroutineExceptionHandler { _, throwable -> Timber.e(throwable) },
-        ) {
+    protected fun intent(block: suspend MviActionScope.() -> Unit): Job {
+        return viewModelScope.launch(exceptionHandler) {
             MviActionScope().block()
         }
     }
@@ -60,7 +63,11 @@ abstract class MviViewModel<
         val lifecycleOwner = LocalLifecycleOwner.current
         val callback by rememberUpdatedState(onEffect)
 
-        LaunchedEffect(sideEffect, lifecycleOwner) {
+        LaunchedEffect(
+            sideEffect,
+            lifecycleOwner,
+            lifecycleState
+        ) {
             lifecycleOwner.lifecycle.repeatOnLifecycle(lifecycleState) {
                 sideEffect.collect { callback(it) }
             }
@@ -70,7 +77,7 @@ abstract class MviViewModel<
     protected inner class MviActionScope {
         val state: STATE get() = _state.value
 
-        suspend fun applyMutation(mutation: MUTATION) {
+        fun applyMutation(mutation: MUTATION) {
             _state.update { reduce(it, mutation) }
         }
 
