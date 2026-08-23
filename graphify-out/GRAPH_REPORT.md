@@ -1,16 +1,16 @@
-# Graph Report - BleBridge  (2026-08-04)
+# Graph Report - BleBridge  (2026-08-23)
 
 ## Corpus Check
-- 218 files · ~93,992 words
+- 218 files · ~94,181 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1018 nodes · 1441 edges · 117 communities (77 shown, 40 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 178 edges (avg confidence: 0.82)
+- 1017 nodes · 1462 edges · 113 communities (79 shown, 34 thin omitted)
+- Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 199 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `45717afd`
+- Built from commit: `1c721e46`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,7 +18,7 @@
 - 프로젝트 문서 인덱스
 - MviViewModel
 - build-logic/README.md
-- CatFactRepositoryImplTest
+- NetworkError
 - Common Component Roadmap
 - graphify skill (Codex integration)
 - BLETransferApp Design Canvas
@@ -27,7 +27,7 @@
 - FeatureDesignSystemDetectorTest
 - AGENTS.md agent instructions document
 - AppTheme
-- CatFactApi
+- CatFactRepositoryImplTest
 - graphify query/path/explain reference
 - CodeRabbit review configuration (.coderabbit.yaml)
 - ChatHeaderTitle
@@ -38,15 +38,15 @@
 - TDD 오케스트레이션 파이프라인 계약
 - ActionButtonSize
 - SplashViewModel
-- GetCatFactsPageUseCase
+- SampleViewModel
 - AndroidApplicationConventionPlugin
 - Extraction subagent prompt template (rules + schema)
 - SampleCatsScreen
 - CatFact
 - FakeRandomCatFactRepository
-- CatFactRepositoryImpl
+- SampleScreen
 - ChatContext
-- SampleCatsAppendError
+- SampleError
 - CatFactPage
 - AppIcons.kt
 - ConnectionRole
@@ -104,19 +104,15 @@
 - App launcher icon (xxxhdpi density) — Android app icon image asset for the highest-density mipmap bucket
 - App launcher icon (round, xxxhdpi): blue circular badge with a stylized Wi-Fi/signal wave and dot symbol, representing the BleBridge app icon at the xxxhdpi density for round icon variants
 - CatFactItem
-- SampleCatsAppendLoading
+- SampleErrorContent
 - NeveraResult
-- SampleCatsErrorContent
+- SampleMutation
 - AppTypography
-- AppColors
-- AppGradients
 - Graphify 운영 가이드
-- Spacing
-- Color
 - delegate-to-codex.sh
 
 ## God Nodes (most connected - your core abstractions)
-1. `AppTheme()` - 40 edges
+1. `AppTheme()` - 48 edges
 2. `BLETransferApp Design Canvas` - 38 edges
 3. `CatFact` - 20 edges
 4. `graphify skill (Codex integration)` - 19 edges
@@ -132,12 +128,12 @@
   .coderabbit.yaml → .codex/skills/graphify/SKILL.md
 - `MainScreen()` --calls--> `Text`  [INFERRED]
   feature/main/src/main/kotlin/com/jackson/blebridge/feature/main/MainScreen.kt → core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButton.kt
-- `SampleCatsAppendError()` --calls--> `Text`  [INFERRED]
-  feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsAppendError.kt → core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButton.kt
 - `SampleCatsErrorContent()` --calls--> `Text`  [INFERRED]
   feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/cats/component/state/SampleCatsErrorContent.kt → core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButton.kt
 - `SampleCatsScreen()` --calls--> `Text`  [INFERRED]
   feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsScreen.kt → core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButton.kt
+- `SampleErrorContent()` --calls--> `Text`  [INFERRED]
+  feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/component/state/SampleErrorContent.kt → core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButton.kt
 
 ## Import Cycles
 - None detected.
@@ -166,23 +162,23 @@
 - **채팅 화면을 구성하는 core:ui 컴포넌트군 (ChatChrome/MessageBubble/ChatInput/TransferCard)** — docs_design_ui_02_chat_chrome_chatheadertitle, docs_design_ui_03_message_bubble_messagebubble, docs_design_ui_05_chat_input_chatinput, docs_design_ui_04_transfer_card_transfercard [INFERRED 0.85]
 - **Feature 화면 아키텍처 컨벤션 문서군 (Feature UI/Navigation/Feature 모듈 그룹)** — docs_feature_readme_featureuiconvention, docs_navigation_readme_navigationconvention, feature_readme_featuremodulegroup [INFERRED 0.75]
 
-## Communities (117 total, 40 thin omitted)
+## Communities (113 total, 34 thin omitted)
 
 ### Community 0 - "프로젝트 문서 인덱스"
 Cohesion: 0.05
 Nodes (70): app 모듈, Convention Plugin: blebridge.android.compose, Convention Plugin: blebridge.android.hilt, Convention Plugin: blebridge.android.library, Convention Plugin: blebridge.kotlin.jvm, Build logic 문서 (build-logic/README.md), core:common 모듈, NetworkError (+62 more)
 
 ### Community 1 - "MviViewModel"
-Cohesion: 0.05
-Nodes (39): MviActionScope, MviViewModel, Modifier, message(), SampleErrorContent(), SampleErrorContentPreview(), CatsClicked, Initialize (+31 more)
+Cohesion: 0.16
+Nodes (10): MviActionScope, MviViewModel, Flow, INTENT, Lifecycle, MUTATION, SIDE_EFFECT, STATE (+2 more)
 
 ### Community 2 - "build-logic/README.md"
 Cohesion: 0.07
 Nodes (51): Allowed: feature routes, data DI bindings, top-level design system application; Forbidden: direct repository impl calls, business rules, feature UI implementation, app uses Convention Plugin blebridge.android.application, debug variant bundles feature:sample/data:sample and registers blebridge-debug://sample deep link to a random Cat Fact screen, BleBridgeApplication (Hilt app), MainActivity (system splash + Compose entry), BleBridgeApp (assembles SplashRoute/MainRoute), Other modules must not depend on app, app module purpose: assemble APK, Application, Activity, Hilt graph, Compose NavHost, release build: R8 minify/shrink enabled; proguard-rules.pro keeps stacktrace, Kotlin metadata, domain/core:common, @HiltViewModel; Hilt/coroutines/kotlinx.serialization/Navigation Compose covered by bundled consumer proguard rules so no extra rules added, Common Android settings: compile SDK 37, min SDK 30, Java 17; Application uses target SDK 36 (+43 more)
 
-### Community 3 - "CatFactRepositoryImplTest"
-Cohesion: 0.08
-Nodes (12): EmptyBodyError, HttpError, InvalidResponseError, NetworkConnectionError, NetworkError, TimeoutError, UnknownError, ApiCallExecutor (+4 more)
+### Community 3 - "NetworkError"
+Cohesion: 0.11
+Nodes (10): EmptyBodyError, HttpError, InvalidResponseError, NetworkConnectionError, NetworkError, TimeoutError, UnknownError, ApiCallExecutor (+2 more)
 
 ### Community 4 - "Common Component Roadmap"
 Cohesion: 0.08
@@ -200,6 +196,10 @@ Nodes (39): BLETransferApp Design Canvas, Action Button component, Activity Indi
 Cohesion: 0.07
 Nodes (38): /graphify trigger routes to graphify skill, pre-commit 훅 재포맷 흡수 절차, 경로별 Conventional Commits type 힌트, 검증/커밋/stash pop 실패 복구와 중단 보고, commit-message: gitflow protected-branch guard, commit-message skill, commit-message: Conventional Commits type/scope 규칙, commit-message: 최종 1회 푸시 단계 (+30 more)
 
+### Community 8 - "ActionButtonTest"
+Cohesion: 0.19
+Nodes (7): ActionButtonTest, Color, ActionButton(), ActionButtonPreviewContent(), ImageVector, Modifier, ConnectionRoleProvider()
+
 ### Community 9 - "FeatureDesignSystemDetectorTest"
 Cohesion: 0.09
 Nodes (12): Issue, JavaContext, FeatureDesignSystemDetector, UElementHandler, Detector, FeatureDesignSystemDetectorTest, Detector, LintDetectorTest (+4 more)
@@ -209,12 +209,12 @@ Cohesion: 0.14
 Nodes (21): docs/design/BLETransferApp.dc.html and component prompts are target design, may be ahead of current code, Consult docs/agent/README.md for structural change, multi-module work, or doc conflicts, Select only needed docs from docs/README.md per task, AGENTS.md agent instructions document, Dirty graphify-out/ files after hooks/incremental updates are expected, not a reason to skip graphify, graphify-out/ knowledge graph usage: prefer query/path/explain over GRAPH_REPORT.md or raw grep, /graphify slash command triggers installed graphify skill/instructions first, Check target module's README first before editing (+13 more)
 
 ### Community 11 - "AppTheme"
-Cohesion: 0.15
-Nodes (7): AppThemeTest, contrastRatio(), Color, AppTheme(), IconSize, Radius, ControlSize
+Cohesion: 0.11
+Nodes (10): AppThemeTest, contrastRatio(), Color, AppTheme(), AppColors, AppGradients, IconSize, Radius (+2 more)
 
-### Community 12 - "CatFactApi"
-Cohesion: 0.14
-Nodes (9): CatFactApi, bindCatFactRepository(), CatFactNetworkModule, CatFactRepository, CatFactPageResponse, CatFactResponse, OkHttpClient, Response (+1 more)
+### Community 12 - "CatFactRepositoryImplTest"
+Cohesion: 0.07
+Nodes (13): CatFactApi, bindCatFactRepository(), CatFactNetworkModule, CatFactRepository, CatFactPageResponse, CatFactResponse, CatFactRepositoryImpl, CatFactRepository (+5 more)
 
 ### Community 13 - "graphify query/path/explain reference"
 Cohesion: 0.19
@@ -229,15 +229,15 @@ Cohesion: 0.18
 Nodes (15): 03 Message Bubble Screenshot, 05-chat-input.png - ChatInput core:ui component screenshot, DeviceListItem, DeviceListItem UI Screenshot, ChatHeaderTitle, ConnectionRoleBadge, DateDivider, MessageBubble (+7 more)
 
 ### Community 16 - "MainViewModel"
-Cohesion: 0.06
-Nodes (23): MviIntent, MviMutation, MviSideEffect, MviState, MainScreenTest, Modifier, MainRoute(), MainScreen() (+15 more)
+Cohesion: 0.05
+Nodes (24): MviIntent, MviMutation, MviSideEffect, MviState, MainScreenTest, Modifier, MainRoute(), MainScreen() (+16 more)
 
 ### Community 17 - "RandomCatFactFailure"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (12): header(), toRandomCatFactFailure(), Client, EmptyBody, InvalidResponse, Network, RandomCatFactFailure, RateLimited (+4 more)
 
 ### Community 18 - "CatFactPagingSourceTest"
-Cohesion: 0.32
+Cohesion: 0.34
 Nodes (4): CatFactPagingSourceTest, FakeCatFactRepository, CatFactRepository, PagingSource
 
 ### Community 19 - "ConnectionActivityStatus"
@@ -256,9 +256,9 @@ Nodes (8): ActionButtonSize, Compact, Default, FullWidth, ActionButtonColors, Ac
 Cohesion: 0.05
 Nodes (25): BleBridgeApp(), Modifier, MainActivity, Bundle, ComponentActivity, ProviderModule, AndroidAppInfoProvider, AppInfoProvider (+17 more)
 
-### Community 23 - "GetCatFactsPageUseCase"
-Cohesion: 0.20
-Nodes (4): GetCatFactsPageUseCase, CatFactRepository, SampleCatsViewModelTest, CatFactRepository
+### Community 23 - "SampleViewModel"
+Cohesion: 0.26
+Nodes (6): CatsClicked, Initialize, RetryClicked, SampleIntent, SampleViewModel, toUiError()
 
 ### Community 24 - "AndroidApplicationConventionPlugin"
 Cohesion: 0.20
@@ -269,36 +269,40 @@ Cohesion: 0.24
 Nodes (11): Confidence rubric: EXTRACTED=1.0, INFERRED={0.95..0.55}, AMBIGUOUS=0.1-0.3, graphify reference: extraction subagent prompt (compact), Hyperedge rule: 3+ nodes sharing concept/flow/pattern, max 3 per chunk, Required output JSON schema (nodes/edges/hyperedges/tokens), Node ID format: {stem}_{entity}, full repo-relative path stem, semantically_similar_to rule for non-structural shared-problem concepts, Extraction subagent prompt template (rules + schema), Step 3 - Extract entities and relationships (structural + semantic) (+3 more)
 
 ### Community 26 - "SampleCatsScreen"
-Cohesion: 0.31
-Nodes (7): Modifier, LoadingContent(), Modifier, SampleCatsRoute(), SampleCatsScreen(), SampleCatsScreenPreview(), LazyPagingItems
+Cohesion: 0.20
+Nodes (11): Modifier, SampleCatsAppendLoading(), SampleCatsAppendLoadingPreview(), Modifier, SampleCatsErrorContent(), SampleCatsErrorContentPreview(), Modifier, SampleCatsRoute() (+3 more)
 
 ### Community 27 - "CatFact"
-Cohesion: 0.24
-Nodes (6): CatFact, CatFactPagingSource, PagingSource, LoadParams, LoadResult, PagingState
+Cohesion: 0.18
+Nodes (8): CatFact, CatFactPagingSource, PagingSource, CatFactRepository, CatFactRepository, LoadParams, LoadResult, PagingState
 
 ### Community 28 - "FakeRandomCatFactRepository"
 Cohesion: 0.24
 Nodes (4): GetRandomCatFactUseCase, FakeRandomCatFactRepository, CatFactRepository, SampleViewModelTest
 
+### Community 29 - "SampleScreen"
+Cohesion: 0.25
+Nodes (7): Modifier, LoadingContent(), SampleUiState, Modifier, SampleRoute(), SampleScreen(), SampleScreenPreview()
+
 ### Community 30 - "ChatContext"
 Cohesion: 0.36
 Nodes (9): ChatColors, ChatContext(), ChatMode, Classic, DeveloperHybrid, Terminal, ChatModeProvider(), ChatTokens (+1 more)
 
-### Community 31 - "SampleCatsAppendError"
-Cohesion: 0.67
-Nodes (3): Modifier, SampleCatsAppendError(), SampleCatsAppendErrorPreview()
+### Community 31 - "SampleError"
+Cohesion: 0.20
+Nodes (10): Client, EmptyBody, InvalidResponse, Network, RateLimited, SampleError, Server, Timeout (+2 more)
 
 ### Community 32 - "CatFactPage"
-Cohesion: 0.22
-Nodes (3): toDomain(), CatFactPage, CatFactRepository
+Cohesion: 0.17
+Nodes (4): toDomain(), CatFactPage, CatFactRepository, GetCatFactsPageUseCase
 
 ### Community 33 - "AppIcons.kt"
 Cohesion: 0.48
 Nodes (6): AppIcons, fill(), ImageVector, stroke(), svgIcon(), SvgPath
 
 ### Community 34 - "ConnectionRole"
-Cohesion: 0.48
-Nodes (6): ConnectionRole, Client, Server, ConnectionRoleColors, ConnectionRoleProvider(), forRole()
+Cohesion: 0.47
+Nodes (5): ConnectionRole, Client, Server, ConnectionRoleColors, forRole()
 
 ### Community 35 - "LoadingDots"
 Cohesion: 0.38
@@ -313,8 +317,8 @@ Cohesion: 0.25
 Nodes (9): Step 8 - Token reduction benchmark (graphify benchmark, >5000 words), graphify reference: extra exports and benchmark, Step 7a - FalkorDB export / push (OpenCypher, GRAPH.QUERY), Step 7c - GraphML export (graphify export graphml), Step 7d - MCP stdio server (query_graph, get_node, get_neighbors, god_nodes, shortest_path...), Step 7 - Neo4j export / push (Cypher, MERGE, bolt://), Step 7b - SVG export (graphify export svg), Step 6b - Wiki export (graphify export wiki) (+1 more)
 
 ### Community 38 - "Text"
-Cohesion: 0.27
-Nodes (9): ActionButton(), ActionButtonPreviewContent(), ActionButtonStyle, Destructive, Neutral, RolePrimary, Text, ImageVector (+1 more)
+Cohesion: 0.25
+Nodes (8): ActionButtonStyle, Destructive, Neutral, RolePrimary, Text, Modifier, SampleCatsAppendError(), SampleCatsAppendErrorPreview()
 
 ### Community 39 - "MainDispatcherExtension"
 Cohesion: 0.33
@@ -388,17 +392,17 @@ Nodes (6): Debounce (default 3s) before triggering rebuild, graphify reference: 
 Cohesion: 0.50
 Nodes (4): CatFactItem(), CatFactItemDefaults, CatFactItemPreview(), Modifier
 
-### Community 107 - "SampleCatsAppendLoading"
-Cohesion: 0.67
-Nodes (3): Modifier, SampleCatsAppendLoading(), SampleCatsAppendLoadingPreview()
+### Community 107 - "SampleErrorContent"
+Cohesion: 0.60
+Nodes (4): Modifier, message(), SampleErrorContent(), SampleErrorContentPreview()
 
 ### Community 108 - "NeveraResult"
 Cohesion: 0.42
 Nodes (10): Failure, T, map(), mapFailure(), mapSuccess(), NeveraResult, Success, E (+2 more)
 
-### Community 109 - "SampleCatsErrorContent"
-Cohesion: 0.67
-Nodes (3): Modifier, SampleCatsErrorContent(), SampleCatsErrorContentPreview()
+### Community 109 - "SampleMutation"
+Cohesion: 0.40
+Nodes (4): Failed, Loaded, Loading, SampleMutation
 
 ### Community 113 - "Graphify 운영 가이드"
 Cohesion: 0.33
@@ -407,22 +411,22 @@ Nodes (5): Graphify 운영 가이드, 신규 환경 설정, 자동 갱신과 커
 ## Knowledge Gaps
 - **190 isolated node(s):** `delegate-to-codex.sh script`, `HttpError`, `NetworkConnectionError`, `TimeoutError`, `EmptyBodyError` (+185 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AppTheme()` connect `AppTheme` to `MviViewModel`, `MainViewModel`, `ConnectionActivityStatus`, `SplashViewModel`, `SampleCatsScreen`, `ChatContext`, `SampleCatsAppendError`, `AppIcons.kt`, `ConnectionRole`, `LoadingDots`, `SplashBrandContent`, `MediaTokens`, `Motion`, `SplashContent`, `CatFactItem`, `SampleCatsAppendLoading`, `SampleCatsErrorContent`, `AppTypography`, `AppColors`, `AppGradients`, `Spacing`?**
-  _High betweenness centrality (0.083) - this node is a cross-community bridge._
-- **Why does `CatFact` connect `CatFact` to `CatFactPage`, `MviViewModel`, `CatFactRepositoryImplTest`, `CatFactPagingSourceTest`, `GetCatFactsPageUseCase`, `SampleCatsScreen`, `FakeRandomCatFactRepository`, `CatFactRepositoryImpl`?**
-  _High betweenness centrality (0.072) - this node is a cross-community bridge._
-- **Why does `NeveraResult` connect `NeveraResult` to `CatFactPage`, `CatFactRepositoryImplTest`, `CatFactPagingSourceTest`, `GetCatFactsPageUseCase`, `FakeRandomCatFactRepository`, `CatFactRepositoryImpl`?**
-  _High betweenness centrality (0.036) - this node is a cross-community bridge._
-- **Are the 25 inferred relationships involving `AppTheme()` (e.g. with `.onCreate()` and `.`BLE 동작 상태는 역할과 독립된 semantic color를 제공한다`()`) actually correct?**
-  _`AppTheme()` has 25 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `AppTheme()` connect `AppTheme` to `AppIcons.kt`, `ConnectionRole`, `LoadingDots`, `SplashBrandContent`, `SplashContent`, `Text`, `SampleCatsScreen`, `ActionButtonTest`, `CatFactItem`, `SampleErrorContent`, `AppTypography`, `MainViewModel`, `ConnectionActivityStatus`, `SplashViewModel`, `MediaTokens`, `Motion`, `SampleScreen`, `ChatContext`?**
+  _High betweenness centrality (0.095) - this node is a cross-community bridge._
+- **Why does `CatFact` connect `CatFact` to `CatFactPage`, `CatFactRepositoryImplTest`, `RandomCatFactFailure`, `CatFactPagingSourceTest`, `SampleCatsScreen`, `FakeRandomCatFactRepository`, `SampleScreen`?**
+  _High betweenness centrality (0.079) - this node is a cross-community bridge._
+- **Why does `SampleViewModel` connect `SampleViewModel` to `MviViewModel`, `SampleMutation`, `MainViewModel`, `FakeRandomCatFactRepository`, `SampleScreen`?**
+  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+- **Are the 33 inferred relationships involving `AppTheme()` (e.g. with `.onCreate()` and `.`Compact 크기를 포함한 모든 size에서 최소 48dp 터치 영역을 보장한다`()`) actually correct?**
+  _`AppTheme()` has 33 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `delegate-to-codex.sh script`, `HttpError`, `NetworkConnectionError` to the rest of the system?**
   _190 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `프로젝트 문서 인덱스` be split into smaller, more focused modules?**
   _Cohesion score 0.053830227743271224 - nodes in this community are weakly interconnected._
-- **Should `MviViewModel` be split into smaller, more focused modules?**
-  _Cohesion score 0.05200501253132832 - nodes in this community are weakly interconnected._
+- **Should `build-logic/README.md` be split into smaller, more focused modules?**
+  _Cohesion score 0.06753246753246753 - nodes in this community are weakly interconnected._
