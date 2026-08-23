@@ -92,8 +92,7 @@ diff가 크면 전문 대신 `--stat`과 파일별 요약으로 판단한다.
 **코드 변경이 없으면 이 단계를 건너뛴다.** 변경이 전부 아래에 해당하면 gradle을 띄우지 않는다.
 
 `*.md`, `*.txt`, `docs/**`, `**/README*`, `.github/**`, `.gitignore`, `.idea/**`, `.vscode/**`,
-`.claude/**`, `graphify-out/graph.json`, `graphify-out/GRAPH_REPORT.md`, 이미지·폰트 등 빌드
-비참여 리소스
+`.claude/**`, 이미지·폰트 등 빌드 비참여 리소스
 
 `./gradlew`가 없으면 검증을 생략하고 보고에 남긴다.
 
@@ -167,27 +166,10 @@ TDD 케이스 작업이면 추가로: `.orca/plan/<feature>/testcases.md`에서 
 3. 같은 TC-id에서는 `test` → `feat`
 4. `docs` — 설명 대상이 이미 커밋돼 있도록 뒤에 둔다.
    단 문서가 가리키는 **파일의 이동**은 링크 수정보다 먼저
-5. Graphify 공유 산출물 — 다른 모든 커밋이 끝난 뒤 마지막 별도 커밋
 
-### Graphify 공유 산출물 (필수 특례)
-
-다음 두 파일은 코드·문서 변경과 같은 그룹에 넣지 않고 항상 마지막 별도 그룹으로 분리한다.
-
-```text
-graphify-out/graph.json
-graphify-out/GRAPH_REPORT.md
-```
-
-- 두 파일에 실제 diff가 있을 때만 `chore(graphify): 지식 그래프 갱신` 커밋을 만든다.
-- Graphify 파일만 변경됐다면 이 커밋 하나만 만든다.
-- 두 파일 중 하나만 변경됐다면 불완전한 갱신으로 간주해 Graphify 그룹을 커밋하지 않고
-  사용자에게 경고한다. 다른 계획 그룹은 그대로 진행할 수 있다.
-- `graphify update .`를 이 스킬이 임의로 실행하지 않는다. 현재 워킹트리에 생성된 결과만
-  다루며, 갱신 실패나 누락을 자동 생성으로 숨기지 않는다.
-- Graphify 그룹은 생성 산출물이므로 별도 Gradle 검증 대상이 아니다.
-- Graphify 그룹을 커밋할 때는 post-commit 재생성을 막기 위해 해당 `git commit` 한 번에만
-  `GRAPHIFY_SKIP_HOOK=1`을 설정한다.
-- 그래프 diff에 비밀값이나 로컬 절대 경로가 새로 포함되지 않았는지 커밋 전 확인한다.
+> `graphify-out/`은 `.gitignore` 대상이라 이 계획에 절대 등장하지 않는다(2026-08-23부터,
+> PR마다 그래프 스냅샷이 충돌하던 문제를 예방하기 위해 커밋 자체를 중단함). `git status`에
+> 나타나면 훅이 만든 로컬 재생성 결과이니 무시한다.
 
 ### 메시지
 
@@ -242,8 +224,6 @@ breaking change일 때(`BREAKING CHANGE:` 푸터) 쓴다.
 - `RENAME_PAIRS`의 구·신 경로가 같은 그룹인가
 - 순서대로 적용했을 때 아직 커밋 안 된 그룹을 참조하지 않는가
 - 그룹이 7개를 넘으면 목적이 같은 것을 합칠 수 있는지 다시 본다
-- Graphify 두 파일이 일반 그룹에서 제외되고 마지막 별도 그룹에만 속하는가
-- Graphify 두 파일 중 하나만 변경된 상태를 커밋 계획에서 제외하고 경고했는가
 
 ---
 
@@ -289,14 +269,9 @@ git stash push --keep-index --include-untracked -m "commit-message-split"
 git rev-parse stash@{0}      # ← STASH_SHA로 기록
 git status --short           # 이 그룹 파일만 보여야 한다
 
-# ③ 일반 그룹 커밋
+# ③ 커밋
 git commit -F - <<'EOF'
 type(scope): subject
-EOF
-
-# ③ Graphify 그룹이면 위 일반 명령 대신 이 명령만 실행
-GRAPHIFY_SKIP_HOOK=1 git commit -F - <<'EOF'
-chore(graphify): 지식 그래프 갱신
 EOF
 
 # ④ 복구 — stash@{0}이 STASH_SHA와 같을 때만 pop
@@ -377,28 +352,8 @@ git rev-parse --abbrev-ref --symbolic-full-name @{upstream}
 `--force` 계열은 쓰지 않는다. 푸시가 거부되면 재시도하거나 `pull --rebase`로 우회하지 않고
 중단한다 — 원격에 다른 작업이 올라가 있다는 신호다. 커밋은 로컬에 그대로 둔다.
 
-### 푸시 후 graphify 후속 커밋 (`--no-push`가 아니고 remote가 있을 때만)
-
-이 저장소는 커밋·브랜치 전환마다 **비동기 post-commit/워치 훅**이 `graphify-out/`을
-백그라운드에서 재생성한다(2026-08-23 icon-button 실행에서 실측). 방금 만든 커밋·푸시
-시점에는 아직 훅이 안 끝나 있을 수 있어, 위 6번 푸시 직후 워킹트리에 새 graphify diff가
-생기는 경우가 있다. **이걸 다음 작업으로 넘기지 않고 같은 실행에서 마저 커밋·푸시한다**
-(방금 연 PR이 최신 그래프 스냅샷을 갖도록):
-
-```bash
-# 진행 중인 백그라운드 rebuild가 끝나길 기다린다(짧게 폴링, 무한 대기 금지 — 최대 60~90초)
-git status --short   # graphify-out/*만 변경돼 있으면 위 rebuild가 만든 것
-```
-
-- `graphify-out/graph.json`·`graphify-out/GRAPH_REPORT.md` **둘 다** 바뀌어 있으면, 위
-  "Graphify 공유 산출물" 특례 그대로 `GRAPHIFY_SKIP_HOOK=1 git commit`으로
-  `chore(graphify): 지식 그래프 갱신` 커밋을 만들고 다시 `git push`한다(같은 브랜치, upstream
-  이미 설정됨).
-- 한쪽만 바뀌었으면 불완전한 재생성이므로 커밋하지 않고 보고에 남긴다(위 3번 규칙과 동일).
-- 폴링이 60~90초를 넘겨도 안 끝나면 무한 대기하지 않고 "graphify 재생성 진행 중 — 완료 후
-  별도로 확인 필요"로 보고하고 넘어간다.
-- 이 흐름은 **매 커밋(icon-button처럼 케이스별 여러 번 push하는 파이프라인 포함)마다 반복될
-  수 있다** — 마지막 push 직후에만 한 번 확인하면 충분하다.
+> `graphify-out/`은 `.gitignore` 대상이라 푸시 후에도 신경 쓰지 않는다(2026-08-23부터).
+> 백그라운드 훅이 이 디렉터리를 계속 재생성해도 커밋 대상이 아니다.
 
 ---
 
