@@ -377,6 +377,29 @@ git rev-parse --abbrev-ref --symbolic-full-name @{upstream}
 `--force` 계열은 쓰지 않는다. 푸시가 거부되면 재시도하거나 `pull --rebase`로 우회하지 않고
 중단한다 — 원격에 다른 작업이 올라가 있다는 신호다. 커밋은 로컬에 그대로 둔다.
 
+### 푸시 후 graphify 후속 커밋 (`--no-push`가 아니고 remote가 있을 때만)
+
+이 저장소는 커밋·브랜치 전환마다 **비동기 post-commit/워치 훅**이 `graphify-out/`을
+백그라운드에서 재생성한다(2026-08-23 icon-button 실행에서 실측). 방금 만든 커밋·푸시
+시점에는 아직 훅이 안 끝나 있을 수 있어, 위 6번 푸시 직후 워킹트리에 새 graphify diff가
+생기는 경우가 있다. **이걸 다음 작업으로 넘기지 않고 같은 실행에서 마저 커밋·푸시한다**
+(방금 연 PR이 최신 그래프 스냅샷을 갖도록):
+
+```bash
+# 진행 중인 백그라운드 rebuild가 끝나길 기다린다(짧게 폴링, 무한 대기 금지 — 최대 60~90초)
+git status --short   # graphify-out/*만 변경돼 있으면 위 rebuild가 만든 것
+```
+
+- `graphify-out/graph.json`·`graphify-out/GRAPH_REPORT.md` **둘 다** 바뀌어 있으면, 위
+  "Graphify 공유 산출물" 특례 그대로 `GRAPHIFY_SKIP_HOOK=1 git commit`으로
+  `chore(graphify): 지식 그래프 갱신` 커밋을 만들고 다시 `git push`한다(같은 브랜치, upstream
+  이미 설정됨).
+- 한쪽만 바뀌었으면 불완전한 재생성이므로 커밋하지 않고 보고에 남긴다(위 3번 규칙과 동일).
+- 폴링이 60~90초를 넘겨도 안 끝나면 무한 대기하지 않고 "graphify 재생성 진행 중 — 완료 후
+  별도로 확인 필요"로 보고하고 넘어간다.
+- 이 흐름은 **매 커밋(icon-button처럼 케이스별 여러 번 push하는 파이프라인 포함)마다 반복될
+  수 있다** — 마지막 push 직후에만 한 번 확인하면 충분하다.
+
 ---
 
 ## 보고
