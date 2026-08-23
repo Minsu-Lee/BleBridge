@@ -1,7 +1,7 @@
 # Graph Report - BleBridge  (2026-08-23)
 
 ## Corpus Check
-- 221 files · ~96,243 words
+- 221 files · ~96,927 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `14664150`
+- Built from commit: `70d4e2d6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -143,30 +143,6 @@
 
 ## Import Cycles
 - None detected.
-
-## Hyperedges (group relationships)
-- **commit-message 스킬과 세 참조 문서(hooks/path-hints/recovery)의 조건부 로딩 구조** — claude_skills_commit_message_skill_commit_message, claude_skills_commit_message_references_hooks_pre_commit_hook_handling, claude_skills_commit_message_references_path_hints_type_hints, claude_skills_commit_message_references_recovery_failure_recovery [EXTRACTED 1.00]
-- **BleBridge 에이전트 git/PR/지식그래프 워크플로우 스킬 3종** — claude_skills_commit_message_skill_commit_message, claude_skills_create_pr_skill_create_pr, claude_skills_graphify_skill_graphify [INFERRED 0.75]
-- **Steps 2.5-3C semantic extraction pipeline** — claude_skills_graphify_references_transcribe_transcribe, claude_skills_graphify_references_extraction_spec_extraction_spec, claude_skills_graphify_references_update_update [INFERRED 0.75]
-- **Graph auto-rebuild trigger mechanisms** — claude_skills_graphify_references_add_watch_add_watch, claude_skills_graphify_references_hooks_hooks, claude_skills_graphify_references_update_update [INFERRED 0.75]
-- **Graphify AST + Semantic + Merge extraction pipeline** — codex_skills_graphify_skill_step3_extraction, codex_skills_graphify_skill_step3_parta_ast, codex_skills_graphify_skill_step3_partb_semantic, codex_skills_graphify_skill_step3_partc_merge [INFERRED 0.85]
-- **Graphify opt-in export flags (wiki/neo4j/falkordb/svg/graphml/mcp/benchmark)** — codex_skills_graphify_references_exports_wiki, codex_skills_graphify_references_exports_neo4j, codex_skills_graphify_references_exports_falkordb, codex_skills_graphify_references_exports_svg, codex_skills_graphify_references_exports_graphml, codex_skills_graphify_references_exports_mcp_server, codex_skills_graphify_references_exports_benchmark [INFERRED 0.85]
-- **Graphify corpus ingestion flow (add URL + watch folder)** — codex_skills_graphify_references_add_watch_graphify_add, codex_skills_graphify_references_add_watch_ingest_function, codex_skills_graphify_references_add_watch_supported_url_types, codex_skills_graphify_references_add_watch_watch_command [INFERRED 0.75]
-- **graphify --update pipeline: incremental detection, conditional transcription, merge** — codex_skills_graphify_references_update_incremental_update, codex_skills_graphify_references_update_build_merge, codex_skills_graphify_references_transcribe_overview [EXTRACTED 1.00]
-- **graphify self-improving loop: expand query, save-result outcomes, reflect/LESSONS.md, hook keeps it fresh** — codex_skills_graphify_references_query_vocab_expansion, codex_skills_graphify_references_query_save_result, codex_skills_graphify_references_query_reflect_lessons, codex_skills_graphify_references_hooks_git_commit_hook [EXTRACTED 1.00]
-- **PR lifecycle automation: template body, auto-assign workflow, create-pr skill** — github_pull_request_template_pr_template, github_workflows_pr_auto_assign_workflow, claude_skills_create_pr_skill_create_pr [INFERRED 0.75]
-- **Modules depending on core:common per README.md dependency graph** — readme_domain, readme_data, readme_feature_splash, readme_feature_main, readme_feature_sample, readme_data_sample, readme_core_network [INFERRED 0.85]
-- **Gradle convention plugin composition chain (kotlin.jvm/test.android -> test.unit -> android.library -> android.compose)** — build_logic_readme_plugin_kotlin_jvm, build_logic_readme_plugin_test_unit, build_logic_readme_plugin_test_android, build_logic_readme_plugin_android_library, build_logic_readme_plugin_android_compose [EXTRACTED 1.00]
-- **Agent-tooling routing configuration across BleBridge** — serena_project_config, agents_document, claude_document [INFERRED 0.75]
-- **Primitive → Semantic/Contextual → Component 토큰 계층** — docs_design_system_readme_primitive, docs_design_system_readme_semantic, docs_design_system_readme_contextual, docs_design_system_readme_component [EXTRACTED 1.00]
-- **AppTheme→ConnectionRoleProvider→ChatModeProvider 범위 조합 흐름** — docs_design_system_readme_apptheme, docs_design_system_readme_connectionroleprovider, docs_design_system_readme_chatmodeprovider, docs_design_system_readme_chatcontext [EXTRACTED 1.00]
-- **MVI 계약 타입군 (State/Intent/Mutation/SideEffect/ViewModel)** — core_mvi_readme_mvistate, core_mvi_readme_mviintent, core_mvi_readme_mvimutation, core_mvi_readme_mvisideeffect, core_mvi_readme_mviviewmodel [EXTRACTED 1.00]
-- **Media viewer AppBar + IconButton + MediaPlaybackControls composition** — docs_design_common_10_app_bar_appbar, docs_design_common_02_icon_button_iconbutton, docs_design_common_11_media_playback_controls_mediaplaybackcontrols [EXTRACTED 1.00]
-- **Components with ActionButton as a foundation dependency** — docs_design_common_01_action_button_actionbutton, docs_design_common_03_segmented_control_segmentedcontrol, docs_design_common_07_choice_dialog_choicedialog, docs_design_common_08_settings_field_settingsfield [EXTRACTED 1.00]
-- **AppTheme -> ConnectionRoleProvider -> ChatModeProvider token flow architecture** — docs_design_blebridgedesignsystem_apptheme, docs_design_blebridgedesignsystem_connectionroleprovider, docs_design_blebridgedesignsystem_chatmodeprovider, docs_design_blebridgedesignsystem_rolecolors, docs_design_blebridgedesignsystem_chattokens [EXTRACTED 1.00]
-- **BleBridge TDD 오케스트레이션 파이프라인 (feature-analyst -> testcase-author -> tdd-implementer -> code-reviewer)** — docs_orchestration_feature_analyst_featureanalyst, docs_orchestration_testcase_author_testcaseauthor, docs_orchestration_tdd_implementer_tddimplementer, docs_orchestration_code_reviewer_codereviewer [EXTRACTED 1.00]
-- **채팅 화면을 구성하는 core:ui 컴포넌트군 (ChatChrome/MessageBubble/ChatInput/TransferCard)** — docs_design_ui_02_chat_chrome_chatheadertitle, docs_design_ui_03_message_bubble_messagebubble, docs_design_ui_05_chat_input_chatinput, docs_design_ui_04_transfer_card_transfercard [INFERRED 0.85]
-- **Feature 화면 아키텍처 컨벤션 문서군 (Feature UI/Navigation/Feature 모듈 그룹)** — docs_feature_readme_featureuiconvention, docs_navigation_readme_navigationconvention, feature_readme_featuremodulegroup [INFERRED 0.75]
 
 ## Communities (119 total, 34 thin omitted)
 

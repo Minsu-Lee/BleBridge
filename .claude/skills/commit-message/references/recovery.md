@@ -53,6 +53,34 @@ git stash list
 
 `git stash drop`을 대신 실행하지 않는다 — 사용자가 내용을 확인한 뒤 판단할 일이다.
 
+## stash pop이 "local changes would be overwritten"로 거부됨 (5번 ④, 충돌 마커 없음)
+
+위 "stash pop 충돌"과 다른 케이스다 — 워킹트리에 `<<<<<<<` 충돌 마커가 생기지 않고, git이
+pop 자체를 **미리 거부**한다. 원인은 대개 **비동기 post-commit 훅**(예: graphify 자동 재생성)이
+직전 커밋 직후 백그라운드에서 같은 파일(전형적으로 `graphify-out/graph.json`,
+`graphify-out/GRAPH_REPORT.md`)을 다시 써서, stash가 담고 있던 버전과 현재 워킹트리 버전이
+둘 다 "커밋되지 않은 변경"으로 충돌하기 때문이다(2026-08-23 icon-button 실행에서 실측).
+
+**여기서도 재시도하지 않는다.** 대신 stash 내용이 이미 다른 곳에 안전하게 반영돼 있는지부터
+확인한다:
+
+```bash
+git rev-parse stash@{0}                       # STASH_SHA와 같은지 확인
+git stash show -p stash@{0} --stat             # 무엇이 들어있는지 확인
+git diff stash@{0} HEAD -- <이미 커밋했다고 보는 파일들>   # 출력 없으면 이미 HEAD와 동일
+```
+
+- **stash 속 코드 변경분이 이미 HEAD에 그대로 있다면**(직전 그룹 커밋과 동일) 그 부분은 안전하다.
+  남은 건 stash 속 graphify 스냅샷뿐인데, post-commit 훅이 만든 **현재 워킹트리의 graphify
+  파일이 더 최신**(방금 커밋 이후 상태를 반영)이므로, stash를 강제로 합치려 하지 말고 **현재
+  워킹트리 버전을 그대로 `chore(graphify): 지식 그래프 갱신`으로 커밋**한다(SKILL.md의 Graphify
+  특례 그대로).
+- 커밋 후 stash가 더 이상 고유 정보를 담고 있지 않으면(위 diff가 비어 있으면) `git stash drop
+  stash@{0}`으로 정리한다. **diff에 뭔가 남아 있다면 drop하지 말고** 위 "stash sha 불일치"와
+  동일하게 사용자 확인을 받는다.
+- 이 경로를 썼다면 중단 보고 대신, 정상 완료 보고에 "⚠️ graphify post-commit 훅과 stash pop이
+  경합해 <조치 내용>으로 정리함"을 한 줄 남긴다(완전한 중단은 아니므로 실패 형식을 쓰지 않는다).
+
 ## stash sha 불일치 (5번 ④)
 
 `stash@{0}`이 `STASH_SHA`와 다르면 그 사이에 **다른 프로세스가 stash를 쌓은 것**이다.

@@ -44,8 +44,16 @@ docs/orchestration/orchestration-tdd.md 를 읽어 그 규약을 그대로 따�
   Bash 위임(`codex exec`/`codex review`)에는 쓰지 않는다.
 - 케이스 커밋은 dev(Sonnet)에서 commit-message --auto --no-push 로 한다(커밋만, 푸시는 안 함).
 - 워커를 띄우기 전(또는 최소한 첫 커밋 전)에 작업 브랜치를 origin/develop에서 딴
-  feature/<slug>로 전환한다. 워커들이 worktree를 공유하므로 브랜치 전환은 전 터미널에
-  반영된다. 보호 브랜치(main/master/develop) 직접 커밋은 금지다.
+  feature/<slug>로 전환한다(컴포넌트 트랙도 동일 — 코디네이터가 프롬프트 지정 브랜치로
+  미리 전환해 둔 뒤 워커를 기동한다). 워커들이 worktree를 공유하므로 브랜치 전환은 전 터미널에
+  반영된다. 보호 브랜치(main/master/develop) 직접 커밋은 금지다. 새 브랜치를 만들기 전
+  워킹트리에 이 작업과 무관한 uncommitted 변경이 있으면 `git stash push -u`로 빼두고(자동
+  pop 안 함), 진행 로그에 남긴다.
+- 모든 케이스(컴포넌트 트랙은 케이스 1개 포함) 완료 후 code-reviewer에 최종 전체 리뷰
+  1회(`codex review --base origin/develop`)를 반드시 디스패치한다 — 케이스별 `--uncommitted`
+  리뷰가 이미 pass했어도 생략하지 않는다. pass하면 코디네이터가 `git push -u origin <브랜치>`
+  후 `gh pr create --base develop`로 PR을 연다. **PR 생성까지가 자동화 범위**이고, develop
+  머지는 사용자가 직접 GitHub에서 판단·수행한다(자동 머지 금지).
 - "케이스" 단위는 트랙마다 다르다(계약 "케이스 루프 게이팅" 참조): feature=동작 1개,
   도메인/데이터=유닛 1개, 컴포넌트=컴포넌트 1개(테스트는 그 안 체크리스트). 컴포넌트를
   테스트마다 쪼개 per-case로 돌리지 않는다.

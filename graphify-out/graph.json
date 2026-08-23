@@ -1,319 +1,7 @@
 {
   "directed": false,
   "multigraph": false,
-  "graph": {
-    "hyperedges": [
-      {
-        "id": "claude_skills_commit_message_reference_docs_hyperedge",
-        "label": "commit-message \uc2a4\ud0ac\uacfc \uc138 \ucc38\uc870 \ubb38\uc11c(hooks/path-hints/recovery)\uc758 \uc870\uac74\ubd80 \ub85c\ub529 \uad6c\uc870",
-        "nodes": [
-          "claude_skills_commit_message_skill_commit_message",
-          "claude_skills_commit_message_references_hooks_pre_commit_hook_handling",
-          "claude_skills_commit_message_references_path_hints_type_hints",
-          "claude_skills_commit_message_references_recovery_failure_recovery"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": ".claude/skills/commit-message/SKILL.md"
-      },
-      {
-        "id": "claude_skills_git_workflow_ecosystem_hyperedge",
-        "label": "BleBridge \uc5d0\uc774\uc804\ud2b8 git/PR/\uc9c0\uc2dd\uadf8\ub798\ud504 \uc6cc\ud06c\ud50c\ub85c\uc6b0 \uc2a4\ud0ac 3\uc885",
-        "nodes": [
-          "claude_skills_commit_message_skill_commit_message",
-          "claude_skills_create_pr_skill_create_pr",
-          "claude_skills_graphify_skill_graphify"
-        ],
-        "relation": "form",
-        "confidence": "INFERRED",
-        "confidence_score": 0.75,
-        "source_file": ".claude/skills/create-pr/SKILL.md"
-      },
-      {
-        "id": "graphify_extraction_pipeline_steps",
-        "label": "Steps 2.5-3C semantic extraction pipeline",
-        "nodes": [
-          "claude_skills_graphify_references_transcribe_transcribe",
-          "claude_skills_graphify_references_extraction_spec_extraction_spec",
-          "claude_skills_graphify_references_update_update"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.75,
-        "source_file": ".claude/skills/graphify/references/update.md"
-      },
-      {
-        "id": "graphify_graph_maintenance_triggers",
-        "label": "Graph auto-rebuild trigger mechanisms",
-        "nodes": [
-          "claude_skills_graphify_references_add_watch_add_watch",
-          "claude_skills_graphify_references_hooks_hooks",
-          "claude_skills_graphify_references_update_update"
-        ],
-        "relation": "form",
-        "confidence": "INFERRED",
-        "confidence_score": 0.75,
-        "source_file": ".claude/skills/graphify/references/add-watch.md"
-      },
-      {
-        "id": "codex_extraction_pipeline_hyperedge",
-        "label": "Graphify AST + Semantic + Merge extraction pipeline",
-        "nodes": [
-          "codex_skills_graphify_skill_step3_extraction",
-          "codex_skills_graphify_skill_step3_parta_ast",
-          "codex_skills_graphify_skill_step3_partb_semantic",
-          "codex_skills_graphify_skill_step3_partc_merge"
-        ],
-        "relation": "form",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": ".codex/skills/graphify/SKILL.md"
-      },
-      {
-        "id": "codex_export_flags_hyperedge",
-        "label": "Graphify opt-in export flags (wiki/neo4j/falkordb/svg/graphml/mcp/benchmark)",
-        "nodes": [
-          "codex_skills_graphify_references_exports_wiki",
-          "codex_skills_graphify_references_exports_neo4j",
-          "codex_skills_graphify_references_exports_falkordb",
-          "codex_skills_graphify_references_exports_svg",
-          "codex_skills_graphify_references_exports_graphml",
-          "codex_skills_graphify_references_exports_mcp_server",
-          "codex_skills_graphify_references_exports_benchmark"
-        ],
-        "relation": "form",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": ".codex/skills/graphify/references/exports.md"
-      },
-      {
-        "id": "codex_add_watch_ingestion_hyperedge",
-        "label": "Graphify corpus ingestion flow (add URL + watch folder)",
-        "nodes": [
-          "codex_skills_graphify_references_add_watch_graphify_add",
-          "codex_skills_graphify_references_add_watch_ingest_function",
-          "codex_skills_graphify_references_add_watch_supported_url_types",
-          "codex_skills_graphify_references_add_watch_watch_command"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.75,
-        "source_file": ".codex/skills/graphify/references/add-watch.md"
-      },
-      {
-        "id": "graphify_update_semantic_pipeline_hyperedge",
-        "label": "graphify --update pipeline: incremental detection, conditional transcription, merge",
-        "nodes": [
-          "codex_skills_graphify_references_update_incremental_update",
-          "codex_skills_graphify_references_update_build_merge",
-          "codex_skills_graphify_references_transcribe_overview"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": ".codex/skills/graphify/references/update.md"
-      },
-      {
-        "id": "graphify_self_improving_query_loop_hyperedge",
-        "label": "graphify self-improving loop: expand query, save-result outcomes, reflect/LESSONS.md, hook keeps it fresh",
-        "nodes": [
-          "codex_skills_graphify_references_query_vocab_expansion",
-          "codex_skills_graphify_references_query_save_result",
-          "codex_skills_graphify_references_query_reflect_lessons",
-          "codex_skills_graphify_references_hooks_git_commit_hook"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": ".codex/skills/graphify/references/query.md"
-      },
-      {
-        "id": "pr_lifecycle_automation_hyperedge",
-        "label": "PR lifecycle automation: template body, auto-assign workflow, create-pr skill",
-        "nodes": [
-          "github_pull_request_template_pr_template",
-          "github_workflows_pr_auto_assign_workflow",
-          "claude_skills_create_pr_skill_create_pr"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.75,
-        "source_file": ".github/pull_request_template.md"
-      },
-      {
-        "id": "hyperedge_core_common_dependents",
-        "label": "Modules depending on core:common per README.md dependency graph",
-        "nodes": [
-          "readme_domain",
-          "readme_data",
-          "readme_feature_splash",
-          "readme_feature_main",
-          "readme_feature_sample",
-          "readme_data_sample",
-          "readme_core_network"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": "README.md"
-      },
-      {
-        "id": "hyperedge_build_logic_plugin_chain",
-        "label": "Gradle convention plugin composition chain (kotlin.jvm/test.android -> test.unit -> android.library -> android.compose)",
-        "nodes": [
-          "build_logic_readme_plugin_kotlin_jvm",
-          "build_logic_readme_plugin_test_unit",
-          "build_logic_readme_plugin_test_android",
-          "build_logic_readme_plugin_android_library",
-          "build_logic_readme_plugin_android_compose"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "build-logic/README.md"
-      },
-      {
-        "id": "hyperedge_agent_tooling_docs",
-        "label": "Agent-tooling routing configuration across BleBridge",
-        "nodes": [
-          "serena_project_config",
-          "agents_document",
-          "claude_document"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.75,
-        "source_file": ".serena/project.yml"
-      },
-      {
-        "id": "docs_design_system_readme_token_hierarchy",
-        "label": "Primitive \u2192 Semantic/Contextual \u2192 Component \ud1a0\ud070 \uacc4\uce35",
-        "nodes": [
-          "docs_design_system_readme_primitive",
-          "docs_design_system_readme_semantic",
-          "docs_design_system_readme_contextual",
-          "docs_design_system_readme_component"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "docs/design-system/README.md"
-      },
-      {
-        "id": "docs_design_system_readme_provider_scope_flow",
-        "label": "AppTheme\u2192ConnectionRoleProvider\u2192ChatModeProvider \ubc94\uc704 \uc870\ud569 \ud750\ub984",
-        "nodes": [
-          "docs_design_system_readme_apptheme",
-          "docs_design_system_readme_connectionroleprovider",
-          "docs_design_system_readme_chatmodeprovider",
-          "docs_design_system_readme_chatcontext"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "docs/design-system/README.md"
-      },
-      {
-        "id": "core_mvi_readme_contract_types",
-        "label": "MVI \uacc4\uc57d \ud0c0\uc785\uad70 (State/Intent/Mutation/SideEffect/ViewModel)",
-        "nodes": [
-          "core_mvi_readme_mvistate",
-          "core_mvi_readme_mviintent",
-          "core_mvi_readme_mvimutation",
-          "core_mvi_readme_mvisideeffect",
-          "core_mvi_readme_mviviewmodel"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "core/mvi/README.md"
-      },
-      {
-        "id": "docs_design_common_10_app_bar_mediaviewerpattern",
-        "label": "Media viewer AppBar + IconButton + MediaPlaybackControls composition",
-        "nodes": [
-          "docs_design_common_10_app_bar_appbar",
-          "docs_design_common_02_icon_button_iconbutton",
-          "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "docs/design/common/11-media-playback-controls.md"
-      },
-      {
-        "id": "docs_design_00_common_component_roadmap_actionbuttondependents",
-        "label": "Components with ActionButton as a foundation dependency",
-        "nodes": [
-          "docs_design_common_01_action_button_actionbutton",
-          "docs_design_common_03_segmented_control_segmentedcontrol",
-          "docs_design_common_07_choice_dialog_choicedialog",
-          "docs_design_common_08_settings_field_settingsfield"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "docs/design/00-common-component-roadmap.md"
-      },
-      {
-        "id": "docs_design_blebridgedesignsystem_tokenflowarchitecture",
-        "label": "AppTheme -> ConnectionRoleProvider -> ChatModeProvider token flow architecture",
-        "nodes": [
-          "docs_design_blebridgedesignsystem_apptheme",
-          "docs_design_blebridgedesignsystem_connectionroleprovider",
-          "docs_design_blebridgedesignsystem_chatmodeprovider",
-          "docs_design_blebridgedesignsystem_rolecolors",
-          "docs_design_blebridgedesignsystem_chattokens"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "docs/design/BleBridgeDesignSystem.html"
-      },
-      {
-        "id": "hyperedge_tdd_orchestration_pipeline",
-        "label": "BleBridge TDD \uc624\ucf00\uc2a4\ud2b8\ub808\uc774\uc158 \ud30c\uc774\ud504\ub77c\uc778 (feature-analyst -> testcase-author -> tdd-implementer -> code-reviewer)",
-        "nodes": [
-          "docs_orchestration_feature_analyst_featureanalyst",
-          "docs_orchestration_testcase_author_testcaseauthor",
-          "docs_orchestration_tdd_implementer_tddimplementer",
-          "docs_orchestration_code_reviewer_codereviewer"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "docs/orchestration/orchestration-tdd.md"
-      },
-      {
-        "id": "hyperedge_chat_screen_component_family",
-        "label": "\ucc44\ud305 \ud654\uba74\uc744 \uad6c\uc131\ud558\ub294 core:ui \ucef4\ud3ec\ub10c\ud2b8\uad70 (ChatChrome/MessageBubble/ChatInput/TransferCard)",
-        "nodes": [
-          "docs_design_ui_02_chat_chrome_chatheadertitle",
-          "docs_design_ui_03_message_bubble_messagebubble",
-          "docs_design_ui_05_chat_input_chatinput",
-          "docs_design_ui_04_transfer_card_transfercard"
-        ],
-        "relation": "form",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": "docs/design/ui/02-chat-chrome.md"
-      },
-      {
-        "id": "hyperedge_feature_ui_architecture_docs",
-        "label": "Feature \ud654\uba74 \uc544\ud0a4\ud14d\ucc98 \ucee8\ubca4\uc158 \ubb38\uc11c\uad70 (Feature UI/Navigation/Feature \ubaa8\ub4c8 \uadf8\ub8f9)",
-        "nodes": [
-          "docs_feature_readme_featureuiconvention",
-          "docs_navigation_readme_navigationconvention",
-          "feature_readme_featuremodulegroup"
-        ],
-        "relation": "form",
-        "confidence": "INFERRED",
-        "confidence_score": 0.75,
-        "source_file": "docs/feature/README.md"
-      }
-    ]
-  },
+  "graph": {},
   "nodes": [
     {
       "label": "delegate-to-codex.sh",
@@ -24455,8 +24143,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_create_pr_skill_create_pr",
-      "target": "claude_skills_commit_message_skill_commit_message"
+      "source": "claude_skills_commit_message_skill_commit_message",
+      "target": "claude_skills_create_pr_skill_create_pr"
     },
     {
       "relation": "semantically_similar_to",
@@ -24477,8 +24165,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_commit_message_references_path_hints_type_hints",
-      "target": "claude_skills_commit_message_skill_commit_types"
+      "source": "claude_skills_commit_message_skill_commit_types",
+      "target": "claude_skills_commit_message_references_path_hints_type_hints"
     },
     {
       "relation": "references",
@@ -24488,8 +24176,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_create_pr_skill_pr_title_inference",
-      "target": "claude_skills_commit_message_skill_commit_types"
+      "source": "claude_skills_commit_message_skill_commit_types",
+      "target": "claude_skills_create_pr_skill_pr_title_inference"
     },
     {
       "relation": "references",
@@ -24499,8 +24187,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_commit_message_references_recovery_failure_recovery",
-      "target": "claude_skills_commit_message_skill_push_step"
+      "source": "claude_skills_commit_message_skill_push_step",
+      "target": "claude_skills_commit_message_references_recovery_failure_recovery"
     },
     {
       "relation": "references",
@@ -24510,8 +24198,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_commit_message_references_hooks_pre_commit_hook_handling",
-      "target": "claude_skills_commit_message_skill_stash_isolation"
+      "source": "claude_skills_commit_message_skill_stash_isolation",
+      "target": "claude_skills_commit_message_references_hooks_pre_commit_hook_handling"
     },
     {
       "relation": "references",
@@ -24521,8 +24209,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_commit_message_references_recovery_failure_recovery",
-      "target": "claude_skills_commit_message_skill_stash_isolation"
+      "source": "claude_skills_commit_message_skill_stash_isolation",
+      "target": "claude_skills_commit_message_references_recovery_failure_recovery"
     },
     {
       "relation": "implements",
@@ -24587,8 +24275,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_skill_honesty_rules",
-      "target": "claude_skills_create_pr_skill_critical_review_criteria"
+      "source": "claude_skills_create_pr_skill_critical_review_criteria",
+      "target": "claude_skills_graphify_skill_honesty_rules"
     },
     {
       "relation": "references",
@@ -24730,8 +24418,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_references_hooks_hooks",
-      "target": "claude_skills_graphify_references_add_watch_add_watch"
+      "source": "claude_skills_graphify_references_add_watch_add_watch",
+      "target": "claude_skills_graphify_references_hooks_hooks"
     },
     {
       "relation": "references",
@@ -24741,8 +24429,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_references_update_update",
-      "target": "claude_skills_graphify_references_exports_exports"
+      "source": "claude_skills_graphify_references_exports_exports",
+      "target": "claude_skills_graphify_references_update_update"
     },
     {
       "relation": "references",
@@ -24763,8 +24451,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_references_update_update",
-      "target": "claude_skills_graphify_references_extraction_spec_extraction_spec"
+      "source": "claude_skills_graphify_references_extraction_spec_extraction_spec",
+      "target": "claude_skills_graphify_references_update_update"
     },
     {
       "relation": "references",
@@ -24785,8 +24473,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_references_query_query",
-      "target": "claude_skills_graphify_references_hooks_hooks"
+      "source": "claude_skills_graphify_references_hooks_hooks",
+      "target": "claude_skills_graphify_references_query_query"
     },
     {
       "relation": "references",
@@ -24818,8 +24506,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_references_update_update",
-      "target": "claude_skills_graphify_references_transcribe_transcribe"
+      "source": "claude_skills_graphify_references_transcribe_transcribe",
+      "target": "claude_skills_graphify_references_update_update"
     },
     {
       "relation": "conceptually_related_to",
@@ -24829,8 +24517,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_references_add_watch_update_pipeline",
-      "target": "claude_skills_graphify_references_update_update"
+      "source": "claude_skills_graphify_references_update_update",
+      "target": "claude_skills_graphify_references_add_watch_update_pipeline"
     },
     {
       "relation": "references",
@@ -24851,8 +24539,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "claude_skills_graphify_references_extraction_spec_node_id_format",
-      "target": "claude_skills_graphify_references_update_build_merge"
+      "source": "claude_skills_graphify_references_update_build_merge",
+      "target": "claude_skills_graphify_references_extraction_spec_node_id_format"
     },
     {
       "relation": "conceptually_related_to",
@@ -25313,8 +25001,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "codex_skills_graphify_references_extraction_spec_node_id_format",
-      "target": "codex_skills_graphify_skill_step3_parta_ast"
+      "source": "codex_skills_graphify_skill_step3_parta_ast",
+      "target": "codex_skills_graphify_references_extraction_spec_node_id_format"
     },
     {
       "relation": "references",
@@ -25683,23 +25371,23 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": ".codex/skills/graphify/references/query.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "codex_skills_graphify_references_hooks_git_commit_hook",
+      "target": "codex_skills_graphify_references_query_reflect_lessons"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": ".codex/skills/graphify/references/hooks.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
       "source": "codex_skills_graphify_references_hooks_git_commit_hook",
       "target": "codex_skills_graphify_references_update_incremental_update"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".codex/skills/graphify/references/query.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "codex_skills_graphify_references_query_reflect_lessons",
-      "target": "codex_skills_graphify_references_hooks_git_commit_hook"
     },
     {
       "relation": "references",
@@ -25775,8 +25463,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "codex_skills_graphify_references_query_vocab_expansion",
-      "target": "codex_skills_graphify_references_query_bfs_traversal"
+      "source": "codex_skills_graphify_references_query_bfs_traversal",
+      "target": "codex_skills_graphify_references_query_vocab_expansion"
     },
     {
       "relation": "references",
@@ -25786,8 +25474,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "codex_skills_graphify_references_query_vocab_expansion",
-      "target": "codex_skills_graphify_references_query_dfs_traversal"
+      "source": "codex_skills_graphify_references_query_dfs_traversal",
+      "target": "codex_skills_graphify_references_query_vocab_expansion"
     },
     {
       "relation": "shares_data_with",
@@ -25830,8 +25518,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "codex_skills_graphify_references_update_overview",
-      "target": "codex_skills_graphify_references_transcribe_overview"
+      "source": "codex_skills_graphify_references_transcribe_overview",
+      "target": "codex_skills_graphify_references_update_overview"
     },
     {
       "relation": "shares_data_with",
@@ -25929,8 +25617,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "github_workflows_pr_auto_assign_workflow",
-      "target": "github_pull_request_template_pr_template"
+      "source": "github_pull_request_template_pr_template",
+      "target": "github_workflows_pr_auto_assign_workflow"
     },
     {
       "relation": "conceptually_related_to",
@@ -26391,19 +26079,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_readme_domain",
-      "target": "readme_domain"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_data",
-      "target": "readme_domain"
+      "source": "readme_domain",
+      "target": "core_common_readme_domain"
     },
     {
       "relation": "references",
@@ -26424,8 +26101,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "readme_feature_main",
-      "target": "readme_domain"
+      "source": "readme_domain",
+      "target": "readme_data"
     },
     {
       "relation": "references",
@@ -26435,8 +26112,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "readme_feature_sample",
-      "target": "readme_domain"
+      "source": "readme_domain",
+      "target": "readme_feature_main"
     },
     {
       "relation": "references",
@@ -26446,8 +26123,19 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "readme_feature_splash",
-      "target": "readme_domain"
+      "source": "readme_domain",
+      "target": "readme_feature_sample"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_domain",
+      "target": "readme_feature_splash"
     },
     {
       "relation": "references",
@@ -26457,8 +26145,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "app_readme_purpose",
-      "target": "readme_data"
+      "source": "readme_data",
+      "target": "app_readme_purpose"
     },
     {
       "relation": "conceptually_related_to",
@@ -26468,8 +26156,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_readme_data",
-      "target": "readme_data"
+      "source": "readme_data",
+      "target": "core_common_readme_data"
     },
     {
       "relation": "references",
@@ -26490,8 +26178,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_readme_core_common",
-      "target": "readme_core_common"
+      "source": "readme_core_common",
+      "target": "core_common_readme_core_common"
     },
     {
       "relation": "conceptually_related_to",
@@ -26501,8 +26189,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_readme_core_common",
-      "target": "readme_core_common"
+      "source": "readme_core_common",
+      "target": "core_readme_core_common"
     },
     {
       "relation": "references",
@@ -26512,62 +26200,7 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "readme_core_network",
-      "target": "readme_core_common"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_data_sample",
-      "target": "readme_core_common"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_main",
-      "target": "readme_core_common"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_sample",
-      "target": "readme_core_common"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_splash",
-      "target": "readme_core_common"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "core/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_readme_core_network",
+      "source": "readme_core_common",
       "target": "readme_core_network"
     },
     {
@@ -26578,41 +26211,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "readme_data_sample",
-      "target": "readme_core_network"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "app_readme_purpose",
-      "target": "readme_core_designsystem"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "core/designsystem/JETBRAINS_MONO_OFL.txt",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_designsystem_jetbrains_mono_ofl_document",
-      "target": "readme_core_designsystem"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "core/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_readme_core_designsystem",
-      "target": "readme_core_designsystem"
+      "source": "readme_core_common",
+      "target": "readme_data_sample"
     },
     {
       "relation": "references",
@@ -26622,205 +26222,18 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "readme_core_ui",
-      "target": "readme_core_designsystem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_main",
-      "target": "readme_core_designsystem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_sample",
-      "target": "readme_core_designsystem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_splash",
-      "target": "readme_core_designsystem"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "core/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_readme_core_ui",
-      "target": "readme_core_ui"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_main",
-      "target": "readme_core_ui"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_sample",
-      "target": "readme_core_ui"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_splash",
-      "target": "readme_core_ui"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "core/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_readme_core_mvi",
-      "target": "readme_core_mvi"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_main",
-      "target": "readme_core_mvi"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_sample",
-      "target": "readme_core_mvi"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_splash",
-      "target": "readme_core_mvi"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "build-logic/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "build_logic_readme_plugin_feature",
-      "target": "readme_lint_designsystem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_main",
-      "target": "readme_lint_designsystem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_sample",
-      "target": "readme_lint_designsystem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "readme_feature_splash",
-      "target": "readme_lint_designsystem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "app_readme_purpose",
-      "target": "readme_feature_splash"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "app_readme_purpose",
+      "source": "readme_core_common",
       "target": "readme_feature_main"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "app/README.md",
+      "source_file": "README.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "app_readme_purpose",
+      "source": "readme_core_common",
       "target": "readme_feature_sample"
     },
     {
@@ -26831,6 +26244,281 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
+      "source": "readme_core_common",
+      "target": "readme_feature_splash"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "core/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_network",
+      "target": "core_readme_core_network"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_network",
+      "target": "readme_data_sample"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_designsystem",
+      "target": "app_readme_purpose"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "core/designsystem/JETBRAINS_MONO_OFL.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_designsystem",
+      "target": "core_designsystem_jetbrains_mono_ofl_document"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "core/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_designsystem",
+      "target": "core_readme_core_designsystem"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_designsystem",
+      "target": "readme_core_ui"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_designsystem",
+      "target": "readme_feature_main"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_designsystem",
+      "target": "readme_feature_sample"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_designsystem",
+      "target": "readme_feature_splash"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "core/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_ui",
+      "target": "core_readme_core_ui"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_ui",
+      "target": "readme_feature_main"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_ui",
+      "target": "readme_feature_sample"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_ui",
+      "target": "readme_feature_splash"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "core/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_mvi",
+      "target": "core_readme_core_mvi"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_mvi",
+      "target": "readme_feature_main"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_mvi",
+      "target": "readme_feature_sample"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_core_mvi",
+      "target": "readme_feature_splash"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "build-logic/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_lint_designsystem",
+      "target": "build_logic_readme_plugin_feature"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_lint_designsystem",
+      "target": "readme_feature_main"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_lint_designsystem",
+      "target": "readme_feature_sample"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_lint_designsystem",
+      "target": "readme_feature_splash"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_feature_splash",
+      "target": "app_readme_purpose"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_feature_main",
+      "target": "app_readme_purpose"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "readme_feature_sample",
+      "target": "app_readme_purpose"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
       "source": "readme_feature_sample",
       "target": "readme_domain_sample"
     },
@@ -26842,8 +26530,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "readme_data_sample",
-      "target": "readme_domain_sample"
+      "source": "readme_domain_sample",
+      "target": "readme_data_sample"
     },
     {
       "relation": "references",
@@ -26853,8 +26541,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "app_readme_purpose",
-      "target": "readme_data_sample"
+      "source": "readme_data_sample",
+      "target": "app_readme_purpose"
     },
     {
       "relation": "references",
@@ -27073,40 +26761,7 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "build_logic_readme_plugin_kotlin_jvm",
-      "target": "build_logic_readme_plugin_test_unit"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "build-logic/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "build_logic_readme_plugin_test_android",
-      "target": "build_logic_readme_plugin_test_unit"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "build-logic/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "build_logic_readme_plugin_android_library",
-      "target": "build_logic_readme_plugin_test_android"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "core/common/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_common_readme_convention_plugin",
+      "source": "build_logic_readme_plugin_test_unit",
       "target": "build_logic_readme_plugin_kotlin_jvm"
     },
     {
@@ -27117,8 +26772,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "build_logic_readme_plugin_android_compose",
-      "target": "build_logic_readme_plugin_android_library"
+      "source": "build_logic_readme_plugin_test_unit",
+      "target": "build_logic_readme_plugin_test_android"
     },
     {
       "relation": "references",
@@ -27128,7 +26783,29 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "build_logic_readme_plugin_feature",
+      "source": "build_logic_readme_plugin_test_android",
+      "target": "build_logic_readme_plugin_android_library"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "core/common/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "build_logic_readme_plugin_kotlin_jvm",
+      "target": "core_common_readme_convention_plugin"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "build-logic/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "build_logic_readme_plugin_android_library",
       "target": "build_logic_readme_plugin_android_compose"
     },
     {
@@ -27139,8 +26816,19 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "build_logic_readme_plugin_feature",
-      "target": "build_logic_readme_plugin_android_hilt"
+      "source": "build_logic_readme_plugin_android_compose",
+      "target": "build_logic_readme_plugin_feature"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "build-logic/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "build_logic_readme_plugin_android_hilt",
+      "target": "build_logic_readme_plugin_feature"
     },
     {
       "relation": "references",
@@ -27216,8 +26904,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_readme_core_common",
-      "target": "core_readme_core_common"
+      "source": "core_readme_core_common",
+      "target": "core_common_readme_core_common"
     },
     {
       "relation": "references",
@@ -27227,8 +26915,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_readme_core_network",
-      "target": "core_readme_core_common"
+      "source": "core_readme_core_common",
+      "target": "core_readme_core_network"
     },
     {
       "relation": "references",
@@ -27238,8 +26926,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_readme_core_ui",
-      "target": "core_readme_core_designsystem"
+      "source": "core_readme_core_designsystem",
+      "target": "core_readme_core_ui"
     },
     {
       "relation": "references",
@@ -27337,8 +27025,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_readme_data",
-      "target": "core_common_readme_core_common"
+      "source": "core_common_readme_core_common",
+      "target": "core_common_readme_data"
     },
     {
       "relation": "references",
@@ -27348,8 +27036,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_readme_domain",
-      "target": "core_common_readme_core_common"
+      "source": "core_common_readme_core_common",
+      "target": "core_common_readme_domain"
     },
     {
       "relation": "references",
@@ -27359,8 +27047,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_readme_feature_module",
-      "target": "core_common_readme_core_common"
+      "source": "core_common_readme_core_common",
+      "target": "core_common_readme_feature_module"
     },
     {
       "relation": "references",
@@ -27465,6 +27153,28 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "core/ui/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_designsystem_readme",
+      "target": "core_ui_readme"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/agent/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_designsystem_readme",
+      "target": "docs_agent_readme_task_design_foundation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "core/designsystem/README.md",
       "source_location": null,
       "weight": 1.0,
@@ -27526,28 +27236,6 @@
       "_origin": "semantic",
       "source": "core_designsystem_readme",
       "target": "lint_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "core/ui/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_ui_readme",
-      "target": "core_designsystem_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/agent/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_agent_readme_task_design_foundation",
-      "target": "core_designsystem_readme"
     },
     {
       "relation": "references",
@@ -27616,6 +27304,28 @@
       "target": "core_mvi_readme_mviviewmodel"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "core/mvi/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_mvi_readme",
+      "target": "core_mvi_readme_no_orbit_rationale"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/agent/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_mvi_readme",
+      "target": "docs_agent_readme_task_viewmodel_mvi"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -27638,28 +27348,6 @@
       "target": "feature_readme"
     },
     {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "core/mvi/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_mvi_readme_no_orbit_rationale",
-      "target": "core_mvi_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/agent/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_agent_readme_task_viewmodel_mvi",
-      "target": "core_mvi_readme"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -27667,8 +27355,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "feature_star",
-      "target": "core_mvi_readme"
+      "source": "core_mvi_readme",
+      "target": "feature_star"
     },
     {
       "relation": "references",
@@ -27722,8 +27410,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "data_sample",
-      "target": "core_network_readme"
+      "source": "core_network_readme",
+      "target": "data_sample"
     },
     {
       "relation": "references",
@@ -27733,30 +27421,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_domain_data_network",
-      "target": "core_network_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "core/designsystem/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_designsystem_readme_contextual",
-      "target": "core_ui_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "core/designsystem/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_designsystem_readme_semantic",
-      "target": "core_ui_readme"
+      "source": "core_network_readme",
+      "target": "docs_agent_readme_task_domain_data_network"
     },
     {
       "relation": "references",
@@ -27773,12 +27439,45 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "core/designsystem/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_ui_readme",
+      "target": "core_designsystem_readme_contextual"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "core/designsystem/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_ui_readme",
+      "target": "core_designsystem_readme_semantic"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "core/ui/README.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
       "source": "core_ui_readme",
       "target": "core_ui_readme_catfactitem"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "core/ui/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_ui_readme",
+      "target": "core_ui_readme_core_android_rationale"
     },
     {
       "relation": "references",
@@ -27801,6 +27500,28 @@
       "_origin": "semantic",
       "source": "core_ui_readme",
       "target": "core_ui_readme_splashcontent"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/agent/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_ui_readme",
+      "target": "docs_agent_readme_task_coreui_component"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/design-system/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "core_ui_readme",
+      "target": "docs_design_system_readme"
     },
     {
       "relation": "references",
@@ -27836,39 +27557,6 @@
       "target": "feature_star"
     },
     {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "core/ui/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "core_ui_readme_core_android_rationale",
-      "target": "core_ui_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/agent/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_agent_readme_task_coreui_component",
-      "target": "core_ui_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design-system/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_system_readme",
-      "target": "core_ui_readme"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -27876,8 +27564,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "app_readme",
-      "target": "data_readme"
+      "source": "data_readme",
+      "target": "app_readme"
     },
     {
       "relation": "references",
@@ -27949,23 +27637,12 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "data/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "data_readme",
-      "target": "domain_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "docs/agent/README.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_domain_data_network",
-      "target": "data_readme"
+      "source": "data_readme",
+      "target": "docs_agent_readme_task_domain_data_network"
     },
     {
       "relation": "references",
@@ -27975,19 +27652,19 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_readme",
-      "target": "data_readme"
+      "source": "data_readme",
+      "target": "docs_readme"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/agent/README.md",
+      "source_file": "data/README.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_doc_change",
-      "target": "docs_readme"
+      "source": "data_readme",
+      "target": "domain_readme"
     },
     {
       "relation": "references",
@@ -28032,6 +27709,17 @@
       "_origin": "semantic",
       "source": "docs_readme",
       "target": "docs_agent_readme"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/agent/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_readme",
+      "target": "docs_agent_readme_task_doc_change"
     },
     {
       "relation": "references",
@@ -28323,45 +28011,45 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/agent/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_agent_readme_task_design_foundation",
-      "target": "docs_design_system_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/agent/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_agent_readme_task_designsystem_boundary_error",
-      "target": "docs_design_system_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/agent/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_agent_readme_task_designsystem_component",
-      "target": "docs_design_system_readme"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "docs/design-system/README.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
       "source": "docs_design_system_readme",
       "target": "build_logic_convention_blebridge_android_compose"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/agent/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_system_readme",
+      "target": "docs_agent_readme_task_design_foundation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/agent/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_system_readme",
+      "target": "docs_agent_readme_task_designsystem_boundary_error"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/agent/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_system_readme",
+      "target": "docs_agent_readme_task_designsystem_component"
     },
     {
       "relation": "references",
@@ -28547,8 +28235,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_mvi_readme_compose_api_rationale",
-      "target": "core_mvi_readme_mviviewmodel"
+      "source": "core_mvi_readme_mviviewmodel",
+      "target": "core_mvi_readme_compose_api_rationale"
     },
     {
       "relation": "references",
@@ -28558,8 +28246,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_networkerror",
-      "target": "core_common"
+      "source": "core_common",
+      "target": "core_common_networkerror"
     },
     {
       "relation": "references",
@@ -28569,8 +28257,19 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "core_common_neveraresult",
-      "target": "core_common"
+      "source": "core_common",
+      "target": "core_common_neveraresult"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "data/README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "data_readme_androidappinfoprovider",
+      "target": "data_readme_providermodule"
     },
     {
       "relation": "implements",
@@ -28591,17 +28290,6 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "data_readme_providermodule",
-      "target": "data_readme_androidappinfoprovider"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "data/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
       "source": "domain_appinfoprovider",
       "target": "domain_readme"
     },
@@ -28613,8 +28301,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_domain_data_network",
-      "target": "domain_readme"
+      "source": "domain_readme",
+      "target": "docs_agent_readme_task_domain_data_network"
     },
     {
       "relation": "references",
@@ -28624,8 +28312,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_navigation",
-      "target": "app_readme"
+      "source": "app_readme",
+      "target": "docs_agent_readme_task_navigation"
     },
     {
       "relation": "references",
@@ -28635,8 +28323,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_coreui_component",
-      "target": "docs_feature_readme"
+      "source": "docs_feature_readme",
+      "target": "docs_agent_readme_task_coreui_component"
     },
     {
       "relation": "references",
@@ -28646,8 +28334,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_feature_ui",
-      "target": "docs_feature_readme"
+      "source": "docs_feature_readme",
+      "target": "docs_agent_readme_task_feature_ui"
     },
     {
       "relation": "references",
@@ -28657,8 +28345,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_navigation",
-      "target": "docs_navigation_readme"
+      "source": "docs_navigation_readme",
+      "target": "docs_agent_readme_task_navigation"
     },
     {
       "relation": "references",
@@ -28668,8 +28356,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_tdd_orchestration",
-      "target": "docs_test_readme"
+      "source": "docs_test_readme",
+      "target": "docs_agent_readme_task_tdd_orchestration"
     },
     {
       "relation": "references",
@@ -28679,8 +28367,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_test",
-      "target": "docs_test_readme"
+      "source": "docs_test_readme",
+      "target": "docs_agent_readme_task_test"
     },
     {
       "relation": "references",
@@ -28690,8 +28378,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_viewmodel_mvi",
-      "target": "docs_test_readme"
+      "source": "docs_test_readme",
+      "target": "docs_agent_readme_task_viewmodel_mvi"
     },
     {
       "relation": "references",
@@ -28701,8 +28389,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_designsystem_boundary_error",
-      "target": "lint_readme"
+      "source": "lint_readme",
+      "target": "docs_agent_readme_task_designsystem_boundary_error"
     },
     {
       "relation": "references",
@@ -28712,8 +28400,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_tdd_orchestration",
-      "target": "docs_orchestration_orchestration_tdd"
+      "source": "docs_orchestration_orchestration_tdd",
+      "target": "docs_agent_readme_task_tdd_orchestration"
     },
     {
       "relation": "references",
@@ -28723,8 +28411,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_designsystem_component",
-      "target": "docs_design_bletransferapp_dc_html"
+      "source": "docs_design_bletransferapp_dc_html",
+      "target": "docs_agent_readme_task_designsystem_component"
     },
     {
       "relation": "references",
@@ -28734,8 +28422,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_designsystem_component",
-      "target": "docs_design_common"
+      "source": "docs_design_common",
+      "target": "docs_agent_readme_task_designsystem_component"
     },
     {
       "relation": "references",
@@ -28745,8 +28433,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_coreui_component",
-      "target": "docs_design_ui"
+      "source": "docs_design_ui",
+      "target": "docs_agent_readme_task_coreui_component"
     },
     {
       "relation": "references",
@@ -28756,8 +28444,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_feature_ui",
-      "target": "feature_readme"
+      "source": "feature_readme",
+      "target": "docs_agent_readme_task_feature_ui"
     },
     {
       "relation": "references",
@@ -28767,8 +28455,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_gradle_convention",
-      "target": "build_logic_readme"
+      "source": "build_logic_readme",
+      "target": "docs_agent_readme_task_gradle_convention"
     },
     {
       "relation": "references",
@@ -28778,8 +28466,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_agent_readme_task_project_structure",
-      "target": "root_readme"
+      "source": "root_readme",
+      "target": "docs_agent_readme_task_project_structure"
     },
     {
       "relation": "references",
@@ -28844,8 +28532,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_system_readme_chatcontext",
-      "target": "docs_design_system_readme_connectionroleprovider"
+      "source": "docs_design_system_readme_connectionroleprovider",
+      "target": "docs_design_system_readme_chatcontext"
     },
     {
       "relation": "references",
@@ -28866,8 +28554,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_system_readme_chatcontext",
-      "target": "docs_design_system_readme_chatmodeprovider"
+      "source": "docs_design_system_readme_chatmodeprovider",
+      "target": "docs_design_system_readme_chatcontext"
     },
     {
       "relation": "references",
@@ -29504,8 +29192,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_bletransferapp_dc_signal_strength_indicator",
-      "target": "docs_design_bletransferapp_dc_device_list_item"
+      "source": "docs_design_bletransferapp_dc_device_list_item",
+      "target": "docs_design_bletransferapp_dc_signal_strength_indicator"
     },
     {
       "relation": "conceptually_related_to",
@@ -29515,8 +29203,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_bletransferapp_dc_chat_input",
-      "target": "docs_design_bletransferapp_dc_chat_chrome"
+      "source": "docs_design_bletransferapp_dc_chat_chrome",
+      "target": "docs_design_bletransferapp_dc_chat_input"
     },
     {
       "relation": "conceptually_related_to",
@@ -29526,18 +29214,7 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_bletransferapp_dc_message_bubble",
-      "target": "docs_design_bletransferapp_dc_chat_chrome"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "docs/design/BLETransferApp.dc.html",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_bletransferapp_dc_transfer_card",
+      "source": "docs_design_bletransferapp_dc_chat_chrome",
       "target": "docs_design_bletransferapp_dc_message_bubble"
     },
     {
@@ -29548,8 +29225,19 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_bletransferapp_dc_attachment_sheet",
-      "target": "docs_design_bletransferapp_dc_chat_input"
+      "source": "docs_design_bletransferapp_dc_message_bubble",
+      "target": "docs_design_bletransferapp_dc_transfer_card"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "docs/design/BLETransferApp.dc.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_bletransferapp_dc_chat_input",
+      "target": "docs_design_bletransferapp_dc_attachment_sheet"
     },
     {
       "relation": "references",
@@ -29746,8 +29434,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_03_segmented_control_segmentedcontrol",
-      "target": "docs_design_common_01_action_button_actionbutton"
+      "source": "docs_design_common_01_action_button_actionbutton",
+      "target": "docs_design_common_03_segmented_control_segmentedcontrol"
     },
     {
       "relation": "references",
@@ -29757,8 +29445,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_07_choice_dialog_choicedialog",
-      "target": "docs_design_common_01_action_button_actionbutton"
+      "source": "docs_design_common_01_action_button_actionbutton",
+      "target": "docs_design_common_07_choice_dialog_choicedialog"
     },
     {
       "relation": "references",
@@ -29768,8 +29456,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_08_settings_field_settingsfield",
-      "target": "docs_design_common_01_action_button_actionbutton"
+      "source": "docs_design_common_01_action_button_actionbutton",
+      "target": "docs_design_common_08_settings_field_settingsfield"
     },
     {
       "relation": "conceptually_related_to",
@@ -29779,8 +29467,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_screenshots_common_01_action_button_screenshot",
-      "target": "docs_design_common_01_action_button_actionbutton"
+      "source": "docs_design_common_01_action_button_actionbutton",
+      "target": "docs_design_screenshots_common_01_action_button_screenshot"
     },
     {
       "relation": "references",
@@ -29803,6 +29491,28 @@
       "_origin": "semantic",
       "source": "docs_design_common_02_icon_button_iconbutton",
       "target": "docs_design_blebridgedesignsystem_rolecolors"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/design/00-common-component-roadmap.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_02_icon_button_iconbutton",
+      "target": "docs_design_common_04_activity_indicator_activityindicator"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/design/common/10-app-bar.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_02_icon_button_iconbutton",
+      "target": "docs_design_common_10_app_bar_appbar"
     },
     {
       "relation": "references",
@@ -29819,34 +29529,12 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/design/00-common-component-roadmap.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_04_activity_indicator_activityindicator",
-      "target": "docs_design_common_02_icon_button_iconbutton"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/common/10-app-bar.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_10_app_bar_appbar",
-      "target": "docs_design_common_02_icon_button_iconbutton"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "docs/design/common/11-media-playback-controls.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
-      "target": "docs_design_common_02_icon_button_iconbutton"
+      "source": "docs_design_common_02_icon_button_iconbutton",
+      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
     },
     {
       "relation": "conceptually_related_to",
@@ -29856,41 +29544,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_screenshots_common_02_icon_button_screenshot",
-      "target": "docs_design_common_02_icon_button_iconbutton"
-    },
-    {
-      "relation": "describes",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/screenshots/common/03-segmented-control.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_03_segmented_control_annotation",
-      "target": "docs_design_common_03_segmented_control_segmentedcontrol"
-    },
-    {
-      "relation": "styles",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/screenshots/common/03-segmented-control.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_03_segmented_control_darktheme",
-      "target": "docs_design_common_03_segmented_control_segmentedcontrol"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/screenshots/common/03-segmented-control.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_03_segmented_control_screenshot",
-      "target": "docs_design_common_03_segmented_control_segmentedcontrol"
+      "source": "docs_design_common_02_icon_button_iconbutton",
+      "target": "docs_design_screenshots_common_02_icon_button_screenshot"
     },
     {
       "relation": "references",
@@ -29915,15 +29570,37 @@
       "target": "docs_design_blebridgedesignsystem_rolecolors"
     },
     {
-      "relation": "visualizes",
+      "relation": "describes",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/design/screenshots/common/03-segmented-control.png",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_03_segmented_control_selectedsegment",
-      "target": "docs_design_common_03_segmented_control_segmentedcontrol"
+      "source": "docs_design_common_03_segmented_control_segmentedcontrol",
+      "target": "docs_design_common_03_segmented_control_annotation"
+    },
+    {
+      "relation": "styles",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/design/screenshots/common/03-segmented-control.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_03_segmented_control_segmentedcontrol",
+      "target": "docs_design_common_03_segmented_control_darktheme"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/design/screenshots/common/03-segmented-control.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_03_segmented_control_segmentedcontrol",
+      "target": "docs_design_common_03_segmented_control_screenshot"
     },
     {
       "relation": "visualizes",
@@ -29933,8 +29610,19 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_03_segmented_control_unselectedsegment",
-      "target": "docs_design_common_03_segmented_control_segmentedcontrol"
+      "source": "docs_design_common_03_segmented_control_segmentedcontrol",
+      "target": "docs_design_common_03_segmented_control_selectedsegment"
+    },
+    {
+      "relation": "visualizes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/design/screenshots/common/03-segmented-control.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_03_segmented_control_segmentedcontrol",
+      "target": "docs_design_common_03_segmented_control_unselectedsegment"
     },
     {
       "relation": "semantically_similar_to",
@@ -29944,8 +29632,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_07_choice_dialog_choicedialog",
-      "target": "docs_design_common_03_segmented_control_segmentedcontrol"
+      "source": "docs_design_common_03_segmented_control_segmentedcontrol",
+      "target": "docs_design_common_07_choice_dialog_choicedialog"
     },
     {
       "relation": "references",
@@ -29970,6 +29658,17 @@
       "target": "docs_design_common_04_activity_indicator_activitycolors"
     },
     {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/design/screenshots/common/04-activity-indicator.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_04_activity_indicator_activityindicator",
+      "target": "docs_design_common_04_activity_indicator_screenshot"
+    },
+    {
       "relation": "semantically_similar_to",
       "confidence": "INFERRED",
       "confidence_score": 0.65,
@@ -29979,28 +29678,6 @@
       "_origin": "semantic",
       "source": "docs_design_common_04_activity_indicator_activityindicator",
       "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/screenshots/common/04-activity-indicator.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_04_activity_indicator_screenshot",
-      "target": "docs_design_common_04_activity_indicator_activityindicator"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/screenshots/common/05-status-banner.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_05_status_banner_screenshot",
-      "target": "docs_design_common_05_status_banner_statusbanner"
     },
     {
       "relation": "references",
@@ -30014,6 +29691,17 @@
       "target": "docs_design_blebridgedesignsystem_apptheme"
     },
     {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/design/screenshots/common/05-status-banner.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_05_status_banner_statusbanner",
+      "target": "docs_design_common_05_status_banner_screenshot"
+    },
+    {
       "relation": "semantically_similar_to",
       "confidence": "INFERRED",
       "confidence_score": 0.65,
@@ -30021,8 +29709,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_06_empty_state_emptystate",
-      "target": "docs_design_common_05_status_banner_statusbanner"
+      "source": "docs_design_common_05_status_banner_statusbanner",
+      "target": "docs_design_common_06_empty_state_emptystate"
     },
     {
       "relation": "references",
@@ -30043,8 +29731,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_screenshots_common_06_empty_state_screenshot",
-      "target": "docs_design_common_06_empty_state_emptystate"
+      "source": "docs_design_common_06_empty_state_emptystate",
+      "target": "docs_design_screenshots_common_06_empty_state_screenshot"
     },
     {
       "relation": "references",
@@ -30076,8 +29764,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_screenshots_common_07_choice_dialog_screenshot",
-      "target": "docs_design_common_07_choice_dialog_choicedialog"
+      "source": "docs_design_common_07_choice_dialog_choicedialog",
+      "target": "docs_design_screenshots_common_07_choice_dialog_screenshot"
     },
     {
       "relation": "references",
@@ -30153,8 +29841,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_screenshots_common_08_settings_field_screenshot",
-      "target": "docs_design_common_08_settings_field_settingsfield"
+      "source": "docs_design_common_08_settings_field_settingsfield",
+      "target": "docs_design_screenshots_common_08_settings_field_screenshot"
     },
     {
       "relation": "rationale_for",
@@ -30164,8 +29852,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_00_common_component_roadmap_moduleboundaryrationale",
-      "target": "docs_design_common_09_adaptive_two_pane_adaptivetwopanescaffold"
+      "source": "docs_design_common_09_adaptive_two_pane_adaptivetwopanescaffold",
+      "target": "docs_design_00_common_component_roadmap_moduleboundaryrationale"
     },
     {
       "relation": "references",
@@ -30190,6 +29878,17 @@
       "target": "docs_design_blebridgedesignsystem_apptheme"
     },
     {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/design/screenshots/common/10-app-bar.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_10_app_bar_appbar",
+      "target": "docs_design_common_10_app_bar_screenshot"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -30201,17 +29900,6 @@
       "target": "docs_design_common_11_media_playback_controls_appthememedia"
     },
     {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/screenshots/common/10-app-bar.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_10_app_bar_screenshot",
-      "target": "docs_design_common_10_app_bar_appbar"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -30219,8 +29907,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
-      "target": "docs_design_common_10_app_bar_appbar"
+      "source": "docs_design_common_10_app_bar_appbar",
+      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
     },
     {
       "relation": "rationale_for",
@@ -30230,30 +29918,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_00_common_component_roadmap_moduleboundaryrationale",
-      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
-    },
-    {
-      "relation": "reused_by",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/screenshots/common/11-media-playback-controls.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_09_app_bar_shell",
-      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/common/11-media-playback-controls.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_11_media_playback_controls_controlledprimitiverationale",
-      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
+      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
+      "target": "docs_design_00_common_component_roadmap_moduleboundaryrationale"
     },
     {
       "relation": "references",
@@ -30267,6 +29933,17 @@
       "target": "docs_design_blebridgedesignsystem_apptheme"
     },
     {
+      "relation": "reused_by",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/design/screenshots/common/11-media-playback-controls.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
+      "target": "docs_design_common_09_app_bar_shell"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -30278,6 +29955,17 @@
       "target": "docs_design_common_11_media_playback_controls_appthememedia"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/design/common/11-media-playback-controls.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
+      "target": "docs_design_common_11_media_playback_controls_controlledprimitiverationale"
+    },
+    {
       "relation": "part_of",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -30285,8 +29973,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_11_media_playback_controls_progress_bar",
-      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
+      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
+      "target": "docs_design_common_11_media_playback_controls_progress_bar"
     },
     {
       "relation": "conceptually_related_to",
@@ -30296,8 +29984,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_11_media_playback_controls_screenshot",
-      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
+      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
+      "target": "docs_design_common_11_media_playback_controls_screenshot"
     },
     {
       "relation": "part_of",
@@ -30307,8 +29995,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_common_11_media_playback_controls_transport_buttons",
-      "target": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
+      "source": "docs_design_common_11_media_playback_controls_mediaplaybackcontrols",
+      "target": "docs_design_common_11_media_playback_controls_transport_buttons"
     },
     {
       "relation": "references",
@@ -30388,6 +30076,17 @@
       "target": "docs_design_blebridgedesignsystem_rolecolors"
     },
     {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/design/BleBridgeDesignSystem.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_blebridgedesignsystem_apptheme",
+      "target": "docs_design_blebridgedesignsystem_architecturerationale"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -30397,17 +30096,6 @@
       "_origin": "semantic",
       "source": "docs_design_blebridgedesignsystem_apptheme",
       "target": "docs_design_blebridgedesignsystem_connectionroleprovider"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/BleBridgeDesignSystem.html",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_blebridgedesignsystem_architecturerationale",
-      "target": "docs_design_blebridgedesignsystem_apptheme"
     },
     {
       "relation": "references",
@@ -30439,8 +30127,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_blebridgedesignsystem_architecturerationale",
-      "target": "docs_design_blebridgedesignsystem_connectionroleprovider"
+      "source": "docs_design_blebridgedesignsystem_connectionroleprovider",
+      "target": "docs_design_blebridgedesignsystem_architecturerationale"
     },
     {
       "relation": "references",
@@ -30461,8 +30149,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_blebridgedesignsystem_architecturerationale",
-      "target": "docs_design_blebridgedesignsystem_chatmodeprovider"
+      "source": "docs_design_blebridgedesignsystem_chatmodeprovider",
+      "target": "docs_design_blebridgedesignsystem_architecturerationale"
     },
     {
       "relation": "references",
@@ -30474,6 +30162,17 @@
       "_origin": "semantic",
       "source": "docs_design_blebridgedesignsystem_chatmodeprovider",
       "target": "docs_design_blebridgedesignsystem_messagebubble"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/design/screenshots/ui/01-device-list-item.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_ui_01_device_list_item_devicelistitem",
+      "target": "docs_design_ui_01_device_list_item_screenshot"
     },
     {
       "relation": "shares_data_with",
@@ -30496,17 +30195,6 @@
       "_origin": "semantic",
       "source": "docs_design_ui_01_device_list_item_devicelistitem",
       "target": "docs_design_ui_03_message_bubble_messagebubble"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/screenshots/ui/01-device-list-item.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_ui_01_device_list_item_screenshot",
-      "target": "docs_design_ui_01_device_list_item_devicelistitem"
     },
     {
       "relation": "conceptually_related_to",
@@ -30582,8 +30270,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_screenshots_ui_03_message_bubble_screenshot",
-      "target": "docs_design_ui_03_message_bubble_messagebubble"
+      "source": "docs_design_ui_03_message_bubble_messagebubble",
+      "target": "docs_design_screenshots_ui_03_message_bubble_screenshot"
     },
     {
       "relation": "conceptually_related_to",
@@ -30615,8 +30303,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_ui_04_transfer_card_screenshot",
-      "target": "docs_design_ui_04_transfer_card_transfercard"
+      "source": "docs_design_ui_04_transfer_card_transfercard",
+      "target": "docs_design_ui_04_transfer_card_screenshot"
     },
     {
       "relation": "semantically_similar_to",
@@ -30637,8 +30325,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_screenshots_ui_05_chat_input_screenshot",
-      "target": "docs_design_ui_05_chat_input_chatinput"
+      "source": "docs_design_ui_05_chat_input_chatinput",
+      "target": "docs_design_screenshots_ui_05_chat_input_screenshot"
     },
     {
       "relation": "conceptually_related_to",
@@ -30659,8 +30347,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_ui_06_attachment_sheet_screenshot",
-      "target": "docs_design_ui_06_attachment_sheet_attachmentsheet"
+      "source": "docs_design_ui_06_attachment_sheet_attachmentsheet",
+      "target": "docs_design_ui_06_attachment_sheet_screenshot"
     },
     {
       "relation": "references",
@@ -30670,8 +30358,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_orchestration_orchestration_tdd_orchestrationtdd",
-      "target": "docs_feature_readme_featureuiconvention"
+      "source": "docs_feature_readme_featureuiconvention",
+      "target": "docs_orchestration_orchestration_tdd_orchestrationtdd"
     },
     {
       "relation": "references",
@@ -30681,8 +30369,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_orchestration_tdd_implementer_tddimplementer",
-      "target": "docs_feature_readme_featureuiconvention"
+      "source": "docs_feature_readme_featureuiconvention",
+      "target": "docs_orchestration_tdd_implementer_tddimplementer"
     },
     {
       "relation": "references",
@@ -30692,8 +30380,30 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "feature_readme_featuremodulegroup",
-      "target": "docs_feature_readme_featureuiconvention"
+      "source": "docs_feature_readme_featureuiconvention",
+      "target": "feature_readme_featuremodulegroup"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/orchestration/orchestration-tdd.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_navigation_readme_navigationconvention",
+      "target": "docs_orchestration_orchestration_tdd_orchestrationtdd"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/orchestration/tdd-implementer.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_navigation_readme_navigationconvention",
+      "target": "docs_orchestration_tdd_implementer_tddimplementer"
     },
     {
       "relation": "references",
@@ -30705,28 +30415,6 @@
       "_origin": "semantic",
       "source": "docs_navigation_readme_navigationconvention",
       "target": "feature_readme_featuremodulegroup"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/orchestration/orchestration-tdd.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_orchestration_orchestration_tdd_orchestrationtdd",
-      "target": "docs_navigation_readme_navigationconvention"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/orchestration/tdd-implementer.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_orchestration_tdd_implementer_tddimplementer",
-      "target": "docs_navigation_readme_navigationconvention"
     },
     {
       "relation": "references",
@@ -30864,6 +30552,28 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "docs/orchestration/tdd-implementer.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_orchestration_orchestration_tdd_orchestrationtdd",
+      "target": "docs_orchestration_tdd_implementer_tddimplementer"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/orchestration/testcase-author.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_orchestration_orchestration_tdd_orchestrationtdd",
+      "target": "docs_orchestration_testcase_author_testcaseauthor"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "docs/orchestration/orchestration-tdd.md",
       "source_location": null,
       "weight": 1.0,
@@ -30875,45 +30585,23 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "docs/orchestration/tdd-implementer.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_orchestration_tdd_implementer_tddimplementer",
-      "target": "docs_orchestration_orchestration_tdd_orchestrationtdd"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/orchestration/testcase-author.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_orchestration_testcase_author_testcaseauthor",
-      "target": "docs_orchestration_orchestration_tdd_orchestrationtdd"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/orchestration/tdd-implementer.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_orchestration_tdd_implementer_tddimplementer",
-      "target": "docs_test_readme_testconvention"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "docs/orchestration/orchestration-tdd.md",
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_orchestration_testcase_author_testcaseauthor",
-      "target": "docs_orchestration_tdd_implementer_tddimplementer"
+      "source": "docs_orchestration_tdd_implementer_tddimplementer",
+      "target": "docs_orchestration_testcase_author_testcaseauthor"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/orchestration/tdd-implementer.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_orchestration_tdd_implementer_tddimplementer",
+      "target": "docs_test_readme_testconvention"
     },
     {
       "relation": "references",
@@ -30934,8 +30622,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "feature_readme_featuremodulegroup",
-      "target": "docs_test_readme_testconvention"
+      "source": "docs_test_readme_testconvention",
+      "target": "feature_readme_featuremodulegroup"
     },
     {
       "relation": "references",
@@ -30945,8 +30633,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "feature_readme_featuremodulegroup",
-      "target": "domain_readme_domainmodule"
+      "source": "domain_readme_domainmodule",
+      "target": "feature_readme_featuremodulegroup"
     },
     {
       "relation": "references",
@@ -31004,6 +30692,17 @@
       "target": "docs_design_common_09_adaptive_two_pane_secondary_pane"
     },
     {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/design/screenshots/common/09-adaptive-two-pane.png",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "docs_design_common_09_adaptive_two_pane_adaptivetwopane",
+      "target": "docs_design_common_09_adaptive_two_pane_usage_note"
+    },
+    {
       "relation": "tagged_as",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -31013,17 +30712,6 @@
       "_origin": "semantic",
       "source": "docs_design_common_09_adaptive_two_pane_adaptivetwopane",
       "target": "docs_design_common_designsystem_category"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/screenshots/common/09-adaptive-two-pane.png",
-      "source_location": null,
-      "weight": 1.0,
-      "_origin": "semantic",
-      "source": "docs_design_common_09_adaptive_two_pane_usage_note",
-      "target": "docs_design_common_09_adaptive_two_pane_adaptivetwopane"
     },
     {
       "relation": "conceptually_related_to",
@@ -31077,8 +30765,8 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_ui_06_attachment_sheet_bottom_sheet_pattern",
-      "target": "docs_design_ui_06_attachment_sheet_screenshot"
+      "source": "docs_design_ui_06_attachment_sheet_screenshot",
+      "target": "docs_design_ui_06_attachment_sheet_bottom_sheet_pattern"
     },
     {
       "relation": "shown_in",
@@ -31088,320 +30776,10 @@
       "source_location": null,
       "weight": 1.0,
       "_origin": "semantic",
-      "source": "docs_design_ui_06_attachment_sheet_tile_grid",
-      "target": "docs_design_ui_06_attachment_sheet_screenshot"
+      "source": "docs_design_ui_06_attachment_sheet_screenshot",
+      "target": "docs_design_ui_06_attachment_sheet_tile_grid"
     }
   ],
-  "hyperedges": [
-    {
-      "id": "claude_skills_commit_message_reference_docs_hyperedge",
-      "label": "commit-message \uc2a4\ud0ac\uacfc \uc138 \ucc38\uc870 \ubb38\uc11c(hooks/path-hints/recovery)\uc758 \uc870\uac74\ubd80 \ub85c\ub529 \uad6c\uc870",
-      "nodes": [
-        "claude_skills_commit_message_skill_commit_message",
-        "claude_skills_commit_message_references_hooks_pre_commit_hook_handling",
-        "claude_skills_commit_message_references_path_hints_type_hints",
-        "claude_skills_commit_message_references_recovery_failure_recovery"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".claude/skills/commit-message/SKILL.md"
-    },
-    {
-      "id": "claude_skills_git_workflow_ecosystem_hyperedge",
-      "label": "BleBridge \uc5d0\uc774\uc804\ud2b8 git/PR/\uc9c0\uc2dd\uadf8\ub798\ud504 \uc6cc\ud06c\ud50c\ub85c\uc6b0 \uc2a4\ud0ac 3\uc885",
-      "nodes": [
-        "claude_skills_commit_message_skill_commit_message",
-        "claude_skills_create_pr_skill_create_pr",
-        "claude_skills_graphify_skill_graphify"
-      ],
-      "relation": "form",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": ".claude/skills/create-pr/SKILL.md"
-    },
-    {
-      "id": "graphify_extraction_pipeline_steps",
-      "label": "Steps 2.5-3C semantic extraction pipeline",
-      "nodes": [
-        "claude_skills_graphify_references_transcribe_transcribe",
-        "claude_skills_graphify_references_extraction_spec_extraction_spec",
-        "claude_skills_graphify_references_update_update"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": ".claude/skills/graphify/references/update.md"
-    },
-    {
-      "id": "graphify_graph_maintenance_triggers",
-      "label": "Graph auto-rebuild trigger mechanisms",
-      "nodes": [
-        "claude_skills_graphify_references_add_watch_add_watch",
-        "claude_skills_graphify_references_hooks_hooks",
-        "claude_skills_graphify_references_update_update"
-      ],
-      "relation": "form",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": ".claude/skills/graphify/references/add-watch.md"
-    },
-    {
-      "id": "codex_extraction_pipeline_hyperedge",
-      "label": "Graphify AST + Semantic + Merge extraction pipeline",
-      "nodes": [
-        "codex_skills_graphify_skill_step3_extraction",
-        "codex_skills_graphify_skill_step3_parta_ast",
-        "codex_skills_graphify_skill_step3_partb_semantic",
-        "codex_skills_graphify_skill_step3_partc_merge"
-      ],
-      "relation": "form",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": ".codex/skills/graphify/SKILL.md"
-    },
-    {
-      "id": "codex_export_flags_hyperedge",
-      "label": "Graphify opt-in export flags (wiki/neo4j/falkordb/svg/graphml/mcp/benchmark)",
-      "nodes": [
-        "codex_skills_graphify_references_exports_wiki",
-        "codex_skills_graphify_references_exports_neo4j",
-        "codex_skills_graphify_references_exports_falkordb",
-        "codex_skills_graphify_references_exports_svg",
-        "codex_skills_graphify_references_exports_graphml",
-        "codex_skills_graphify_references_exports_mcp_server",
-        "codex_skills_graphify_references_exports_benchmark"
-      ],
-      "relation": "form",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": ".codex/skills/graphify/references/exports.md"
-    },
-    {
-      "id": "codex_add_watch_ingestion_hyperedge",
-      "label": "Graphify corpus ingestion flow (add URL + watch folder)",
-      "nodes": [
-        "codex_skills_graphify_references_add_watch_graphify_add",
-        "codex_skills_graphify_references_add_watch_ingest_function",
-        "codex_skills_graphify_references_add_watch_supported_url_types",
-        "codex_skills_graphify_references_add_watch_watch_command"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": ".codex/skills/graphify/references/add-watch.md"
-    },
-    {
-      "id": "graphify_update_semantic_pipeline_hyperedge",
-      "label": "graphify --update pipeline: incremental detection, conditional transcription, merge",
-      "nodes": [
-        "codex_skills_graphify_references_update_incremental_update",
-        "codex_skills_graphify_references_update_build_merge",
-        "codex_skills_graphify_references_transcribe_overview"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".codex/skills/graphify/references/update.md"
-    },
-    {
-      "id": "graphify_self_improving_query_loop_hyperedge",
-      "label": "graphify self-improving loop: expand query, save-result outcomes, reflect/LESSONS.md, hook keeps it fresh",
-      "nodes": [
-        "codex_skills_graphify_references_query_vocab_expansion",
-        "codex_skills_graphify_references_query_save_result",
-        "codex_skills_graphify_references_query_reflect_lessons",
-        "codex_skills_graphify_references_hooks_git_commit_hook"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".codex/skills/graphify/references/query.md"
-    },
-    {
-      "id": "pr_lifecycle_automation_hyperedge",
-      "label": "PR lifecycle automation: template body, auto-assign workflow, create-pr skill",
-      "nodes": [
-        "github_pull_request_template_pr_template",
-        "github_workflows_pr_auto_assign_workflow",
-        "claude_skills_create_pr_skill_create_pr"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": ".github/pull_request_template.md"
-    },
-    {
-      "id": "hyperedge_core_common_dependents",
-      "label": "Modules depending on core:common per README.md dependency graph",
-      "nodes": [
-        "readme_domain",
-        "readme_data",
-        "readme_feature_splash",
-        "readme_feature_main",
-        "readme_feature_sample",
-        "readme_data_sample",
-        "readme_core_network"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "README.md"
-    },
-    {
-      "id": "hyperedge_build_logic_plugin_chain",
-      "label": "Gradle convention plugin composition chain (kotlin.jvm/test.android -> test.unit -> android.library -> android.compose)",
-      "nodes": [
-        "build_logic_readme_plugin_kotlin_jvm",
-        "build_logic_readme_plugin_test_unit",
-        "build_logic_readme_plugin_test_android",
-        "build_logic_readme_plugin_android_library",
-        "build_logic_readme_plugin_android_compose"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "build-logic/README.md"
-    },
-    {
-      "id": "hyperedge_agent_tooling_docs",
-      "label": "Agent-tooling routing configuration across BleBridge",
-      "nodes": [
-        "serena_project_config",
-        "agents_document",
-        "claude_document"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": ".serena/project.yml"
-    },
-    {
-      "id": "docs_design_system_readme_token_hierarchy",
-      "label": "Primitive \u2192 Semantic/Contextual \u2192 Component \ud1a0\ud070 \uacc4\uce35",
-      "nodes": [
-        "docs_design_system_readme_primitive",
-        "docs_design_system_readme_semantic",
-        "docs_design_system_readme_contextual",
-        "docs_design_system_readme_component"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design-system/README.md"
-    },
-    {
-      "id": "docs_design_system_readme_provider_scope_flow",
-      "label": "AppTheme\u2192ConnectionRoleProvider\u2192ChatModeProvider \ubc94\uc704 \uc870\ud569 \ud750\ub984",
-      "nodes": [
-        "docs_design_system_readme_apptheme",
-        "docs_design_system_readme_connectionroleprovider",
-        "docs_design_system_readme_chatmodeprovider",
-        "docs_design_system_readme_chatcontext"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design-system/README.md"
-    },
-    {
-      "id": "core_mvi_readme_contract_types",
-      "label": "MVI \uacc4\uc57d \ud0c0\uc785\uad70 (State/Intent/Mutation/SideEffect/ViewModel)",
-      "nodes": [
-        "core_mvi_readme_mvistate",
-        "core_mvi_readme_mviintent",
-        "core_mvi_readme_mvimutation",
-        "core_mvi_readme_mvisideeffect",
-        "core_mvi_readme_mviviewmodel"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "core/mvi/README.md"
-    },
-    {
-      "id": "docs_design_common_10_app_bar_mediaviewerpattern",
-      "label": "Media viewer AppBar + IconButton + MediaPlaybackControls composition",
-      "nodes": [
-        "docs_design_common_10_app_bar_appbar",
-        "docs_design_common_02_icon_button_iconbutton",
-        "docs_design_common_11_media_playback_controls_mediaplaybackcontrols"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/common/11-media-playback-controls.md"
-    },
-    {
-      "id": "docs_design_00_common_component_roadmap_actionbuttondependents",
-      "label": "Components with ActionButton as a foundation dependency",
-      "nodes": [
-        "docs_design_common_01_action_button_actionbutton",
-        "docs_design_common_03_segmented_control_segmentedcontrol",
-        "docs_design_common_07_choice_dialog_choicedialog",
-        "docs_design_common_08_settings_field_settingsfield"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/00-common-component-roadmap.md"
-    },
-    {
-      "id": "docs_design_blebridgedesignsystem_tokenflowarchitecture",
-      "label": "AppTheme -> ConnectionRoleProvider -> ChatModeProvider token flow architecture",
-      "nodes": [
-        "docs_design_blebridgedesignsystem_apptheme",
-        "docs_design_blebridgedesignsystem_connectionroleprovider",
-        "docs_design_blebridgedesignsystem_chatmodeprovider",
-        "docs_design_blebridgedesignsystem_rolecolors",
-        "docs_design_blebridgedesignsystem_chattokens"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/design/BleBridgeDesignSystem.html"
-    },
-    {
-      "id": "hyperedge_tdd_orchestration_pipeline",
-      "label": "BleBridge TDD \uc624\ucf00\uc2a4\ud2b8\ub808\uc774\uc158 \ud30c\uc774\ud504\ub77c\uc778 (feature-analyst -> testcase-author -> tdd-implementer -> code-reviewer)",
-      "nodes": [
-        "docs_orchestration_feature_analyst_featureanalyst",
-        "docs_orchestration_testcase_author_testcaseauthor",
-        "docs_orchestration_tdd_implementer_tddimplementer",
-        "docs_orchestration_code_reviewer_codereviewer"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/orchestration/orchestration-tdd.md"
-    },
-    {
-      "id": "hyperedge_chat_screen_component_family",
-      "label": "\ucc44\ud305 \ud654\uba74\uc744 \uad6c\uc131\ud558\ub294 core:ui \ucef4\ud3ec\ub10c\ud2b8\uad70 (ChatChrome/MessageBubble/ChatInput/TransferCard)",
-      "nodes": [
-        "docs_design_ui_02_chat_chrome_chatheadertitle",
-        "docs_design_ui_03_message_bubble_messagebubble",
-        "docs_design_ui_05_chat_input_chatinput",
-        "docs_design_ui_04_transfer_card_transfercard"
-      ],
-      "relation": "form",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "docs/design/ui/02-chat-chrome.md"
-    },
-    {
-      "id": "hyperedge_feature_ui_architecture_docs",
-      "label": "Feature \ud654\uba74 \uc544\ud0a4\ud14d\ucc98 \ucee8\ubca4\uc158 \ubb38\uc11c\uad70 (Feature UI/Navigation/Feature \ubaa8\ub4c8 \uadf8\ub8f9)",
-      "nodes": [
-        "docs_feature_readme_featureuiconvention",
-        "docs_navigation_readme_navigationconvention",
-        "feature_readme_featuremodulegroup"
-      ],
-      "relation": "form",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "docs/feature/README.md"
-    }
-  ],
-  "built_at_commit": "1466415071cebc15f1e3d1afe43bc8d67bec33ca"
+  "hyperedges": [],
+  "built_at_commit": "70d4e2d68816e5c75f6b27fad9d4d9a84c3aad99"
 }
