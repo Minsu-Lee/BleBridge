@@ -316,15 +316,224 @@
   },
   "nodes": [
     {
+      "label": "MviViewModel.kt",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "mviviewmodel.kt"
+    },
+    {
+      "label": "MviViewModel",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "mviviewmodel"
+    },
+    {
+      "label": "ViewModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "viewmodel",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "viewmodel"
+    },
+    {
+      "label": "StateFlow",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "stateflow",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "stateflow"
+    },
+    {
+      "label": "STATE",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "state",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "state"
+    },
+    {
+      "label": "Flow",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "flow",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "flow"
+    },
+    {
+      "label": "SIDE_EFFECT",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "side_effect",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "side_effect"
+    },
+    {
+      "label": ".handleIntent()",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_handleintent",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": ".handleintent()"
+    },
+    {
+      "label": "INTENT",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "intent",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "intent"
+    },
+    {
+      "label": ".reduce()",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": ".reduce()"
+    },
+    {
+      "label": "MUTATION",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "mutation",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "mutation"
+    },
+    {
+      "label": ".intent()",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": ".intent()"
+    },
+    {
+      "label": "Job",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "job",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "job"
+    },
+    {
+      "label": ".collectAsState()",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectasstate",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": ".collectasstate()"
+    },
+    {
+      "label": ".collectSideEffect()",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectsideeffect",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": ".collectsideeffect()"
+    },
+    {
+      "label": "Lifecycle",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "lifecycle",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "lifecycle"
+    },
+    {
+      "label": "MviActionScope",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": "mviactionscope"
+    },
+    {
+      "label": ".applyMutation()",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": ".applymutation()"
+    },
+    {
+      "label": ".postSideEffect()",
+      "file_type": "code",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect",
+      "community": 1,
+      "community_name": "MviViewModel",
+      "norm_label": ".postsideeffect()"
+    },
+    {
       "label": "ActionButtonTest.kt",
       "file_type": "code",
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": "actionbuttontest.kt"
+      "norm_label": "actionbuttontest.kt",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest"
     },
     {
       "label": "ActionButtonTest",
@@ -332,10 +541,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L41",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": "actionbuttontest"
+      "norm_label": "actionbuttontest",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest"
     },
     {
       "label": ".`\ud65c\uc131 \uc0c1\ud0dc\uc5d0\uc11c \ud074\ub9ad\ud558\uba74 onClick\uc774 \ud55c \ubc88 \ud638\ucd9c\ub41c\ub2e4`()",
@@ -343,10 +552,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L45",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c_\ud074\ub9ad\ud558\uba74_onclick\uc774_\ud55c_\ubc88_\ud638\ucd9c\ub41c\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`\u1112\u116a\u11af\u1109\u1165\u11bc \u1109\u1161\u11bc\u1110\u1162\u110b\u1166\u1109\u1165 \u110f\u1173\u11af\u1105\u1175\u11a8\u1112\u1161\u1106\u1167\u11ab onclick\u110b\u1175 \u1112\u1161\u11ab \u1107\u1165\u11ab \u1112\u1169\u110e\u116e\u11af\u1103\u116c\u11ab\u1103\u1161`()"
+      "norm_label": ".`\u1112\u116a\u11af\u1109\u1165\u11bc \u1109\u1161\u11bc\u1110\u1162\u110b\u1166\u1109\u1165 \u110f\u1173\u11af\u1105\u1175\u11a8\u1112\u1161\u1106\u1167\u11ab onclick\u110b\u1175 \u1112\u1161\u11ab \u1107\u1165\u11ab \u1112\u1169\u110e\u116e\u11af\u1103\u116c\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c_\ud074\ub9ad\ud558\uba74_onclick\uc774_\ud55c_\ubc88_\ud638\ucd9c\ub41c\ub2e4"
     },
     {
       "label": ".`\ube44\ud65c\uc131 \uc0c1\ud0dc\uc5d0\uc11c\ub294 \ud074\ub9ad\uc774 \uc804\ub2ec\ub418\uc9c0 \uc54a\uace0 \ube44\ud65c\uc131 semantics\ub97c \ub178\ucd9c\ud55c\ub2e4`()",
@@ -354,10 +563,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L64",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ube44\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c\ub294_\ud074\ub9ad\uc774_\uc804\ub2ec\ub418\uc9c0_\uc54a\uace0_\ube44\ud65c\uc131_semantics\ub97c_\ub178\ucd9c\ud55c\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`\u1107\u1175\u1112\u116a\u11af\u1109\u1165\u11bc \u1109\u1161\u11bc\u1110\u1162\u110b\u1166\u1109\u1165\u1102\u1173\u11ab \u110f\u1173\u11af\u1105\u1175\u11a8\u110b\u1175 \u110c\u1165\u11ab\u1103\u1161\u11af\u1103\u116c\u110c\u1175 \u110b\u1161\u11ad\u1100\u1169 \u1107\u1175\u1112\u116a\u11af\u1109\u1165\u11bc semantics\u1105\u1173\u11af \u1102\u1169\u110e\u116e\u11af\u1112\u1161\u11ab\u1103\u1161`()"
+      "norm_label": ".`\u1107\u1175\u1112\u116a\u11af\u1109\u1165\u11bc \u1109\u1161\u11bc\u1110\u1162\u110b\u1166\u1109\u1165\u1102\u1173\u11ab \u110f\u1173\u11af\u1105\u1175\u11a8\u110b\u1175 \u110c\u1165\u11ab\u1103\u1161\u11af\u1103\u116c\u110c\u1175 \u110b\u1161\u11ad\u1100\u1169 \u1107\u1175\u1112\u116a\u11af\u1109\u1165\u11bc semantics\u1105\u1173\u11af \u1102\u1169\u110e\u116e\u11af\u1112\u1161\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ube44\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c\ub294_\ud074\ub9ad\uc774_\uc804\ub2ec\ub418\uc9c0_\uc54a\uace0_\ube44\ud65c\uc131_semantics\ub97c_\ub178\ucd9c\ud55c\ub2e4"
     },
     {
       "label": ".`RolePrimary style\uc740 Server\u00b7Client \uc5ed\ud560\ubcc4 content color\ub97c roleColors onActive\uc640 \uc77c\uce58\uc2dc\ud0a8\ub2e4`()",
@@ -365,10 +574,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L85",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_roleprimary_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_onactive\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`roleprimary style\u110b\u1173\u11ab server\u00b7client \u110b\u1167\u11a8\u1112\u1161\u11af\u1107\u1167\u11af content color\u1105\u1173\u11af rolecolors onactive\u110b\u116a \u110b\u1175\u11af\u110e\u1175\u1109\u1175\u110f\u1175\u11ab\u1103\u1161`()"
+      "norm_label": ".`roleprimary style\u110b\u1173\u11ab server\u00b7client \u110b\u1167\u11a8\u1112\u1161\u11af\u1107\u1167\u11af content color\u1105\u1173\u11af rolecolors onactive\u110b\u116a \u110b\u1175\u11af\u110e\u1175\u1109\u1175\u110f\u1175\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_roleprimary_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_onactive\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4"
     },
     {
       "label": ".`Text style\uc740 Server\u00b7Client \uc5ed\ud560\ubcc4 content color\ub97c roleColors active\uc640 \uc77c\uce58\uc2dc\ud0a8\ub2e4`()",
@@ -376,10 +585,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L111",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_text_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_active\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`text style\u110b\u1173\u11ab server\u00b7client \u110b\u1167\u11a8\u1112\u1161\u11af\u1107\u1167\u11af content color\u1105\u1173\u11af rolecolors active\u110b\u116a \u110b\u1175\u11af\u110e\u1175\u1109\u1175\u110f\u1175\u11ab\u1103\u1161`()"
+      "norm_label": ".`text style\u110b\u1173\u11ab server\u00b7client \u110b\u1167\u11a8\u1112\u1161\u11af\u1107\u1167\u11af content color\u1105\u1173\u11af rolecolors active\u110b\u116a \u110b\u1175\u11af\u110e\u1175\u1109\u1175\u110f\u1175\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_text_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_active\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4"
     },
     {
       "label": ".`Destructive\uc640 Neutral\uc740 \ubc30\uacbd\uc0c9\uc774 \uac19\uc544\ub3c4 content color\ub85c \uad6c\ubd84\ub41c\ub2e4`()",
@@ -387,10 +596,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L137",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_destructive\uc640_neutral\uc740_\ubc30\uacbd\uc0c9\uc774_\uac19\uc544\ub3c4_content_color\ub85c_\uad6c\ubd84\ub41c\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`destructive\u110b\u116a neutral\u110b\u1173\u11ab \u1107\u1162\u1100\u1167\u11bc\u1109\u1162\u11a8\u110b\u1175 \u1100\u1161\u11c0\u110b\u1161\u1103\u1169 content color\u1105\u1169 \u1100\u116e\u1107\u116e\u11ab\u1103\u116c\u11ab\u1103\u1161`()"
+      "norm_label": ".`destructive\u110b\u116a neutral\u110b\u1173\u11ab \u1107\u1162\u1100\u1167\u11bc\u1109\u1162\u11a8\u110b\u1175 \u1100\u1161\u11c0\u110b\u1161\u1103\u1169 content color\u1105\u1169 \u1100\u116e\u1107\u116e\u11ab\u1103\u116c\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_destructive\uc640_neutral\uc740_\ubc30\uacbd\uc0c9\uc774_\uac19\uc544\ub3c4_content_color\ub85c_\uad6c\ubd84\ub41c\ub2e4"
     },
     {
       "label": ".`leadingIcon\uc740 \ub178\ub4dc\ub85c \uc874\uc7ac\ud558\ub418 contentDescription\uc744 \ub178\ucd9c\ud558\uc9c0 \uc54a\ub294\ub2e4`()",
@@ -398,10 +607,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L168",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_leadingicon\uc740_\ub178\ub4dc\ub85c_\uc874\uc7ac\ud558\ub418_contentdescription\uc744_\ub178\ucd9c\ud558\uc9c0_\uc54a\ub294\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`leadingicon\u110b\u1173\u11ab \u1102\u1169\u1103\u1173\u1105\u1169 \u110c\u1169\u11ab\u110c\u1162\u1112\u1161\u1103\u116c contentdescription\u110b\u1173\u11af \u1102\u1169\u110e\u116e\u11af\u1112\u1161\u110c\u1175 \u110b\u1161\u11ad\u1102\u1173\u11ab\u1103\u1161`()"
+      "norm_label": ".`leadingicon\u110b\u1173\u11ab \u1102\u1169\u1103\u1173\u1105\u1169 \u110c\u1169\u11ab\u110c\u1162\u1112\u1161\u1103\u116c contentdescription\u110b\u1173\u11af \u1102\u1169\u110e\u116e\u11af\u1112\u1161\u110c\u1175 \u110b\u1161\u11ad\u1102\u1173\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_leadingicon\uc740_\ub178\ub4dc\ub85c_\uc874\uc7ac\ud558\ub418_contentdescription\uc744_\ub178\ucd9c\ud558\uc9c0_\uc54a\ub294\ub2e4"
     },
     {
       "label": ".`Compact \ud06c\uae30\ub97c \ud3ec\ud568\ud55c \ubaa8\ub4e0 size\uc5d0\uc11c \ucd5c\uc18c 48dp \ud130\uce58 \uc601\uc5ed\uc744 \ubcf4\uc7a5\ud55c\ub2e4`()",
@@ -409,10 +618,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L187",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_compact_\ud06c\uae30\ub97c_\ud3ec\ud568\ud55c_\ubaa8\ub4e0_size\uc5d0\uc11c_\ucd5c\uc18c_48dp_\ud130\uce58_\uc601\uc5ed\uc744_\ubcf4\uc7a5\ud55c\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`compact \u110f\u1173\u1100\u1175\u1105\u1173\u11af \u1111\u1169\u1112\u1161\u11b7\u1112\u1161\u11ab \u1106\u1169\u1103\u1173\u11ab size\u110b\u1166\u1109\u1165 \u110e\u116c\u1109\u1169 48dp \u1110\u1165\u110e\u1175 \u110b\u1167\u11bc\u110b\u1167\u11a8\u110b\u1173\u11af \u1107\u1169\u110c\u1161\u11bc\u1112\u1161\u11ab\u1103\u1161`()"
+      "norm_label": ".`compact \u110f\u1173\u1100\u1175\u1105\u1173\u11af \u1111\u1169\u1112\u1161\u11b7\u1112\u1161\u11ab \u1106\u1169\u1103\u1173\u11ab size\u110b\u1166\u1109\u1165 \u110e\u116c\u1109\u1169 48dp \u1110\u1165\u110e\u1175 \u110b\u1167\u11bc\u110b\u1167\u11a8\u110b\u1173\u11af \u1107\u1169\u110c\u1161\u11bc\u1112\u1161\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_compact_\ud06c\uae30\ub97c_\ud3ec\ud568\ud55c_\ubaa8\ub4e0_size\uc5d0\uc11c_\ucd5c\uc18c_48dp_\ud130\uce58_\uc601\uc5ed\uc744_\ubcf4\uc7a5\ud55c\ub2e4"
     },
     {
       "label": ".`loading \uc0c1\ud0dc\ub294 \uc9c4\ud589 \ud45c\uc2dc\ub97c \ub178\ucd9c\ud558\uace0 \ud074\ub9ad\uc744 \ucc28\ub2e8\ud558\uba70 state description\uc744 \uc81c\uacf5\ud55c\ub2e4`()",
@@ -420,10 +629,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L209",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_loading_\uc0c1\ud0dc\ub294_\uc9c4\ud589_\ud45c\uc2dc\ub97c_\ub178\ucd9c\ud558\uace0_\ud074\ub9ad\uc744_\ucc28\ub2e8\ud558\uba70_state_description\uc744_\uc81c\uacf5\ud55c\ub2e4",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".`loading \u1109\u1161\u11bc\u1110\u1162\u1102\u1173\u11ab \u110c\u1175\u11ab\u1112\u1162\u11bc \u1111\u116d\u1109\u1175\u1105\u1173\u11af \u1102\u1169\u110e\u116e\u11af\u1112\u1161\u1100\u1169 \u110f\u1173\u11af\u1105\u1175\u11a8\u110b\u1173\u11af \u110e\u1161\u1103\u1161\u11ab\u1112\u1161\u1106\u1167 state description\u110b\u1173\u11af \u110c\u1166\u1100\u1169\u11bc\u1112\u1161\u11ab\u1103\u1161`()"
+      "norm_label": ".`loading \u1109\u1161\u11bc\u1110\u1162\u1102\u1173\u11ab \u110c\u1175\u11ab\u1112\u1162\u11bc \u1111\u116d\u1109\u1175\u1105\u1173\u11af \u1102\u1169\u110e\u116e\u11af\u1112\u1161\u1100\u1169 \u110f\u1173\u11af\u1105\u1175\u11a8\u110b\u1173\u11af \u110e\u1161\u1103\u1161\u11ab\u1112\u1161\u1106\u1167 state description\u110b\u1173\u11af \u110c\u1166\u1100\u1169\u11bc\u1112\u1161\u11ab\u1103\u1161`()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_loading_\uc0c1\ud0dc\ub294_\uc9c4\ud589_\ud45c\uc2dc\ub97c_\ub178\ucd9c\ud558\uace0_\ud074\ub9ad\uc744_\ucc28\ub2e8\ud558\uba70_state_description\uc744_\uc81c\uacf5\ud55c\ub2e4"
     },
     {
       "label": ".assertColorsApproximatelyEqual()",
@@ -431,10 +640,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L276",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".assertcolorsapproximatelyequal()"
+      "norm_label": ".assertcolorsapproximatelyequal()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal"
     },
     {
       "label": "Color",
@@ -442,10 +651,10 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "color",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": "color"
+      "norm_label": "color",
+      "id": "color"
     },
     {
       "label": ".assertColorsNotApproximatelyEqual()",
@@ -453,10 +662,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L288",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".assertcolorsnotapproximatelyequal()"
+      "norm_label": ".assertcolorsnotapproximatelyequal()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal"
     },
     {
       "label": ".colorsMatch()",
@@ -464,10 +673,10 @@
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L300",
       "_origin": "ast",
-      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch",
       "community": 8,
       "community_name": "ActionButtonTest",
-      "norm_label": ".colorsmatch()"
+      "norm_label": ".colorsmatch()",
+      "id": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch"
     },
     {
       "label": "delegate-to-codex.sh",
@@ -1243,7 +1452,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "networkerror.kt",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror"
     },
@@ -1254,7 +1463,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "networkerror",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror_networkerror"
     },
@@ -1265,7 +1474,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "httperror",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror_httperror"
     },
@@ -1276,7 +1485,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "networkconnectionerror",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror_networkconnectionerror"
     },
@@ -1287,7 +1496,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "timeouterror",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror_timeouterror"
     },
@@ -1298,7 +1507,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "emptybodyerror",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror_emptybodyerror"
     },
@@ -1309,7 +1518,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "invalidresponseerror",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror_invalidresponseerror"
     },
@@ -1320,7 +1529,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "unknownerror",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_networkerror_unknownerror"
     },
@@ -1330,7 +1539,7 @@
       "source_file": "core/common/src/main/kotlin/com/jackson/blebridge/core/common/NeveraResult.kt",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "neveraresult.kt",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult"
@@ -1341,7 +1550,7 @@
       "source_file": "core/common/src/main/kotlin/com/jackson/blebridge/core/common/NeveraResult.kt",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "neveraresult",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult_neveraresult"
@@ -1352,7 +1561,7 @@
       "source_file": "core/common/src/main/kotlin/com/jackson/blebridge/core/common/NeveraResult.kt",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "success",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult_success"
@@ -1363,7 +1572,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "t",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult_kt_t"
@@ -1374,7 +1583,7 @@
       "source_file": "core/common/src/main/kotlin/com/jackson/blebridge/core/common/NeveraResult.kt",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "failure",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult_failure"
@@ -1385,7 +1594,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "e",
       "id": "e"
@@ -1396,7 +1605,7 @@
       "source_file": "core/common/src/main/kotlin/com/jackson/blebridge/core/common/NeveraResult.kt",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "mapsuccess()",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult_mapsuccess"
@@ -1407,7 +1616,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "r",
       "id": "r"
@@ -1418,7 +1627,7 @@
       "source_file": "core/common/src/main/kotlin/com/jackson/blebridge/core/common/NeveraResult.kt",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "mapfailure()",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult_mapfailure"
@@ -1429,7 +1638,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "f",
       "id": "f"
@@ -1440,7 +1649,7 @@
       "source_file": "core/common/src/main/kotlin/com/jackson/blebridge/core/common/NeveraResult.kt",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 108,
+      "community": 3,
       "community_name": "NeveraResult",
       "norm_label": "map()",
       "id": "core_common_src_main_kotlin_com_jackson_blebridge_core_common_neveraresult_map"
@@ -2397,8 +2606,8 @@
       "source_file": "core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/theme/semantic/color/AppColors.kt",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 111,
-      "community_name": "AppColors",
+      "community": 11,
+      "community_name": "AppTheme",
       "norm_label": "appcolors.kt",
       "id": "core_designsystem_src_main_kotlin_com_jackson_blebridge_core_designsystem_theme_semantic_color_appcolors"
     },
@@ -2408,8 +2617,8 @@
       "source_file": "core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/theme/semantic/color/AppColors.kt",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 111,
-      "community_name": "AppColors",
+      "community": 11,
+      "community_name": "AppTheme",
       "norm_label": "appcolors",
       "id": "core_designsystem_src_main_kotlin_com_jackson_blebridge_core_designsystem_theme_semantic_color_appcolors_appcolors"
     },
@@ -2419,8 +2628,8 @@
       "source_file": "core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/theme/semantic/gradient/AppGradients.kt",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 112,
-      "community_name": "AppGradients",
+      "community": 11,
+      "community_name": "AppTheme",
       "norm_label": "appgradients.kt",
       "id": "core_designsystem_src_main_kotlin_com_jackson_blebridge_core_designsystem_theme_semantic_gradient_appgradients"
     },
@@ -2430,8 +2639,8 @@
       "source_file": "core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/theme/semantic/gradient/AppGradients.kt",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 112,
-      "community_name": "AppGradients",
+      "community": 11,
+      "community_name": "AppTheme",
       "norm_label": "appgradients",
       "id": "core_designsystem_src_main_kotlin_com_jackson_blebridge_core_designsystem_theme_semantic_gradient_appgradients_appgradients"
     },
@@ -2540,8 +2749,8 @@
       "source_file": "core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/theme/semantic/spacing/Spacing.kt",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 114,
-      "community_name": "Spacing",
+      "community": 11,
+      "community_name": "AppTheme",
       "norm_label": "spacing.kt",
       "id": "core_designsystem_src_main_kotlin_com_jackson_blebridge_core_designsystem_theme_semantic_spacing_spacing"
     },
@@ -2551,8 +2760,8 @@
       "source_file": "core/designsystem/src/main/kotlin/com/jackson/blebridge/core/designsystem/theme/semantic/spacing/Spacing.kt",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 114,
-      "community_name": "Spacing",
+      "community": 11,
+      "community_name": "AppTheme",
       "norm_label": "spacing",
       "id": "core_designsystem_src_main_kotlin_com_jackson_blebridge_core_designsystem_theme_semantic_spacing_spacing_spacing"
     },
@@ -2656,204 +2865,6 @@
       "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mvicontracts_mvimutation"
     },
     {
-      "label": "MviViewModel.kt",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "mviviewmodel.kt",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel"
-    },
-    {
-      "label": "MviViewModel",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L26",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "mviviewmodel",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
-    },
-    {
-      "label": "ViewModel",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "viewmodel",
-      "id": "viewmodel"
-    },
-    {
-      "label": "StateFlow",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "stateflow",
-      "id": "stateflow"
-    },
-    {
-      "label": "STATE",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "state",
-      "id": "state"
-    },
-    {
-      "label": "Flow",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "flow",
-      "id": "flow"
-    },
-    {
-      "label": "SIDE_EFFECT",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "side_effect",
-      "id": "side_effect"
-    },
-    {
-      "label": ".handleIntent()",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L39",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": ".handleintent()",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_handleintent"
-    },
-    {
-      "label": "INTENT",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "intent",
-      "id": "intent"
-    },
-    {
-      "label": ".reduce()",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L41",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": ".reduce()",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce"
-    },
-    {
-      "label": "MUTATION",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "mutation",
-      "id": "mutation"
-    },
-    {
-      "label": ".intent()",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L43",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": ".intent()",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
-    },
-    {
-      "label": ".collectAsState()",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L51",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": ".collectasstate()",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectasstate"
-    },
-    {
-      "label": ".collectSideEffect()",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L54",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": ".collectsideeffect()",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectsideeffect"
-    },
-    {
-      "label": "Lifecycle",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "lifecycle",
-      "id": "lifecycle"
-    },
-    {
-      "label": "MviActionScope",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L70",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": "mviactionscope",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope"
-    },
-    {
-      "label": ".applyMutation()",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L73",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": ".applymutation()",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation"
-    },
-    {
-      "label": ".postSideEffect()",
-      "file_type": "code",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L77",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "MviViewModel",
-      "norm_label": ".postsideeffect()",
-      "id": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect"
-    },
-    {
       "label": "network/build.gradle.kts",
       "file_type": "code",
       "source_file": "core/network/build.gradle.kts",
@@ -2871,7 +2882,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "apicallexecutor.kt",
       "id": "core_network_src_main_kotlin_com_jackson_blebridge_core_network_apicallexecutor"
     },
@@ -2882,7 +2893,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "apicallexecutor",
       "id": "core_network_src_main_kotlin_com_jackson_blebridge_core_network_apicallexecutor_apicallexecutor"
     },
@@ -2893,7 +2904,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".invoke()",
       "id": "core_network_src_main_kotlin_com_jackson_blebridge_core_network_apicallexecutor_apicallexecutor_invoke"
     },
@@ -2904,7 +2915,7 @@
       "source_location": "",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "t",
       "id": "core_network_src_main_kotlin_com_jackson_blebridge_core_network_apicallexecutor_kt_t"
     },
@@ -2915,7 +2926,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "apicallexecutortest.kt",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest"
     },
@@ -2926,7 +2937,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "apicallexecutortest",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest"
     },
@@ -2937,7 +2948,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`body\u1100\u1161 \u110b\u1175\u11bb\u110b\u1173\u1106\u1167\u11ab success\u1105\u1173\u11af \u1107\u1161\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest_body\uac00_\uc788\uc73c\uba74_success\ub97c_\ubc18\ud658\ud55c\ub2e4"
     },
@@ -2948,7 +2959,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`body\u1100\u1161 null\u110b\u1175\u1106\u1167\u11ab empty body error\u1105\u1173\u11af \u1107\u1161\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest_body\uac00_null\uc774\uba74_empty_body_error\ub97c_\ubc18\ud658\ud55c\ub2e4"
     },
@@ -2959,7 +2970,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`http error response\u110b\u1174 status\u1105\u1173\u11af \u1107\u1169\u110c\u1169\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest_http_error_response\uc758_status\ub97c_\ubcf4\uc874\ud55c\ub2e4"
     },
@@ -2970,7 +2981,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`timeout\u1100\u116a connection error\u1105\u1173\u11af \u1100\u116e\u1107\u116e\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest_timeout\uacfc_connection_error\ub97c_\uad6c\ubd84\ud55c\ub2e4"
     },
@@ -2981,7 +2992,7 @@
       "source_location": "L65",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`malformed json\u110b\u1173\u11ab invalid response error\u1105\u1169 \u1107\u1167\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest_malformed_json\uc740_invalid_response_error\ub85c_\ubcc0\ud658\ud55c\ub2e4"
     },
@@ -2992,7 +3003,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`cancellation exception\u110b\u1173\u11ab \u110c\u1162\u110c\u1165\u11ab\u1111\u1161\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest_cancellation_exception\uc740_\uc7ac\uc804\ud30c\ud55c\ub2e4"
     },
@@ -3003,7 +3014,7 @@
       "source_location": "L86",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".assertfailure()",
       "id": "core_network_src_test_kotlin_com_jackson_blebridge_core_network_apicallexecutortest_apicallexecutortest_assertfailure"
     },
@@ -3684,8 +3695,8 @@
       "source_file": "data/sample/src/main/kotlin/com/jackson/blebridge/data/sample/repository/CatFactRepositoryImpl.kt",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 29,
-      "community_name": "CatFactRepositoryImpl",
+      "community": 3,
+      "community_name": "NeveraResult",
       "norm_label": "catfactrepositoryimpl.kt",
       "id": "data_sample_src_main_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpl"
     },
@@ -3695,8 +3706,8 @@
       "source_file": "data/sample/src/main/kotlin/com/jackson/blebridge/data/sample/repository/CatFactRepositoryImpl.kt",
       "source_location": "L15",
       "_origin": "ast",
-      "community": 29,
-      "community_name": "CatFactRepositoryImpl",
+      "community": 3,
+      "community_name": "NeveraResult",
       "norm_label": "catfactrepositoryimpl",
       "id": "data_sample_src_main_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpl_catfactrepositoryimpl"
     },
@@ -3706,8 +3717,8 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 29,
-      "community_name": "CatFactRepositoryImpl",
+      "community": 3,
+      "community_name": "NeveraResult",
       "norm_label": "catfactrepository",
       "id": "data_sample_src_main_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpl_kt_catfactrepository"
     },
@@ -3717,8 +3728,8 @@
       "source_file": "data/sample/src/main/kotlin/com/jackson/blebridge/data/sample/repository/CatFactRepositoryImpl.kt",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 29,
-      "community_name": "CatFactRepositoryImpl",
+      "community": 3,
+      "community_name": "NeveraResult",
       "norm_label": ".getrandomfact()",
       "id": "data_sample_src_main_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpl_catfactrepositoryimpl_getrandomfact"
     },
@@ -3728,8 +3739,8 @@
       "source_file": "data/sample/src/main/kotlin/com/jackson/blebridge/data/sample/repository/CatFactRepositoryImpl.kt",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 29,
-      "community_name": "CatFactRepositoryImpl",
+      "community": 3,
+      "community_name": "NeveraResult",
       "norm_label": ".getfacts()",
       "id": "data_sample_src_main_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpl_catfactrepositoryimpl_getfacts"
     },
@@ -3806,7 +3817,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "catfactrepositoryimpltest.kt",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest"
     },
@@ -3817,7 +3828,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "catfactrepositoryimpltest",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest"
     },
@@ -3828,7 +3839,7 @@
       "source_location": "",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": "mockwebserver",
       "id": "mockwebserver"
     },
@@ -3839,7 +3850,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".setup()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_setup"
     },
@@ -3850,7 +3861,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".teardown()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_teardown"
     },
@@ -3861,7 +3872,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`page\u110b\u116a limit query\u1105\u1173\u11af \u110c\u1165\u11ab\u1103\u1161\u11af\u1112\u1161\u1100\u1169 \u110b\u1173\u11bc\u1103\u1161\u11b8\u110b\u1173\u11af domain model\u1105\u1169 \u1107\u1167\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_page\uc640_limit_query\ub97c_\uc804\ub2ec\ud558\uace0_\uc751\ub2f5\uc744_domain_model\ub85c_\ubcc0\ud658\ud55c\ub2e4"
     },
@@ -3872,7 +3883,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`random fact \u1109\u1165\u11bc\u1100\u1169\u11bc \u110b\u1173\u11bc\u1103\u1161\u11b8\u110b\u1173\u11af domain model\u1105\u1169 \u1107\u1167\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_random_fact_\uc131\uacf5_\uc751\ub2f5\uc744_domain_model\ub85c_\ubcc0\ud658\ud55c\ub2e4"
     },
@@ -3883,7 +3894,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`429 \u110b\u1173\u11bc\u1103\u1161\u11b8\u110b\u1173\u11ab retry-after\u110b\u116a \u1112\u1161\u11b7\u1101\u1166 rate limited\u1105\u1169 \u1107\u1167\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_429_\uc751\ub2f5\uc740_retry_after\uc640_\ud568\uaed8_rate_limited\ub85c_\ubcc0\ud658\ud55c\ub2e4"
     },
@@ -3894,7 +3905,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`retry-after\u1100\u1161 \u1109\u116e\u11ba\u110c\u1161\u1100\u1161 \u110b\u1161\u1102\u1175\u1106\u1167\u11ab \u1103\u1162\u1100\u1175 \u1109\u1175\u1100\u1161\u11ab \u110b\u1165\u11b9\u110b\u1175 rate limited\u1105\u1169 \u1107\u1167\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_retry_after\uac00_\uc22b\uc790\uac00_\uc544\ub2c8\uba74_\ub300\uae30_\uc2dc\uac04_\uc5c6\uc774_rate_limited\ub85c_\ubcc0\ud658\ud55c\ub2e4"
     },
@@ -3905,7 +3916,7 @@
       "source_location": "L113",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`4xx\u110b\u116a 5xx \u110b\u1173\u11bc\u1103\u1161\u11b8\u110b\u1173\u11af \u1100\u116e\u1107\u116e\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_4xx\uc640_5xx_\uc751\ub2f5\uc744_\uad6c\ubd84\ud55c\ub2e4"
     },
@@ -3916,7 +3927,7 @@
       "source_location": "L131",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`\u1109\u1165\u11bc\u1100\u1169\u11bc status\u110b\u1174 \u1107\u1175\u11ab body\u1105\u1173\u11af empty body\u1105\u1169 \u1107\u1167\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_\uc131\uacf5_status\uc758_\ube48_body\ub97c_empty_body\ub85c_\ubcc0\ud658\ud55c\ub2e4"
     },
@@ -3927,7 +3938,7 @@
       "source_location": "L141",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".`\u110c\u1161\u11af\u1106\u1169\u11ba\u1103\u116c\u11ab json\u110b\u1173\u11af invalid response\u1105\u1169 \u1107\u1167\u11ab\u1112\u116a\u11ab\u1112\u1161\u11ab\u1103\u1161`()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_\uc798\ubabb\ub41c_json\uc744_invalid_response\ub85c_\ubcc0\ud658\ud55c\ub2e4"
     },
@@ -3938,7 +3949,7 @@
       "source_location": "L151",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".enqueuejson()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_enqueuejson"
     },
@@ -3949,7 +3960,7 @@
       "source_location": "L160",
       "_origin": "ast",
       "community": 3,
-      "community_name": "CatFactRepositoryImplTest",
+      "community_name": "NeveraResult",
       "norm_label": ".assertfailure()",
       "id": "data_sample_src_test_kotlin_com_jackson_blebridge_data_sample_repository_catfactrepositoryimpltest_catfactrepositoryimpltest_assertfailure"
     },
@@ -7844,10 +7855,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 5,
       "norm_label": "step 0 - github repo clone and multi-path merge",
       "_origin": "semantic",
-      "community_name": "graphify reference: GitHub clone and cross-repo merge",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_skill_step0_github_clone"
     },
     {
@@ -7904,10 +7915,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "step 3 - extract entities and relationships (structural + semantic)",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_skill_step3_extraction"
     },
     {
@@ -7919,10 +7930,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "step 3 part a - structural (ast) extraction for code files",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_skill_step3_parta_ast"
     },
     {
@@ -7934,10 +7945,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "step 3 part b - semantic extraction via parallel subagents",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_skill_step3_partb_semantic"
     },
     {
@@ -7949,10 +7960,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "step 3 part c - merge ast + semantic into final extraction",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_skill_step3_partc_merge"
     },
     {
@@ -8009,10 +8020,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 6 - obsidian vault (opt-in) + html export",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_skill_step6_exports_obsidian_html"
     },
     {
@@ -8099,10 +8110,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 5,
       "norm_label": "graphify reference: add a url and watch a folder",
       "_origin": "semantic",
-      "community_name": "graphify reference: add a URL and watch a folder",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_add_watch_doc"
     },
     {
@@ -8114,10 +8125,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 5,
       "norm_label": "/graphify add <url> - fetch url into corpus then --update",
       "_origin": "semantic",
-      "community_name": "graphify reference: add a URL and watch a folder",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_add_watch_graphify_add"
     },
     {
@@ -8129,10 +8140,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 5,
       "norm_label": "graphify.ingest.ingest() - fetch/save url to ./raw",
       "_origin": "semantic",
-      "community_name": "graphify reference: add a URL and watch a folder",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_add_watch_ingest_function"
     },
     {
@@ -8144,10 +8155,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 5,
       "norm_label": "supported url types: youtube, twitter/x, arxiv, pdf, images, webpage",
       "_origin": "semantic",
-      "community_name": "graphify reference: add a URL and watch a folder",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_add_watch_supported_url_types"
     },
     {
@@ -8159,10 +8170,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 5,
       "norm_label": "--watch - background folder watcher, auto-rebuild on changes",
       "_origin": "semantic",
-      "community_name": "graphify reference: add a URL and watch a folder",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_add_watch_watch_command"
     },
     {
@@ -8174,10 +8185,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 5,
       "norm_label": "debounce (default 3s) before triggering rebuild",
       "_origin": "semantic",
-      "community_name": "graphify reference: add a URL and watch a folder",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_add_watch_debounce"
     },
     {
@@ -8189,10 +8200,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "graphify reference: extra exports and benchmark",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_doc"
     },
     {
@@ -8204,10 +8215,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 6b - wiki export (graphify export wiki)",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_wiki"
     },
     {
@@ -8219,10 +8230,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 7 - neo4j export / push (cypher, merge, bolt://)",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_neo4j"
     },
     {
@@ -8234,10 +8245,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 7a - falkordb export / push (opencypher, graph.query)",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_falkordb"
     },
     {
@@ -8249,10 +8260,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 7b - svg export (graphify export svg)",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_svg"
     },
     {
@@ -8264,10 +8275,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 7c - graphml export (graphify export graphml)",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_graphml"
     },
     {
@@ -8279,10 +8290,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 7d - mcp stdio server (query_graph, get_node, get_neighbors, god_nodes, shortest_path...)",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_mcp_server"
     },
     {
@@ -8294,10 +8305,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 5,
       "norm_label": "step 8 - token reduction benchmark (graphify benchmark, >5000 words)",
       "_origin": "semantic",
-      "community_name": "graphify reference: extra exports and benchmark",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_exports_benchmark"
     },
     {
@@ -8309,10 +8320,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "graphify reference: extraction subagent prompt (compact)",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_extraction_spec_doc"
     },
     {
@@ -8324,10 +8335,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "extraction subagent prompt template (rules + schema)",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_extraction_spec_subagent_prompt"
     },
     {
@@ -8339,10 +8350,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "node id format: {stem}_{entity}, full repo-relative path stem",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_extraction_spec_node_id_format"
     },
     {
@@ -8354,10 +8365,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "confidence rubric: extracted=1.0, inferred={0.95..0.55}, ambiguous=0.1-0.3",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_extraction_spec_confidence_rubric"
     },
     {
@@ -8369,10 +8380,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "hyperedge rule: 3+ nodes sharing concept/flow/pattern, max 3 per chunk",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_extraction_spec_hyperedge_rule"
     },
     {
@@ -8384,10 +8395,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "semantically_similar_to rule for non-structural shared-problem concepts",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_extraction_spec_semantic_similarity_rule"
     },
     {
@@ -8399,10 +8410,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 5,
       "norm_label": "required output json schema (nodes/edges/hyperedges/tokens)",
       "_origin": "semantic",
-      "community_name": "Extraction subagent prompt template (rules + schema)",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_extraction_spec_json_schema"
     },
     {
@@ -8414,10 +8425,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 5,
       "norm_label": "graphify reference: github clone and cross-repo merge",
       "_origin": "semantic",
-      "community_name": "graphify reference: GitHub clone and cross-repo merge",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_github_and_merge_doc"
     },
     {
@@ -8429,10 +8440,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 5,
       "norm_label": "graphify clone <github-url> [--branch] - single/multi repo clone",
       "_origin": "semantic",
-      "community_name": "graphify reference: GitHub clone and cross-repo merge",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_github_and_merge_clone_command"
     },
     {
@@ -8444,10 +8455,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 5,
       "norm_label": "cross-repo graph merge flow (clone each, extract each, merge-graphs)",
       "_origin": "semantic",
-      "community_name": "graphify reference: GitHub clone and cross-repo merge",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_github_and_merge_cross_repo_merge"
     },
     {
@@ -8459,10 +8470,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 5,
       "norm_label": "multi-subfolder / monorepo merge flow (per-subfolder graphify-out)",
       "_origin": "semantic",
-      "community_name": "graphify reference: GitHub clone and cross-repo merge",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_github_and_merge_monorepo_merge"
     },
     {
@@ -8474,10 +8485,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 5,
       "norm_label": "graphify merge-graphs <...> --out - combine graph.json files",
       "_origin": "semantic",
-      "community_name": "graphify reference: GitHub clone and cross-repo merge",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_github_and_merge_merge_graphs_command"
     },
     {
@@ -8489,10 +8500,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 65,
+      "community": 5,
       "norm_label": "graphify extract ./subfolder/ - per-subfolder extraction cli",
       "_origin": "semantic",
-      "community_name": "graphify reference: GitHub clone and cross-repo merge",
+      "community_name": "graphify skill (Codex integration)",
       "id": "codex_skills_graphify_references_github_and_merge_extract_command"
     },
     {
@@ -13186,13 +13197,431 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectasstate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectsideeffect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_handleintent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "field",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "generic_arg",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "side_effect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L35",
+      "weight": 1.0,
+      "context": "generic_arg",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L35",
+      "weight": 1.0,
+      "context": "field",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "stateflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
+      "target": "viewmodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "feature/main/src/main/kotlin/com/jackson/blebridge/feature/main/MainViewModel.kt",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "feature_main_src_main_kotlin_com_jackson_blebridge_feature_main_mainviewmodel_mainviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsViewModel.kt",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_cats_samplecatsviewmodel_samplecatsviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L78",
+      "weight": 1.0,
+      "context": "field",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
+      "target": "state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L54",
+      "weight": 1.0,
+      "context": "generic_arg",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectasstate",
+      "target": "state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L46",
+      "weight": 1.0,
+      "context": "return_type",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce",
+      "target": "state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L84",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect",
+      "target": "side_effect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L44",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_handleintent",
+      "target": "intent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L46",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce",
+      "target": "mutation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L80",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation",
+      "target": "mutation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L48",
+      "weight": 1.0,
+      "context": "return_type",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent",
+      "target": "job",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_handleintent",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_loadrandomfact",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel_initialize",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L57",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectsideeffect",
+      "target": "lifecycle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_loadrandomfact",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel_initialize",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_handleintent",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel_initialize",
+      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "core/designsystem/src/androidTest/kotlin/com/jackson/blebridge/core/designsystem/component/button/ActionButtonTest.kt",
       "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest"
     },
     {
       "relation": "method",
@@ -13201,9 +13630,9 @@
       "source_location": "L276",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal"
     },
     {
       "relation": "method",
@@ -13212,9 +13641,9 @@
       "source_location": "L288",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal"
     },
     {
       "relation": "method",
@@ -13223,9 +13652,9 @@
       "source_location": "L300",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch"
     },
     {
       "relation": "method",
@@ -13234,9 +13663,9 @@
       "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_compact_\ud06c\uae30\ub97c_\ud3ec\ud568\ud55c_\ubaa8\ub4e0_size\uc5d0\uc11c_\ucd5c\uc18c_48dp_\ud130\uce58_\uc601\uc5ed\uc744_\ubcf4\uc7a5\ud55c\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_compact_\ud06c\uae30\ub97c_\ud3ec\ud568\ud55c_\ubaa8\ub4e0_size\uc5d0\uc11c_\ucd5c\uc18c_48dp_\ud130\uce58_\uc601\uc5ed\uc744_\ubcf4\uc7a5\ud55c\ub2e4"
     },
     {
       "relation": "method",
@@ -13245,9 +13674,9 @@
       "source_location": "L137",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_destructive\uc640_neutral\uc740_\ubc30\uacbd\uc0c9\uc774_\uac19\uc544\ub3c4_content_color\ub85c_\uad6c\ubd84\ub41c\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_destructive\uc640_neutral\uc740_\ubc30\uacbd\uc0c9\uc774_\uac19\uc544\ub3c4_content_color\ub85c_\uad6c\ubd84\ub41c\ub2e4"
     },
     {
       "relation": "method",
@@ -13256,9 +13685,9 @@
       "source_location": "L168",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_leadingicon\uc740_\ub178\ub4dc\ub85c_\uc874\uc7ac\ud558\ub418_contentdescription\uc744_\ub178\ucd9c\ud558\uc9c0_\uc54a\ub294\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_leadingicon\uc740_\ub178\ub4dc\ub85c_\uc874\uc7ac\ud558\ub418_contentdescription\uc744_\ub178\ucd9c\ud558\uc9c0_\uc54a\ub294\ub2e4"
     },
     {
       "relation": "method",
@@ -13267,9 +13696,9 @@
       "source_location": "L209",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_loading_\uc0c1\ud0dc\ub294_\uc9c4\ud589_\ud45c\uc2dc\ub97c_\ub178\ucd9c\ud558\uace0_\ud074\ub9ad\uc744_\ucc28\ub2e8\ud558\uba70_state_description\uc744_\uc81c\uacf5\ud55c\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_loading_\uc0c1\ud0dc\ub294_\uc9c4\ud589_\ud45c\uc2dc\ub97c_\ub178\ucd9c\ud558\uace0_\ud074\ub9ad\uc744_\ucc28\ub2e8\ud558\uba70_state_description\uc744_\uc81c\uacf5\ud55c\ub2e4"
     },
     {
       "relation": "method",
@@ -13278,9 +13707,9 @@
       "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_roleprimary_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_onactive\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_roleprimary_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_onactive\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4"
     },
     {
       "relation": "method",
@@ -13289,9 +13718,9 @@
       "source_location": "L111",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_text_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_active\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_text_style\uc740_server_client_\uc5ed\ud560\ubcc4_content_color\ub97c_rolecolors_active\uc640_\uc77c\uce58\uc2dc\ud0a8\ub2e4"
     },
     {
       "relation": "method",
@@ -13300,9 +13729,9 @@
       "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ube44\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c\ub294_\ud074\ub9ad\uc774_\uc804\ub2ec\ub418\uc9c0_\uc54a\uace0_\ube44\ud65c\uc131_semantics\ub97c_\ub178\ucd9c\ud55c\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ube44\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c\ub294_\ud074\ub9ad\uc774_\uc804\ub2ec\ub418\uc9c0_\uc54a\uace0_\ube44\ud65c\uc131_semantics\ub97c_\ub178\ucd9c\ud55c\ub2e4"
     },
     {
       "relation": "method",
@@ -13311,9 +13740,9 @@
       "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c_\ud074\ub9ad\ud558\uba74_onclick\uc774_\ud55c_\ubc88_\ud638\ucd9c\ub41c\ub2e4",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_\ud65c\uc131_\uc0c1\ud0dc\uc5d0\uc11c_\ud074\ub9ad\ud558\uba74_onclick\uc774_\ud55c_\ubc88_\ud638\ucd9c\ub41c\ub2e4"
     },
     {
       "relation": "calls",
@@ -13323,9 +13752,9 @@
       "source_location": "L258",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_loading_\uc0c1\ud0dc\ub294_\uc9c4\ud589_\ud45c\uc2dc\ub97c_\ub178\ucd9c\ud558\uace0_\ud074\ub9ad\uc744_\ucc28\ub2e8\ud558\uba70_state_description\uc744_\uc81c\uacf5\ud55c\ub2e4",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal"
     },
     {
       "relation": "calls",
@@ -13335,9 +13764,9 @@
       "source_location": "L263",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_loading_\uc0c1\ud0dc\ub294_\uc9c4\ud589_\ud45c\uc2dc\ub97c_\ub178\ucd9c\ud558\uace0_\ud074\ub9ad\uc744_\ucc28\ub2e8\ud558\uba70_state_description\uc744_\uc81c\uacf5\ud55c\ub2e4",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal"
     },
     {
       "relation": "references",
@@ -13347,9 +13776,9 @@
       "weight": 1.0,
       "context": "parameter_type",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal",
-      "target": "color",
-      "confidence_score": 1.0
+      "target": "color"
     },
     {
       "relation": "calls",
@@ -13359,9 +13788,9 @@
       "source_location": "L284",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsapproximatelyequal",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch"
     },
     {
       "relation": "references",
@@ -13371,9 +13800,9 @@
       "weight": 1.0,
       "context": "parameter_type",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal",
-      "target": "color",
-      "confidence_score": 1.0
+      "target": "color"
     },
     {
       "relation": "references",
@@ -13383,9 +13812,9 @@
       "weight": 1.0,
       "context": "parameter_type",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch",
-      "target": "color",
-      "confidence_score": 1.0
+      "target": "color"
     },
     {
       "relation": "calls",
@@ -13395,9 +13824,9 @@
       "source_location": "L296",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_assertcolorsnotapproximatelyequal",
-      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch",
-      "confidence_score": 1.0
+      "target": "core_designsystem_src_androidtest_kotlin_com_jackson_blebridge_core_designsystem_component_button_actionbuttontest_actionbuttontest_colorsmatch"
     },
     {
       "relation": "contains",
@@ -16761,412 +17190,6 @@
       "confidence_score": 1.0,
       "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_model_splashmutation_splashmutation",
       "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mvicontracts_mvimutation"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L26",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L70",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L51",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectasstate"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L54",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectsideeffect"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L39",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_handleintent"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L43",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L41",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L37",
-      "weight": 1.0,
-      "context": "field",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "flow"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L37",
-      "weight": 1.0,
-      "context": "generic_arg",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "side_effect"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L34",
-      "weight": 1.0,
-      "context": "generic_arg",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "state"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L34",
-      "weight": 1.0,
-      "context": "field",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "stateflow"
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L26",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel",
-      "target": "viewmodel"
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "feature/main/src/main/kotlin/com/jackson/blebridge/feature/main/MainViewModel.kt",
-      "source_location": "L11",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "feature_main_src_main_kotlin_com_jackson_blebridge_feature_main_mainviewmodel_mainviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/cats/SampleCatsViewModel.kt",
-      "source_location": "L16",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_cats_samplecatsviewmodel_samplecatsviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
-      "source_location": "L15",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
-      "source_location": "L13",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L71",
-      "weight": 1.0,
-      "context": "field",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
-      "target": "state"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L51",
-      "weight": 1.0,
-      "context": "generic_arg",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectasstate",
-      "target": "state"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L41",
-      "weight": 1.0,
-      "context": "return_type",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce",
-      "target": "state"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L77",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect",
-      "target": "side_effect"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L39",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_handleintent",
-      "target": "intent"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L74",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L41",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_reduce",
-      "target": "mutation"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L73",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation",
-      "target": "mutation"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L47",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
-      "source_location": "L27",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_handleintent",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
-      "source_location": "L39",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_loadrandomfact",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
-      "source_location": "L34",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel_initialize",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_intent"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L54",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviviewmodel_collectsideeffect",
-      "target": "lifecycle"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L73",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "core/mvi/src/main/kotlin/com/jackson/blebridge/core/mvi/MviViewModel.kt",
-      "source_location": "L77",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
-      "source_location": "L40",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_loadrandomfact",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
-      "source_location": "L36",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel_initialize",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_applymutation"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "feature/sample/src/main/kotlin/com/jackson/blebridge/feature/sample/main/SampleViewModel.kt",
-      "source_location": "L28",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "feature_sample_src_main_kotlin_com_jackson_blebridge_feature_sample_main_sampleviewmodel_sampleviewmodel_handleintent",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "feature/splash/src/main/kotlin/com/jackson/blebridge/feature/splash/main/SplashViewModel.kt",
-      "source_location": "L37",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "feature_splash_src_main_kotlin_com_jackson_blebridge_feature_splash_main_splashviewmodel_splashviewmodel_initialize",
-      "target": "core_mvi_src_main_kotlin_com_jackson_blebridge_core_mvi_mviviewmodel_mviactionscope_postsideeffect"
     },
     {
       "relation": "contains",
@@ -29750,5 +29773,5 @@
       "source_file": "docs/feature/README.md"
     }
   ],
-  "built_at_commit": "45717afd59b8cabfec2efe29f2dbb545afb7c051"
+  "built_at_commit": "cf608e26e36839a620ddbe2a673145961f14daa7"
 }
