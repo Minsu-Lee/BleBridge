@@ -37,7 +37,9 @@ git status --short
   > 현재 브랜치가 `{브랜치명}`입니다. `develop`에서 딴 작업 브랜치에서 PR을 생성해주세요.
 - 커밋되지 않은 변경이 있으면 중단하고 안내한다:
   > 커밋되지 않은 변경이 있습니다. `commit-message` 스킬로 먼저 커밋해주세요.
-  (`graphify-out/**`만 dirty한 경우는 예외로 보고 진행해도 된다.)
+  (`graphify-out/`은 `.gitignore` 대상이라 훅이 만든 로컬 재생성 결과는 애초에 dirty로 안
+  잡힌다. 단 `graphify-out/`이 **staged된 삭제**(`git rm --cached` 전환 커밋 등)로 잡히면
+  이건 진짜 미완료 변경이므로 예외로 넘기지 않는다.)
 
 #### base 브랜치 결정
 

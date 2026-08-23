@@ -16,8 +16,6 @@ reviews:
   sequence_diagrams: false
   suggested_reviewers: false
   poem: false
-  path_filters:
-    - "!graphify-out/**"
   auto_review:
     enabled: true
     drafts: false
