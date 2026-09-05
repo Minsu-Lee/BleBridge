@@ -61,7 +61,8 @@ feature-analyst → testcase-author →
 (tdd-implementer 구현 → code-reviewer --uncommitted 리뷰 → pass 시 dev 커밋 →
  코디네이터가 testcases.md 를 [x]로 갱신) 케이스 루프 →
 모든 케이스 완료 후 code-reviewer 최종 전체 리뷰 1회 →
-최종 리뷰 pass면 코디네이터가 작업 브랜치를 git push 1회(첫 푸시 -u origin <브랜치>) →
+최종 리뷰 pass면 코디네이터가 create-pr 스킬을 호출해 push+PR 생성까지 마친다
+(스킬이 사용자 확인을 받은 뒤에만 생성, raw git push/gh pr create 금지) →
 그 다음 develop 머지를 판단한다.
 산출물은 .orca/plan/<타깃-slug>/ 에 남긴다. 케이스 커밋은 dev가 commit-message --auto --no-push로
 커밋만 하고(푸시 안 함), 푸시는 위 최종 1회뿐이다.
