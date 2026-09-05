@@ -67,10 +67,8 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
   feature/release는 `origin/develop`, hotfix는 `origin/main`. remote가 없으면
   `--uncommitted`만으로 진행.
 - **타임아웃 기본**: 첫 디스패치·`TC-00` `1800000`(30분), 이후 `900000`(15분).
-- **커밋/푸시**: 케이스당 2커밋(컴포넌트 1커밋)을 `commit-message --auto --no-push` **1회 호출**로.
-  스킬이 커밋 전 gradle 검증 1회 → 목적별 분할 커밋까지만 하고 **푸시는 생략**한다. 커밋은 작업
-  브랜치에 로컬로 쌓이고, **푸시는 파이프라인 맨 끝에서 코디네이터가 한 번만** 수행한다(아래
-  "최종 푸시"). 보호 브랜치(`main`/`master`/`develop`) 위라면 스킬이 `--auto` 커밋을 거부한다.
+- **커밋/푸시**: 상세는 "커밋 규약"·"케이스 루프 게이팅"이 단일 출처. 요약하면 케이스당
+  커밋만 로컬에 쌓고, 푸시는 파이프라인 끝에 코디네이터가 1회.
 
 즉 사용자는 **개발 요청 md만** 주면 되고, 나머지는 코디네이터가 이 기본값으로 채웁니다.
 
@@ -134,9 +132,8 @@ feature-analyst  →  testcase-author  →  ┌─ tdd-implementer  (케이스 N
   갈라져 나온 부모**입니다 — feature·release·컴포넌트 트랙은 `origin/develop`, hotfix는
   `origin/main`. `origin/main`으로 고정하면 `develop`이 앞선 만큼의 남의 커밋까지 diff에
   섞여 리뷰 범위가 부풀어 오릅니다.
-- 케이스별 커밋은 `commit-message --auto --no-push`로 이 작업 브랜치에 **로컬로만 쌓입니다**
-  (케이스마다 푸시하지 않음). 보호 브랜치 위라면 스킬이 `--auto`에서 커밋을 거부하므로, 작업
-  브랜치 준비는 착수 전 precondition입니다.
+- 보호 브랜치 위에서는 `commit-message --auto`가 커밋을 거부하므로, 작업 브랜치 준비는
+  케이스 커밋 전 precondition입니다(커밋/푸시 상세는 "커밋 규약" 참조).
 - **최종 푸시·PR(파이프라인 끝 1회)**: 절차와 근거는 아래 "케이스 루프 게이팅" 5~6단계가
   단일 출처입니다. **케이스가 1개뿐인 컴포넌트 트랙도 생략하지 않습니다.**
 
@@ -211,8 +208,10 @@ pass 이후에 커밋을 별도 디스패치합니다(이유는 아래 "리뷰-�
    후 기준 브랜치 대비 전체 diff를 봅니다.
 6. 최종 리뷰까지 pass면 코디네이터가 **최종 푸시 1회**(작업 브랜치를 `git push`, 첫 푸시는
    `-u origin <브랜치>`, `--force` 금지, 거부되면 재시도·rebase 없이 보고). 케이스별로는
-   `--no-push`라 이때 처음 원격에 올라갑니다. 곧이어 `gh pr create --base develop`로 PR을
-   엽니다 — **PR 생성까지가 자동화 범위**이고, `develop` 머지는 사용자가 직접 판단·수행합니다.
+   `--no-push`라 이때 처음 원격에 올라갑니다. 곧이어 `gh pr create --base <기준브랜치>`로 PR을
+   엽니다(기준브랜치는 위 "기준 브랜치 확정"과 동일 — feature·컴포넌트·도메인 트랙은 `develop`,
+   hotfix는 `main`) — **PR 생성까지가 자동화 범위**이고, 그 브랜치로의 머지는 사용자가 직접
+   판단·수행합니다.
    릴리스 시 `develop`→`main`도 마찬가지로 사용자 판단입니다. (케이스 1개짜리 컴포넌트
    트랙에서 커밋 후 자동화가 멈추고 push/PR을 사용자가 수동으로 했던 사례가 있어 2026-08-23
    명문화됨 — 생략 금지.)
@@ -241,9 +240,11 @@ icon-button 실행에서 실측).
 1. **`graphify update .`** — 워커 4개가 같은 워크트리를 공유하므로 코디네이터가 한 번만
    실행하면 충분합니다. 비동기 post-commit 훅보다 먼저 동기적으로 최신 상태를 반영해 두는
    게 목적이며, 완료까지 대기합니다.
-2. 그 케이스에서 실제로 턴을 쓴 워커(보통 `tdd-implementer`·`code-reviewer`, 케이스 1개짜리
-   컴포넌트 트랙은 4개 전부)에 `/compact`를 보냅니다. Claude·Codex 네이티브 워커 모두
-   `/compact`를 지원합니다.
+2. **그 시점에 아직 연결돼 있는** 워커에만 `/compact`를 보냅니다(보통 `tdd-implementer`·
+   `code-reviewer`). 아래 "조기 종료" 옵션으로 이미 터미널을 닫은 `feature-analyst`·
+   `testcase-author`는 대상에서 제외합니다 — 터미널 종료 자체가 컨텍스트를 완전히 비우므로
+   compact가 불필요합니다(종료된 세션에는 애초에 명령을 보낼 수 없습니다). Claude·Codex
+   네이티브 워커 모두 `/compact`를 지원합니다.
 3. 각 워커가 idle로 복귀한 뒤에만 다음 케이스를 디스패치합니다.
 
 케이스가 여러 개인 트랙(feature·도메인/데이터)일수록 누적 효과가 커 매 케이스마다 반드시
@@ -535,14 +536,15 @@ orca terminal send --terminal <h> \
 orca terminal wait --terminal <h> --for tui-idle --timeout-ms 60000 --json
 ```
 
-- **dev(Sonnet)**는 무거운 구현을 `codex exec "..."`(비대화형)에 위임하고, 커밋은 이 Sonnet
-  런타임에서 `commit-message --auto --no-push`(커밋만)로 수행합니다. **reviewer·testcase-author는
-  Codex 네이티브**라 위임 wrapper 없이 자기 런타임에서 `codex review`/문서 작성을 직접 합니다.
-  무인자 `codex`는 대화형 TUI이며(네이티브 워커 기동용), Bash 위임에는 `codex exec`/`codex review`만
-  씁니다. 푸시는 코디네이터가 최종 1회만 합니다.
+- **실행 방식**(모델 배치는 위 "역할 에이전트" 표가 단일 출처): dev는 무거운 구현을
+  `codex exec "..."`(비대화형)에 위임하고, 커밋은 자기 Sonnet 런타임에서 수행합니다.
+  reviewer·testcase-author는 위임 wrapper 없이 자기 런타임에서 `codex review`/문서 작성을
+  직접 합니다. 무인자 `codex`는 대화형 TUI이므로(네이티브 워커 기동 전용) Bash 위임에는
+  `codex exec`/`codex review`만 씁니다.
 - **(선택) 케이스 1개짜리 컴포넌트 트랙의 조기 종료**: 4개를 처음부터 끝까지 상시 병렬로 띄워둘
   필요는 없습니다 — `feature-analyst`·`testcase-author`는 자기 차례가 끝나면 이후 순서에서 다시
-  쓰이지 않으므로, 그 시점에 터미널을 종료해 유휴 컨텍스트 누적을 막을 수 있습니다. 트레이드오프는
+  쓰이지 않으므로, 그 시점에 터미널을 종료해 유휴 컨텍스트 누적을 막을 수 있습니다. 종료된
+  워커는 "케이스 완료 후 컨텍스트 관리"의 `/compact` 대상에서 자동으로 빠집니다. 트레이드오프는
   재기동 시 역할 계약 재주입 오버헤드이므로, 케이스가 여러 개라 같은 역할을 반복 호출하는
   feature·도메인 트랙에는 적용하지 않습니다.
 
@@ -555,11 +557,8 @@ orca terminal wait --terminal <h> --for tui-idle --timeout-ms 60000 --json
 프롬프트가 코디네이터에게 시키는 핵심:
 
 - 시작 시 `orca skills get orchestration`으로 스킬 가이드를 로드하고 이 문서를 읽는다.
-- 워커를 역할별 모델로 띄운다(analyst·dev=Claude Sonnet, testcase-author·reviewer=Codex 네이티브)
-  — 역할 계약 경로를 주입한 뒤 `terminal wait --for tui-idle`로 로드를 확인하고 첫 디스패치를 보낸다.
-- codex 위임은 비대화형(`codex exec`/`codex review`), 케이스 커밋은
-  `commit-message --auto --no-push`(커밋만), 작업 브랜치는 착수 전(첫 커밋 이전) 준비, 푸시는
-  최종 리뷰 pass 후 코디네이터가 1회.
+- 워커 기동·모델 배치·실행 방식은 위 "1) 워커 터미널 기동", 작업 브랜치·커밋/푸시는
+  "작업 브랜치 준비"·"케이스 루프 게이팅"을 그대로 따른다.
 
 ### 3) 루프 구동
 
