@@ -13,7 +13,9 @@ Compose 디자인 foundation과 역할·동작 상태·채팅 모드에 따른 �
 - `component`: 디자인시스템 소유 컴포넌트군의 전용 토큰과 구현.
   `component/button/ActionButton`(공개 API)과 `ActionButtonDefaults`(internal test
   tag·치수·토큰 매핑), `component/button/IconButton`(공개 API)과
-  `IconButtonDefaults`(internal test tag·치수·Style×Tone×Shape×State 토큰 매핑)
+  `IconButtonDefaults`(internal test tag·치수·Style×Tone×Shape×State 토큰 매핑),
+  `component/control/SegmentedControl`(공개 API)과 `SegmentedControlDefaults`(internal
+  test tag·치수·Selected/Unselected/Disabled 토큰 매핑, 단일 선택 control)
 - `icon`: 색상을 내장하지 않은 `AppIcons`
 
 ```mermaid
